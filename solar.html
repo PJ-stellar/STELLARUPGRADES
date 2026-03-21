@@ -144,6 +144,54 @@ nav.scrolled{top:0;background:rgba(20,20,16,.92);backdrop-filter:blur(20px);-web
 .e-gate.submitted{pointer-events:none}
 @media(max-width:768px){.e-gate-row{flex-direction:column}}
 
+/* ═══ STAIRCASE QUALIFYING FLOW ═══ */
+.e-staircase{margin-top:28px;max-height:0;opacity:0;overflow:hidden;transition:max-height .6s cubic-bezier(.16,1,.3,1),opacity .5s}
+.e-staircase.show{max-height:2000px;opacity:1;overflow:visible}
+.stair-progress{height:4px;border-radius:2px;background:var(--b);margin-bottom:28px;overflow:hidden}
+.stair-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--gold),var(--goldL));border-radius:2px;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.stair-step{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .4s .1s;margin-bottom:0}
+.stair-step.active{max-height:400px;opacity:1;overflow:visible;margin-bottom:24px}
+.stair-step.done{max-height:0;opacity:0;overflow:hidden;margin-bottom:0}
+.stair-q{font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,24px);margin-bottom:14px;text-align:center;line-height:1.2}
+.stair-opts{display:grid;gap:10px;max-width:480px;margin:0 auto}
+.stair-opt{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(240,232,216,.03);border:2px solid var(--b);border-radius:14px;
+  padding:16px 20px;cursor:pointer;transition:all .3s;
+}
+.stair-opt:hover{border-color:var(--bG);background:rgba(201,168,76,.03)}
+.stair-opt.selected{border-color:var(--gold);background:rgba(201,168,76,.08);pointer-events:none}
+.stair-icon{
+  width:42px;height:42px;border-radius:12px;
+  background:rgba(201,168,76,.08);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;transition:all .3s;
+}
+.stair-opt.selected .stair-icon{background:var(--gold);transform:scale(1.05)}
+.stair-opt-title{font-size:15px;font-weight:600;margin-bottom:1px}
+.stair-opt-sub{font-size:12px;color:var(--tdd);font-weight:300}
+.stair-opt.selected .stair-opt-title{color:var(--t)}
+.stair-opt.selected::after{
+  content:'✓';margin-left:auto;
+  width:28px;height:28px;border-radius:50%;
+  background:var(--gold);color:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:900;flex-shrink:0;
+  animation:checkPop .35s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes checkPop{0%{transform:scale(0)}100%{transform:scale(1)}}
+.stair-addr{max-width:480px;margin:0 auto}
+.stair-addr-btn{
+  display:block;width:100%;margin-top:12px;
+  padding:16px;border-radius:60px;
+  background:linear-gradient(135deg,var(--gold),var(--goldD));
+  color:var(--bg);font-family:inherit;font-size:15px;font-weight:700;
+  border:none;cursor:pointer;transition:all .3s;
+  box-shadow:0 4px 20px rgba(201,168,76,.2);
+}
+.stair-addr-btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(201,168,76,.3)}
+.stair-addr-note{font-size:11px;color:var(--tdd);text-align:center;margin-top:10px}
+
 /* Step 4: Loading + Animated Reveal */
 .e-loading{display:none;text-align:center;padding:60px 20px}
 .e-loading.show{display:block}
@@ -159,13 +207,150 @@ nav.scrolled{top:0;background:rgba(20,20,16,.92);backdrop-filter:blur(20px);-web
 .e-reveal.show{display:block}
 
 /* Animated roof SVG */
-.e-roof-wrap{max-width:600px;margin:0 auto 32px;position:relative}
-.e-roof-svg{width:100%}
-.e-roof-panel{opacity:0;transform:scale(0.6);transform-origin:center;transition:all .4s cubic-bezier(.34,1.56,.64,1)}
-.e-roof-panel.appear{opacity:1;transform:scale(1)}
-.e-roof-counter{position:absolute;bottom:12px;right:20px;background:rgba(19,19,15,.9);border:1px solid var(--bG);border-radius:12px;padding:12px 20px;backdrop-filter:blur(8px)}
-.e-roof-counter-n{font-weight:900;font-size:28px;color:var(--gold);line-height:1}
-.e-roof-counter-l{font-size:10px;color:var(--tdd);text-transform:uppercase;letter-spacing:.06em}
+.e-roof-wrap{max-width:640px;margin:0 auto 36px;position:relative}
+
+/* ═══ PREMIUM AERIAL ROOF VIEW ═══ */
+.e-roof-scene{
+  position:relative;width:100%;aspect-ratio:16/10;
+  perspective:1200px;overflow:hidden;
+  border-radius:16px;
+  background:linear-gradient(180deg,#1a2a1a 0%,#1e291e 40%,#2a352a 100%);
+  border:1px solid rgba(201,168,76,.1);
+}
+.e-roof-surface{
+  position:absolute;
+  top:10%;left:12%;width:76%;height:72%;
+  background:linear-gradient(160deg,#3a3530 0%,#2e2a25 30%,#35302b 60%,#302b26 100%);
+  transform:perspective(800px) rotateX(32deg) rotateZ(-2deg);
+  transform-origin:center center;
+  border-radius:4px;
+  box-shadow:
+    0 40px 80px rgba(0,0,0,.5),
+    0 10px 30px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.04);
+}
+/* Shingle texture */
+.e-shingle-line{
+  position:absolute;left:0;right:0;height:1px;
+  background:rgba(0,0,0,.15);
+}
+/* Ridge line */
+.e-ridge{
+  position:absolute;top:0;left:15%;right:15%;height:3px;
+  background:linear-gradient(90deg,transparent,rgba(80,72,60,.6) 20%,rgba(80,72,60,.8) 50%,rgba(80,72,60,.6) 80%,transparent);
+  border-radius:2px;
+}
+/* Gutters */
+.e-gutter{position:absolute;background:rgba(100,92,80,.3)}
+.e-gutter-l{left:-2px;top:0;bottom:0;width:3px;border-radius:2px}
+.e-gutter-r{right:-2px;top:0;bottom:0;width:3px;border-radius:2px}
+.e-gutter-b{bottom:-2px;left:0;right:0;height:3px;border-radius:2px}
+
+/* Panel grid */
+.e-panel-grid{
+  position:absolute;top:14%;left:8%;right:8%;bottom:12%;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:repeat(3,1fr);
+  gap:6px;
+  padding:4px;
+}
+/* Individual panel */
+.e-panel{
+  position:relative;
+  opacity:0;
+  transform:translateY(-60px) scale(.7);
+  transition:all .6s cubic-bezier(.34,1.56,.64,1);
+}
+.e-panel.installed{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+.e-panel-inner{
+  position:relative;width:100%;height:100%;
+  background:linear-gradient(145deg,#1a1e2e 0%,#0f1320 40%,#161a28 70%,#1c2030 100%);
+  border-radius:3px;
+  border:1px solid rgba(60,70,100,.4);
+  overflow:hidden;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(100,120,180,.08);
+}
+/* Cell grid pattern */
+.e-panel-cells{
+  position:absolute;inset:3px;
+  background-image:
+    linear-gradient(rgba(40,50,80,.3) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(40,50,80,.3) 1px,transparent 1px);
+  background-size:calc(100% / 6) calc(100% / 10);
+  border-radius:2px;
+}
+/* Reflection/shine sweep */
+.e-panel-shine{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    125deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(180,200,255,.06) 40%,
+    rgba(180,200,255,.12) 45%,
+    rgba(180,200,255,.06) 50%,
+    transparent 55%,
+    transparent 100%
+  );
+  opacity:0;
+  transition:opacity .8s .3s;
+}
+.e-panel.installed .e-panel-shine{opacity:1}
+/* Panel drop shadow on roof */
+.e-panel-shadow{
+  position:absolute;bottom:-3px;left:5%;right:5%;height:6px;
+  background:rgba(0,0,0,.3);filter:blur(4px);
+  border-radius:50%;
+  opacity:0;transition:opacity .4s .2s;
+}
+.e-panel.installed .e-panel-shadow{opacity:1}
+
+/* Environment elements */
+.e-env-shadow{
+  position:absolute;bottom:2%;left:8%;width:84%;height:10%;
+  background:rgba(0,0,0,.2);filter:blur(20px);border-radius:50%;
+}
+.e-env-tree{
+  position:absolute;width:40px;height:40px;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%,#2a4a2a,#1a3a1a);
+  box-shadow:0 8px 16px rgba(0,0,0,.3);
+}
+.e-env-tree-1{top:8%;right:6%}
+.e-env-tree-2{bottom:14%;left:4%;width:32px;height:32px}
+.e-env-yard{
+  position:absolute;bottom:0;left:0;right:0;height:12%;
+  background:linear-gradient(180deg,transparent,rgba(30,45,30,.3));
+}
+
+/* HUD Overlay */
+.e-roof-hud{
+  position:absolute;bottom:12px;left:12px;right:12px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(13,13,10,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(201,168,76,.15);border-radius:10px;
+  padding:10px 16px;
+}
+.e-hud-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--td)}
+.e-hud-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--gold);
+  animation:hudPulse 1.5s infinite;
+}
+@keyframes hudPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.4)}50%{box-shadow:0 0 0 6px rgba(201,168,76,0)}}
+.e-hud-counter{font-size:13px;font-weight:700;color:var(--t)}
+.e-hud-kw{font-size:14px;font-weight:900;color:var(--gold)}
+
+@media(max-width:768px){
+  .e-roof-scene{aspect-ratio:4/3}
+  .e-panel-grid{gap:3px}
+  .e-roof-hud{padding:8px 12px}
+  .e-hud-item span{display:none}
+}
 
 /* Reveal stats */
 .e-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
@@ -361,17 +546,64 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="e-chart-canvas"><canvas id="eChart"></canvas></div>
 </div>
 
-<!-- STEP 3: Gate Form -->
-<div class="e-gate" id="eGate">
-<h3>See your <em>exact</em> system.</h3>
-<p>We'll design the right system for your roof and show you exactly what it costs — personalized to your bill.</p>
-<div class="e-gate-form">
-<div class="e-gate-row"><input class="e-gate-input" id="gName" placeholder="First name"><input class="e-gate-input" id="gPhone" placeholder="Phone" type="tel"></div>
-<input class="e-gate-input" id="gAddr" placeholder="Property address (for roof assessment)" style="width:100%;margin-bottom:14px">
-<button class="e-gate-submit" id="gSubmit">Design My System →</button>
-<p class="e-gate-dis">No spam. A Stellar team member contacts you within 24 hours.</p>
+<!-- STEP 3: Staircase Qualifying Questions -->
+<div class="e-staircase" id="staircase">
+
+<!-- Progress bar -->
+<div class="stair-progress"><div class="stair-fill" id="stairFill"></div></div>
+
+<!-- Q1: Ownership -->
+<div class="stair-step active" id="stair0">
+<div class="stair-q">Do you own your home?</div>
+<div class="stair-opts">
+<div class="stair-opt" data-stair="0" data-val="own" data-ok="1"><div class="stair-icon">🏠</div><div><div class="stair-opt-title">Yes, I own</div><div class="stair-opt-sub">Great — solar installs on your property</div></div></div>
+<div class="stair-opt" data-stair="0" data-val="rent" data-ok="0"><div class="stair-icon">🔑</div><div><div class="stair-opt-title">I rent</div><div class="stair-opt-sub">Solar requires ownership</div></div></div>
+</div>
+</div>
+
+<!-- Q2: Roof age -->
+<div class="stair-step" id="stair1">
+<div class="stair-q">How old is your roof?</div>
+<div class="stair-opts">
+<div class="stair-opt" data-stair="1" data-val="new" data-ok="1"><div class="stair-icon">✨</div><div><div class="stair-opt-title">Under 10 years</div><div class="stair-opt-sub">Perfect — panels last 30 years</div></div></div>
+<div class="stair-opt" data-stair="1" data-val="mid" data-ok="1"><div class="stair-icon">🏗</div><div><div class="stair-opt-title">10 – 20 years</div><div class="stair-opt-sub">Usually fine — we'll verify</div></div></div>
+<div class="stair-opt" data-stair="1" data-val="old" data-ok="0"><div class="stair-icon">⚠️</div><div><div class="stair-opt-title">Over 20 years</div><div class="stair-opt-sub">May need assessment first</div></div></div>
+</div>
+</div>
+
+<!-- Q3: Shade -->
+<div class="stair-step" id="stair2">
+<div class="stair-q">Shade on your roof?</div>
+<div class="stair-opts">
+<div class="stair-opt" data-stair="2" data-val="none" data-ok="1"><div class="stair-icon">☀️</div><div><div class="stair-opt-title">Full sun</div><div class="stair-opt-sub">Ideal — maximum production</div></div></div>
+<div class="stair-opt" data-stair="2" data-val="some" data-ok="1"><div class="stair-icon">⛅</div><div><div class="stair-opt-title">Some shade</div><div class="stair-opt-sub">Microinverters handle this well</div></div></div>
+<div class="stair-opt" data-stair="2" data-val="heavy" data-ok="0"><div class="stair-icon">🌑</div><div><div class="stair-opt-title">Heavy shade</div><div class="stair-opt-sub">May reduce viability — we'll check</div></div></div>
+</div>
+</div>
+
+<!-- Q4: Address (the gate — now feels like step 4, not a wall) -->
+<div class="stair-step" id="stair3">
+<div class="stair-q">Almost there — where's your property?</div>
+<div class="stair-addr">
+<div class="stair-addr-wrap">
+<input class="e-gate-input" id="gAddr" placeholder="Start typing your address..." style="width:100%;font-size:15px;padding:16px">
+<button class="stair-addr-btn" id="gSubmit">Design My System →</button>
+</div>
+<p class="stair-addr-note">We use this to calculate roof space, sun angle, and optimal panel placement.</p>
 <p class="e-gate-status" id="gStatus"></p>
 </div>
+</div>
+
+<!-- Renter dead-end -->
+<div class="stair-step" id="stairRent" style="display:none">
+<div style="text-align:center;padding:20px 0">
+<div style="font-size:40px;margin-bottom:12px">🔑</div>
+<div class="stair-q" style="margin-bottom:8px">Solar requires homeownership.</div>
+<p style="font-size:14px;color:var(--td);font-weight:300;margin-bottom:20px">When you buy a home, we'd love to help. Save our number for later.</p>
+<a href="tel:7802005265" class="btn-o">(780) 200-5265</a>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -384,47 +616,63 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <!-- STEP 5: Animated Reveal -->
 <div class="e-reveal" id="eReveal">
 
-<!-- Animated Roof SVG -->
+<!-- Animated Roof — Isometric Aerial View -->
 <div class="e-roof-wrap">
-<svg class="e-roof-svg" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg">
-<!-- Sky gradient -->
-<defs><linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1a17"/><stop offset="100%" stop-color="#252520"/></linearGradient></defs>
-<rect width="600" height="340" fill="url(#skyGrad)"/>
-<!-- House body -->
-<rect x="120" y="180" width="360" height="160" fill="#252520" stroke="rgba(240,232,216,0.08)" stroke-width="1" rx="2"/>
-<!-- Roof -->
-<polygon points="80,180 300,50 520,180" fill="#2a2a24" stroke="rgba(240,232,216,0.1)" stroke-width="1"/>
-<!-- Door -->
-<rect x="265" y="250" width="70" height="90" fill="#1f1f1a" stroke="rgba(240,232,216,0.06)" rx="2"/>
-<!-- Windows -->
-<rect x="160" y="220" width="60" height="50" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.15)" rx="2"/>
-<rect x="380" y="220" width="60" height="50" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.15)" rx="2"/>
-<!-- Solar panels (positioned on roof) — will be animated -->
-<g id="roofPanels">
-<rect class="e-roof-panel" x="175" y="105" width="52" height="32" rx="2" fill="rgba(201,168,76,0.25)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
-<rect class="e-roof-panel" x="232" y="91" width="52" height="32" rx="2" fill="rgba(201,168,76,0.25)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
-<rect class="e-roof-panel" x="289" y="91" width="52" height="32" rx="2" fill="rgba(201,168,76,0.25)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
-<rect class="e-roof-panel" x="346" y="105" width="52" height="32" rx="2" fill="rgba(201,168,76,0.25)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
-<rect class="e-roof-panel" x="195" y="142" width="52" height="32" rx="2" fill="rgba(201,168,76,0.3)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
-<rect class="e-roof-panel" x="252" y="128" width="52" height="32" rx="2" fill="rgba(201,168,76,0.3)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
-<rect class="e-roof-panel" x="309" y="128" width="52" height="32" rx="2" fill="rgba(201,168,76,0.3)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
-<rect class="e-roof-panel" x="366" y="142" width="52" height="32" rx="2" fill="rgba(201,168,76,0.3)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
-</g>
-<!-- Sun -->
-<circle cx="520" cy="60" r="24" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.2)"/>
-<!-- Sun rays -->
-<line x1="520" y1="28" x2="520" y2="18" stroke="rgba(201,168,76,0.15)" stroke-width="2"/>
-<line x1="543" y1="37" x2="550" y2="30" stroke="rgba(201,168,76,0.15)" stroke-width="2"/>
-<line x1="552" y1="60" x2="562" y2="60" stroke="rgba(201,168,76,0.15)" stroke-width="2"/>
-</svg>
-<div class="e-roof-counter"><div class="e-roof-counter-n" id="panelCount">0</div><div class="e-roof-counter-l">panels installed</div></div>
+<div class="e-roof-scene">
+<!-- Roof surface (isometric aerial perspective) -->
+<div class="e-roof-surface">
+<!-- Shingle texture lines -->
+<div class="e-shingle-line" style="top:12%"></div>
+<div class="e-shingle-line" style="top:24%"></div>
+<div class="e-shingle-line" style="top:36%"></div>
+<div class="e-shingle-line" style="top:48%"></div>
+<div class="e-shingle-line" style="top:60%"></div>
+<div class="e-shingle-line" style="top:72%"></div>
+<div class="e-shingle-line" style="top:84%"></div>
+<!-- Ridge line -->
+<div class="e-ridge"></div>
+<!-- Panels grid -->
+<div class="e-panel-grid" id="panelGrid">
+<!-- Row 1 -->
+<div class="e-panel" data-idx="0"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<div class="e-panel" data-idx="1"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<div class="e-panel" data-idx="2"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<div class="e-panel" data-idx="3"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<!-- Row 2 -->
+<div class="e-panel" data-idx="4"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<div class="e-panel" data-idx="5"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<div class="e-panel" data-idx="6"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<div class="e-panel" data-idx="7"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<!-- Row 3 -->
+<div class="e-panel" data-idx="8"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<div class="e-panel" data-idx="9"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<div class="e-panel" data-idx="10"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<div class="e-panel" data-idx="11"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+</div>
+<!-- Gutters / edges -->
+<div class="e-gutter e-gutter-l"></div>
+<div class="e-gutter e-gutter-r"></div>
+<div class="e-gutter e-gutter-b"></div>
+</div>
+<!-- Environment -->
+<div class="e-env-shadow"></div>
+<div class="e-env-tree e-env-tree-1"></div>
+<div class="e-env-tree e-env-tree-2"></div>
+<div class="e-env-yard"></div>
+</div>
+<!-- HUD overlay -->
+<div class="e-roof-hud">
+<div class="e-hud-item"><div class="e-hud-dot"></div><span>Installing</span></div>
+<div class="e-hud-counter"><span id="panelCount">0</span>/<span id="panelTotal">12</span> panels</div>
+<div class="e-hud-kw" id="hudKw">0.0 kW</div>
+</div>
 </div>
 
 <!-- Reveal Stats -->
 <div class="e-stats">
-<div class="e-stat" id="rSys"><div class="e-stat-v" id="rSysV">—</div><div class="e-stat-l">System Size</div></div>
-<div class="e-stat" id="rPn"><div class="e-stat-v" id="rPnV">—</div><div class="e-stat-l">LONGi 500W Panels</div></div>
-<div class="e-stat" id="rPb"><div class="e-stat-v" id="rPbV">—</div><div class="e-stat-l">Payback Period</div></div>
+<div class="e-stat" id="rSys"><div class="e-stat-v" id="rSysV">—</div><div class="e-stat-l">Est. System Size</div></div>
+<div class="e-stat" id="rPn"><div class="e-stat-v" id="rPnV">—</div><div class="e-stat-l">Est. Panels</div></div>
+<div class="e-stat" id="rPb"><div class="e-stat-v" id="rPbV">—</div><div class="e-stat-l">Est. Payback</div></div>
 <div class="e-stat" id="rY1"><div class="e-stat-v" id="rY1V">—</div><div class="e-stat-l">Year 1 Savings</div></div>
 </div>
 
@@ -432,7 +680,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="e-urgency" id="rUrg"><div class="e-urgency-icon">⏳</div><div><div class="e-urgency-title">The cost of waiting</div><div class="e-urgency-detail">Every month you delay costs you <strong id="rWait">~$200</strong> in electricity you could have offset. Alberta rates have risen <strong>~38%</strong> in the last 3 years.</div></div></div>
 
 <!-- Big savings -->
-<div class="e-savings" id="rSav"><div class="e-savings-l">Total 25-Year Net Savings</div><div class="e-savings-v" id="rSavV">$0</div><div class="e-savings-s" id="rSavS">After financing cost · with 5% annual rate increases</div></div>
+<div class="e-savings" id="rSav"><div class="e-savings-l">Estimated 25-Year Net Savings</div><div class="e-savings-v" id="rSavV">$0</div><div class="e-savings-s" id="rSavS">Estimated range · final numbers confirmed at assessment</div></div>
 
 <!-- STEP 6: Dynamic Packages -->
 <div class="e-pkgs" id="rPkgs">
@@ -440,7 +688,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="e-pkgs-sub">Based on your <span id="pkgBill">$200</span>/mo bill. Every option includes 30-year panels + Master Electrician installation.</div>
 <div class="e-pkg-grid">
 <div class="e-pkg"><h4>Essentials</h4><div class="e-pkg-desc">Reliable solar. Essential monitoring.</div>
-<div class="e-pkg-price"><div class="e-pkg-price-val" id="pkgE">—</div><div class="e-pkg-price-note">$0 down · 6.99% · 20 years</div></div>
+<div class="e-pkg-price"><div class="e-pkg-price-val" id="pkgE">—</div><div class="e-pkg-price-note">Est. · $0 down · 6.99% · 20 years</div></div>
 <ul><li>LONGi Hi-MO 7 (30-yr warranty)</li><li>APsystems DS3 (25-yr warranty)</li><li>ECU-R — production monitoring</li><li>Wire Mesh Critter Guard</li><li class="hl">5-Year Workmanship</li><li class="hl">Lifetime Leak-Proof</li></ul>
 <a href="tel:7802005265" class="e-pkg-cta">Get Started →</a></div>
 
@@ -455,8 +703,23 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <a href="/battery" class="e-pkg-cta">Learn More →</a></div>
 </div>
 
+<!-- Contact Capture (earned after seeing everything) -->
+<div class="e-capture" id="eCapture" style="background:var(--bg2);border:1px solid var(--bG);border-radius:20px;padding:clamp(28px,4vw,40px);margin-top:32px;position:relative;overflow:hidden">
+<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.06),transparent 60%);pointer-events:none"></div>
+<h3 style="font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);text-align:center;margin-bottom:6px;position:relative">Ready to lock in your savings?</h3>
+<p style="font-size:14px;color:var(--td);text-align:center;margin-bottom:24px;font-weight:300;position:relative;max-width:440px;margin-left:auto;margin-right:auto">We'll verify your roof, confirm the exact panel layout, and prepare your custom proposal — no obligation.</p>
+<div style="max-width:440px;margin:0 auto;position:relative" id="capForm">
+<div class="e-gate-row"><input class="e-gate-input" id="capName" placeholder="First name"><input class="e-gate-input" id="capPhone" placeholder="Phone" type="tel"></div>
+<div class="e-gate-row"><input class="e-gate-input" id="capEmail" placeholder="Email" type="email"></div>
+<button class="e-gate-submit" id="capSubmit" style="border-radius:60px;margin-top:4px">Get My Custom Proposal →</button>
+<p style="font-size:11px;color:var(--tdd);text-align:center;margin-top:10px;position:relative">No spam. A Stellar team member contacts you within 24 hours.</p>
+<p id="capStatus" style="font-size:12px;text-align:center;margin-top:6px;position:relative"></p>
+</div>
+<div id="capSuccess" style="display:none;text-align:center;padding:20px 0;position:relative"><h4 style="font-size:20px;font-weight:700;color:var(--gold);margin-bottom:6px">✓ We're on it.</h4><p style="font-size:14px;color:var(--td)">A Stellar team member will contact you within 24 hours with your custom proposal.</p></div>
+</div>
+
 <!-- Financeit CTA -->
-<div class="e-fin-cta"><a href="https://www.financeit.ca/s/SeBbyA" target="_blank" class="btn">Get Pre-Approved on Financeit →</a><p>5-minute application. No obligation. See your rate instantly.</p></div>
+<div class="e-fin-cta"><a href="https://www.financeit.ca/en/direct/payment-plan/YT0zMjYyOTQmbD0mcD0tYzBYMUtXQ21EWS11WlVBRXY0MEdBJnM9MjI1ODMmdj0x/apply?slug=LdG2EQ" target="_blank" class="btn">Get Pre-Approved on Financeit →</a><p>5-minute application. No obligation. 6.99% · 20 years · $0 down.</p></div>
 </div>
 </div>
 
@@ -519,10 +782,10 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <section class="cta-sec"><h2 class="rv">Your last electricity bill starts<br>the day we install.</h2><p class="rv">15 minutes. Free. If the math doesn't work, we'll tell you.</p><div class="cta-btns rv"><a href="#engine" class="btn">See What You'd Save</a><a href="tel:7802005265" class="btn-g">(780) 200-5265 →</a></div></section>
 
 <!-- ═══ FOOTER ═══ -->
-<footer><div class="ft-top"><div class="ft-brand"><img src="/images/logo-full-white.png" alt="Stellar Upgrades" style="height:60px;width:auto;margin-bottom:12px;filter:brightness(0.85)"><p>Master electricians. Solar, battery, and EV chargers across Alberta.</p><a href="tel:7802005265">(780) 200-5265</a><a href="mailto:info@stellarupgrades.ca">info@stellarupgrades.ca</a><a>6005 103A St NW, Edmonton, AB</a></div><div class="ft-col"><h4>Services</h4><a href="/solar">Solar Panels</a><a href="/battery">Battery Backup</a><a href="/ev-chargers">EV Chargers</a></div><div class="ft-col"><h4>Company</h4><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div><div class="ft-col"><h4>Areas</h4><a href="/areas/edmonton">Edmonton</a><a href="/areas/st-albert">St. Albert</a><a href="/areas/sherwood-park">Sherwood Park</a><a href="/areas/spruce-grove">Spruce Grove</a><a href="/areas/leduc">Leduc</a></div></div><div class="ft-bot"><span>&copy; 2026 Stellar Upgrades.</span><div class="ft-soc"><a href="https://www.instagram.com/stellarupgrades_ca" target="_blank">Instagram</a><a href="https://www.facebook.com/profile.php?id=61585966448071" target="_blank">Facebook</a></div></div></footer>
+<footer><div class="ft-top"><div class="ft-brand"><img src="/images/logo-full-white.png" alt="Stellar Upgrades" style="height:60px;width:auto;margin-bottom:12px;filter:brightness(0.85)"><p>Master electricians. Solar, battery, and EV chargers across Alberta.</p><a href="tel:7802005265">(780) 200-5265</a><a href="/cdn-cgi/l/email-protection#ed84838b82ad9e998881818c9f989d8a9f8c89889ec38e8c"><span class="__cf_email__" data-cfemail="6d04030b022d1e190801010c1f181d0a1f0c09081e430e0c">[email&#160;protected]</span></a><a>6005 103A St NW, Edmonton, AB</a></div><div class="ft-col"><h4>Services</h4><a href="/solar">Solar Panels</a><a href="/battery">Battery Backup</a><a href="/ev-chargers">EV Chargers</a></div><div class="ft-col"><h4>Company</h4><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div><div class="ft-col"><h4>Areas</h4><a href="/areas/edmonton">Edmonton</a><a href="/areas/st-albert">St. Albert</a><a href="/areas/sherwood-park">Sherwood Park</a><a href="/areas/spruce-grove">Spruce Grove</a><a href="/areas/leduc">Leduc</a></div></div><div class="ft-bot"><span>&copy; 2026 Stellar Upgrades.</span><div class="ft-soc"><a href="https://www.instagram.com/stellarupgrades_ca" target="_blank">Instagram</a><a href="https://www.facebook.com/profile.php?id=61585966448071" target="_blank">Facebook</a></div></div></footer>
 <div class="mob-cta"><a href="tel:7802005265" class="mob-cta-call">Call Now</a><a href="#engine" class="mob-cta-quote">See Savings</a></div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ═══ NAV ═══
 window.addEventListener('scroll',()=>{document.getElementById('sb').style.width=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100)+'%';document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40)});
 document.getElementById('nt').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('mm').classList.toggle('open')});
@@ -534,8 +797,13 @@ const C={
   rate:.25,prod:1150,panel:500,rateUp:.05,finRate:.0699,finTerm:20,years:30,
   premiumAdder:2500, // SolaTrim + ECU-C + extended warranty
   batteryAdder:18000, // EP Cube system
+  zeroMarkup:1.18, // 0% offer costs 18% more on system price
+  zeroTerm:20, // 0% amortized over 20 years (240 months)
+  rangePct:.10, // ±10% range on estimates
   cost:function(kw){kw=Math.max(3,Math.min(kw,30));return Math.round(14000+(kw-3)*(36000/27))},
-  monthly:function(total){const mr=this.finRate/12,np=this.finTerm*12;return total*(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1)}
+  monthly:function(total){const mr=this.finRate/12,np=this.finTerm*12;return total*(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1)},
+  monthlyZero:function(total){return(total*this.zeroMarkup)/(this.zeroTerm*12)},
+  range:function(val){return{lo:Math.round(val*(1-this.rangePct)),hi:Math.round(val*(1+this.rangePct))}}
 };
 let mode='finance',chart=null,sliderMoved=false,revealed=false;
 
@@ -543,7 +811,14 @@ function calcSys(bill){
   const ann=bill*12,kwh=ann/C.rate,kw=Math.max(3,Math.round(kwh/C.prod*10)/10);
   const panels=Math.ceil(kw*1000/C.panel),cost=C.cost(kw);
   const mp=C.monthly(cost),mpPrem=C.monthly(cost+C.premiumAdder),mpBatt=C.monthly(cost+C.batteryAdder);
-  return{kw,panels,cost,mp,mpPrem,mpBatt,ann};
+  // Ranges for display
+  const costRange=C.range(cost);
+  const mpRange={lo:Math.round(C.monthly(costRange.lo)),hi:Math.round(C.monthly(costRange.hi))};
+  const mpPremRange={lo:Math.round(C.monthly(costRange.lo+C.premiumAdder)),hi:Math.round(C.monthly(costRange.hi+C.premiumAdder))};
+  const mpBattRange={lo:Math.round(C.monthly(costRange.lo+C.batteryAdder)),hi:Math.round(C.monthly(costRange.hi+C.batteryAdder))};
+  // 0% monthly (for later use in game)
+  const mpZero=C.monthlyZero(cost);
+  return{kw,panels,cost,costRange,mp,mpRange,mpPrem,mpPremRange,mpBatt,mpBattRange,mpZero,ann};
 }
 function buildData(bill){
   const s=calcSys(bill),labels=[],noSol=[],goSol=[];
@@ -584,42 +859,128 @@ function updateCalc(){
   const sl=document.getElementById('billS'),pct=((bill-sl.min)/(sl.max-sl.min))*100;
   sl.style.background='linear-gradient(90deg,rgba(201,168,76,0.4) '+pct+'%,rgba(240,232,216,0.06) '+pct+'%)';
   document.getElementById('vsNo').textContent='$'+bill+'/mo';
-  if(mode==='finance'){document.getElementById('vsYL').textContent='With Solar (Financed)';document.getElementById('vsY').textContent='$'+Math.round(s.mp)+'/mo';document.getElementById('vsYN').textContent='fixed for 20 years, then $0'}
-  else{document.getElementById('vsYL').textContent='With Solar (Cash)';document.getElementById('vsY').textContent='$'+s.cost.toLocaleString();document.getElementById('vsYN').textContent='one-time · then $0/mo forever'}
+  if(mode==='finance'){
+    document.getElementById('vsYL').textContent='With Solar (Est.)';
+    document.getElementById('vsY').textContent='$'+s.mpRange.lo+'–'+s.mpRange.hi+'/mo';
+    document.getElementById('vsYN').textContent='$0 down · 6.99% · 20 years';
+  } else {
+    document.getElementById('vsYL').textContent='With Solar (Cash)';
+    document.getElementById('vsY').textContent='$'+s.costRange.lo.toLocaleString()+'–'+s.costRange.hi.toLocaleString();
+    document.getElementById('vsYN').textContent='one-time · then $0/mo forever';
+  }
   renderChart(d);
   // Store for reveal
   window._calcData=d;
 }
-// Slider → reveal phase 2
+// Slider → reveal phase 2 AND staircase
 document.getElementById('billS').addEventListener('input',function(){
-  if(!sliderMoved){sliderMoved=true;document.getElementById('phase2').classList.add('show');if(typeof gtag==='function')gtag('event','calculator_started',{event_category:'engagement'})}
+  if(!sliderMoved){
+    sliderMoved=true;
+    document.getElementById('phase2').classList.add('show');
+    // Show staircase after a brief delay (chart draws first)
+    setTimeout(()=>{document.getElementById('staircase').classList.add('show')},400);
+    if(typeof gtag==='function')gtag('event','calculator_started',{event_category:'engagement'});
+  }
   updateCalc();
 });
 // Mode toggle
 document.querySelectorAll('.e-mode-btn').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.e-mode-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');mode=b.dataset.mode;updateCalc()})});
 
-// ═══ GATE FORM → SunBase → REVEAL ═══
+// ═══ STAIRCASE LOGIC ═══
+let stairStep=0;
+const stairAnswers={};
+const stairSteps=['stair0','stair1','stair2','stair3'];
+
+document.querySelectorAll('.stair-opt').forEach(opt=>{
+  opt.addEventListener('click',function(){
+    const step=parseInt(this.dataset.stair);
+    const val=this.dataset.val;
+    const ok=this.dataset.ok==='1';
+    
+    // Mark selected
+    this.closest('.stair-opts').querySelectorAll('.stair-opt').forEach(o=>o.classList.remove('selected'));
+    this.classList.add('selected');
+    stairAnswers[step]=val;
+    
+    // Update progress bar
+    const progress=((step+1)/4)*100;
+    document.getElementById('stairFill').style.width=progress+'%';
+    
+    // Track
+    if(typeof gtag==='function')gtag('event','stair_answer',{event_category:'engagement',event_label:'step_'+step+'_'+val});
+    
+    // Renter dead-end
+    if(step===0 && val==='rent'){
+      setTimeout(()=>{
+        document.getElementById('stair0').classList.remove('active');
+        document.getElementById('stair0').classList.add('done');
+        document.getElementById('stairRent').style.display='block';
+        document.getElementById('stairRent').classList.add('active');
+      },500);
+      return;
+    }
+    
+    // Advance to next step after brief pause (let checkmark animate)
+    setTimeout(()=>{
+      document.getElementById(stairSteps[step]).classList.remove('active');
+      document.getElementById(stairSteps[step]).classList.add('done');
+      if(step+1<stairSteps.length){
+        document.getElementById(stairSteps[step+1]).classList.add('active');
+        stairStep=step+1;
+        // Scroll step into view smoothly
+        document.getElementById(stairSteps[step+1]).scrollIntoView({behavior:'smooth',block:'center'});
+      }
+    },600);
+  });
+});
+
+// ═══ ADDRESS SUBMIT → SunBase partial lead → REVEAL ═══
 document.getElementById('gSubmit').addEventListener('click',function(){
-  const nm=document.getElementById('gName').value.trim(),ph=document.getElementById('gPhone').value.trim(),ad=document.getElementById('gAddr').value.trim();
+  const ad=document.getElementById('gAddr').value.trim();
   const st=document.getElementById('gStatus');
-  if(!nm||!ph){st.textContent='Please enter your name and phone.';st.style.color='#e87c6c';return}
-  this.disabled=true;this.textContent='Submitting...';this.style.opacity='.6';
-  document.getElementById('eGate').classList.add('submitted');
+  if(!ad||ad.length<5){st.textContent='Please enter your property address.';st.style.color='#e87c6c';return}
+  this.disabled=true;this.textContent='Designing...';this.style.opacity='.6';
+  // Update progress to 100%
+  document.getElementById('stairFill').style.width='100%';
   const bill=document.getElementById('billS').value,s=calcSys(parseInt(bill));
-  const params=new URLSearchParams({schema:'stellarupgrades',first_name:nm,phone:ph,address:ad,
-    notes:'Calculator Lead | Bill: $'+bill+'/mo | System: '+s.kw.toFixed(1)+'kW | Est Cost: $'+s.cost.toLocaleString(),
+  const answers=Object.entries(stairAnswers).map(([k,v])=>'Q'+k+':'+v).join(', ');
+  // Partial lead — address + qualifying answers, no contact info yet
+  const params=new URLSearchParams({schema:'stellarupgrades',address:ad,
+    notes:'Calculator Lead (qualified) | Bill: $'+bill+'/mo | System: '+s.kw.toFixed(1)+'kW | Est: $'+s.costRange.lo.toLocaleString()+'–$'+s.costRange.hi.toLocaleString()+' | '+answers,
     assigned_to:'f51909f89cb8465ab31ace5ebf26f4c8',source:'Website - Solar Engine'});
   const img=new Image();
   img.onload=img.onerror=function(){
-    if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','generate_lead',{event_category:'calculator',value:parseInt(bill)})}
+    if(typeof gtag==='function')gtag('event','calculator_address',{event_category:'engagement',value:parseInt(bill)});
     startReveal();
+  };
+  img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString();
+});
+// Enter key on address field
+document.getElementById('gAddr').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();document.getElementById('gSubmit').click()}});
+
+// ═══ CONTACT CAPTURE (after packages) → SunBase full lead ═══
+document.getElementById('capSubmit').addEventListener('click',function(){
+  const nm=document.getElementById('capName').value.trim(),ph=document.getElementById('capPhone').value.trim(),em=document.getElementById('capEmail').value.trim();
+  const st=document.getElementById('capStatus');
+  if(!nm||!ph){st.textContent='Please enter your name and phone.';st.style.color='#e87c6c';return}
+  this.disabled=true;this.textContent='Submitting...';this.style.opacity='.6';
+  const bill=document.getElementById('billS').value,ad=document.getElementById('gAddr').value.trim(),s=calcSys(parseInt(bill));
+  const answers=Object.entries(stairAnswers).map(([k,v])=>'Q'+k+':'+v).join(', ');
+  const params=new URLSearchParams({schema:'stellarupgrades',first_name:nm,phone:ph,email:em,address:ad,
+    notes:'Solar Engine Lead (full) | Bill: $'+bill+'/mo | System: '+s.kw.toFixed(1)+'kW | Est: $'+s.costRange.lo.toLocaleString()+'–$'+s.costRange.hi.toLocaleString()+' | '+answers,
+    assigned_to:'f51909f89cb8465ab31ace5ebf26f4c8',source:'Website - Solar Engine'});
+  const img=new Image();
+  img.onload=img.onerror=function(){
+    if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','generate_lead',{event_category:'calculator',event_label:'full_capture',value:parseInt(bill)})}
+    document.getElementById('capForm').style.display='none';
+    document.getElementById('capSuccess').style.display='block';
   };
   img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString();
 });
 
 function startReveal(){
-  // Hide gate, show loading
-  document.getElementById('eGate').style.display='none';
+  // Hide staircase, show loading
+  document.getElementById('staircase').style.display='none';
   const loading=document.getElementById('eLoading');loading.classList.add('show');
   const fill=document.getElementById('loadFill');
   setTimeout(()=>fill.style.width='100%',50);
@@ -634,40 +995,70 @@ function startReveal(){
 
 function animateReveal(){
   const d=window._calcData,s=d.sys,bill=parseInt(document.getElementById('billS').value);
-  // Animate panels appearing
-  const panels=document.querySelectorAll('.e-roof-panel');
-  const panelCount=document.getElementById('panelCount');
+  // Set panel total in HUD
+  document.getElementById('panelTotal').textContent=s.panels;
+  // Animate panels appearing one by one (drop-in effect)
+  const panels=document.querySelectorAll('.e-panel');
+  const panelCountEl=document.getElementById('panelCount');
+  const hudKw=document.getElementById('hudKw');
   let count=0;
-  panels.forEach((p,i)=>{
-    setTimeout(()=>{p.classList.add('appear');count++;panelCount.textContent=Math.min(count,s.panels)},i*200);
+  const kwPerPanel=0.5;
+  // Stagger panels with random-ish order for realism
+  const order=[0,4,8,1,5,9,2,6,10,3,7,11];
+  order.forEach((idx,i)=>{
+    if(i>=Math.min(s.panels,12)){return}
+    setTimeout(()=>{
+      if(panels[idx])panels[idx].classList.add('installed');
+      count++;
+      panelCountEl.textContent=count;
+      hudKw.textContent=(count*kwPerPanel).toFixed(1)+' kW';
+    },i*280+Math.random()*80);
   });
   // After panels, animate stats
-  const statsDelay=panels.length*200+400;
+  const statsDelay=Math.min(s.panels,12)*280+600;
   setTimeout(()=>{
     document.getElementById('rSysV').textContent=s.kw.toFixed(1)+' kW';
     document.getElementById('rPnV').textContent=s.panels;
-    document.getElementById('rPbV').textContent='~'+Math.ceil(d.be)+' yr';
+    // Payback as range
+    const pbLo=Math.ceil(s.costRange.lo/s.ann);
+    const pbHi=Math.ceil(s.costRange.hi/s.ann);
+    document.getElementById('rPbV').textContent=pbLo+'–'+pbHi+' yr';
     document.getElementById('rY1V').textContent='$'+s.ann.toLocaleString();
     document.getElementById('rWait').textContent='~$'+bill;
     document.querySelectorAll('.e-stat').forEach((el,i)=>{setTimeout(()=>el.classList.add('anim'),i*120)});
   },statsDelay);
   // Urgency bar
   setTimeout(()=>{document.getElementById('rUrg').classList.add('anim')},statsDelay+600);
-  // Big savings
+  // Big savings — show range
   setTimeout(()=>{
     const savEl=document.getElementById('rSavV');
-    document.getElementById('rSavS').textContent=mode==='finance'?'After financing cost · with 5% annual rate increases':'After system purchase · with 5% annual rate increases';
+    const savRange=C.range(d.sav25);
+    document.getElementById('rSavS').textContent='Estimated range · with 5% annual rate increases · final numbers confirmed at assessment';
     document.getElementById('rSav').classList.add('anim');
-    // Count up animation
+    // Count up animation to midpoint, then show range
     let current=0;const target=d.sav25;const step=Math.ceil(target/40);
-    const iv=setInterval(()=>{current+=step;if(current>=target){current=target;clearInterval(iv)}savEl.textContent='$'+current.toLocaleString()},30);
+    const iv=setInterval(()=>{
+      current+=step;
+      if(current>=target){
+        current=target;clearInterval(iv);
+        savEl.textContent='$'+savRange.lo.toLocaleString()+'–$'+savRange.hi.toLocaleString();
+      } else {
+        savEl.textContent='$'+current.toLocaleString();
+      }
+    },30);
   },statsDelay+900);
-  // Packages
+  // Packages — show ranges
   setTimeout(()=>{
     document.getElementById('pkgBill').textContent='$'+bill;
-    document.getElementById('pkgE').textContent='$'+Math.round(s.mp)+'/mo';
-    document.getElementById('pkgP').textContent='$'+Math.round(s.mpPrem)+'/mo';
-    document.getElementById('pkgB').textContent='$'+Math.round(s.mpBatt)+'/mo';
+    if(mode==='finance'){
+      document.getElementById('pkgE').textContent='$'+s.mpRange.lo+'–'+s.mpRange.hi+'/mo';
+      document.getElementById('pkgP').textContent='$'+s.mpPremRange.lo+'–'+s.mpPremRange.hi+'/mo';
+      document.getElementById('pkgB').textContent='$'+s.mpBattRange.lo+'–'+s.mpBattRange.hi+'/mo';
+    } else {
+      document.getElementById('pkgE').textContent='$'+s.costRange.lo.toLocaleString()+'–$'+s.costRange.hi.toLocaleString();
+      document.getElementById('pkgP').textContent='$'+(s.costRange.lo+C.premiumAdder).toLocaleString()+'–$'+(s.costRange.hi+C.premiumAdder).toLocaleString();
+      document.getElementById('pkgB').textContent='$'+(s.costRange.lo+C.batteryAdder).toLocaleString()+'–$'+(s.costRange.hi+C.batteryAdder).toLocaleString();
+    }
     document.getElementById('rPkgs').classList.add('anim');
   },statsDelay+1400);
 }
@@ -708,6 +1099,4 @@ document.querySelectorAll('a[href^="tel:"]').forEach(l=>l.addEventListener('clic
 (function(){if(window.innerWidth>768)return;const bar=document.querySelector('.mob-cta'),q=document.getElementById('engine');if(!bar||!q)return;new IntersectionObserver(e=>e.forEach(x=>{bar.style.transform=x.isIntersecting?'translateY(100%)':'translateY(0)';bar.style.transition='transform .3s'}),{threshold:.1}).observe(q)})();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Solar Panel Installation Edmonton","provider":{"@type":"LocalBusiness","name":"Stellar Upgrades","telephone":"+17802005265","email":"info@stellarupgrades.ca","address":{"@type":"PostalAddress","streetAddress":"6005 103A St NW","addressLocality":"Edmonton","addressRegion":"AB","addressCountry":"CA"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"50"}},"areaServed":["Edmonton","St. Albert","Sherwood Park","Spruce Grove","Leduc","Beaumont"]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does solar work in Alberta winters?","acceptedAnswer":{"@type":"Answer","text":"Yes. 2,300+ hours sunshine. Cold improves efficiency."}},{"@type":"Question","name":"How much does solar cost in Edmonton?","acceptedAnswer":{"@type":"Answer","text":"$14,000–$50,000. $0-down financing available."}},{"@type":"Question","name":"Solar payback period Alberta?","acceptedAnswer":{"@type":"Answer","text":"7–10 years. Then free electricity for 20+ years."}}]}</script>
-</body>
-</html>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does solar work in Alberta winters?","acceptedAnswer":{"@type":"Answer","text":"Yes. 2,300+ hours sunshine. Cold improves efficiency."}},{"@type":"Question","name":"How much does solar cost in Edmonton?","acceptedAnswer":{"@type"
