@@ -49,7 +49,7 @@ img{display:block;max-width:100%;height:auto}a{text-decoration:none;color:inheri
 nav{position:fixed;top:39px;left:0;right:0;z-index:1000;height:68px;display:flex;align-items:center;justify-content:center;padding:0 clamp(24px,4vw,64px);transition:all .45s}
 nav.scrolled{top:0;background:rgba(20,20,16,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--b)}
 .ni{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;width:100%;max-width:1400px;gap:20px}
-.n-logo{display:flex;align-items:center;gap:0}.n-logo img{height:28px;width:auto}
+.n-logo{display:flex;align-items:center;gap:0}.n-logo img,.n-logo svg{height:48px;width:auto;filter:brightness(1.2) contrast(1.05)}
 .n-links{display:flex;align-items:center;gap:4px}.n-links a{font-size:13px;font-weight:500;color:var(--td);padding:8px 16px;border-radius:60px;transition:all .25s;white-space:nowrap}.n-links a:hover{color:var(--t);background:rgba(240,232,216,.04)}.n-links a.active{color:var(--t);font-weight:600}
 .n-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px}
 .n-phone{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--tdd);padding:7px 12px;border-radius:60px;transition:all .25s}.n-phone:hover{color:var(--t);background:rgba(240,232,216,.04)}.n-phone svg{width:13px;height:13px;flex-shrink:0}
@@ -230,135 +230,79 @@ nav.scrolled{top:0;background:rgba(20,20,16,.92);backdrop-filter:blur(20px);-web
 .e-reveal{display:none;padding-top:20px}
 .e-reveal.show{display:block}
 
-/* Animated roof SVG */
-.e-roof-wrap{max-width:640px;margin:0 auto 36px;position:relative}
-
-/* ═══ PREMIUM AERIAL ROOF VIEW ═══ */
-.e-roof-scene{
-  position:relative;width:100%;aspect-ratio:16/10;
-  perspective:1200px;overflow:hidden;
-  border-radius:16px;
-  background:linear-gradient(180deg,#1a2a1a 0%,#1e291e 40%,#2a352a 100%);
-  border:1px solid rgba(201,168,76,.1);
+/* ═══ ROOF PHOTO REVEAL ANIMATION ═══ */
+.e-roof-wrap{max-width:720px;margin:0 auto 36px;position:relative}
+.e-roof-photo{
+  position:relative;width:100%;aspect-ratio:4/3;
+  border-radius:16px;overflow:hidden;
+  border:1px solid rgba(201,168,76,.15);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
-.e-roof-surface{
-  position:absolute;
-  top:10%;left:12%;width:76%;height:72%;
-  background:linear-gradient(160deg,#3a3530 0%,#2e2a25 30%,#35302b 60%,#302b26 100%);
-  transform:perspective(800px) rotateX(32deg) rotateZ(-2deg);
-  transform-origin:center center;
-  border-radius:4px;
-  box-shadow:
-    0 40px 80px rgba(0,0,0,.5),
-    0 10px 30px rgba(0,0,0,.3),
-    inset 0 1px 0 rgba(255,255,255,.04);
+.e-roof-bg{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(0.6) saturate(0.8);
+  transition:filter 1.5s ease;
 }
-/* Shingle texture */
-.e-shingle-line{
-  position:absolute;left:0;right:0;height:1px;
-  background:rgba(0,0,0,.15);
+.e-roof-photo.revealed .e-roof-bg{
+  filter:brightness(1) saturate(1);
 }
-/* Ridge line */
-.e-ridge{
-  position:absolute;top:0;left:15%;right:15%;height:3px;
-  background:linear-gradient(90deg,transparent,rgba(80,72,60,.6) 20%,rgba(80,72,60,.8) 50%,rgba(80,72,60,.6) 80%,transparent);
-  border-radius:2px;
-}
-/* Gutters */
-.e-gutter{position:absolute;background:rgba(100,92,80,.3)}
-.e-gutter-l{left:-2px;top:0;bottom:0;width:3px;border-radius:2px}
-.e-gutter-r{right:-2px;top:0;bottom:0;width:3px;border-radius:2px}
-.e-gutter-b{bottom:-2px;left:0;right:0;height:3px;border-radius:2px}
-
-/* Panel grid */
-.e-panel-grid{
-  position:absolute;top:14%;left:8%;right:8%;bottom:12%;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  grid-template-rows:repeat(3,1fr);
-  gap:6px;
-  padding:4px;
-}
-/* Individual panel */
-.e-panel{
-  position:relative;
-  opacity:0;
-  transform:translateY(-60px) scale(.7);
-  transition:all .6s cubic-bezier(.34,1.56,.64,1);
-}
-.e-panel.installed{
-  opacity:1;
-  transform:translateY(0) scale(1);
-}
-.e-panel-inner{
-  position:relative;width:100%;height:100%;
-  background:linear-gradient(145deg,#1a1e2e 0%,#0f1320 40%,#161a28 70%,#1c2030 100%);
-  border-radius:3px;
-  border:1px solid rgba(60,70,100,.4);
-  overflow:hidden;
-  box-shadow:
-    0 2px 8px rgba(0,0,0,.4),
-    inset 0 1px 0 rgba(100,120,180,.08);
-}
-/* Cell grid pattern */
-.e-panel-cells{
-  position:absolute;inset:3px;
-  background-image:
-    linear-gradient(rgba(40,50,80,.3) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(40,50,80,.3) 1px,transparent 1px);
-  background-size:calc(100% / 6) calc(100% / 10);
-  border-radius:2px;
-}
-/* Reflection/shine sweep */
-.e-panel-shine{
+/* Dark overlay that lifts */
+.e-roof-dim{
   position:absolute;inset:0;
-  background:linear-gradient(
-    125deg,
-    transparent 0%,
-    transparent 35%,
-    rgba(180,200,255,.06) 40%,
-    rgba(180,200,255,.12) 45%,
-    rgba(180,200,255,.06) 50%,
-    transparent 55%,
-    transparent 100%
-  );
+  background:rgba(10,10,8,.5);
+  transition:opacity 2s ease;pointer-events:none;
+}
+.e-roof-photo.revealed .e-roof-dim{opacity:0}
+/* Scan line sweep */
+.e-scan-line{
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,.6) 30%,var(--gold) 50%,rgba(201,168,76,.6) 70%,transparent 100%);
+  box-shadow:0 0 20px rgba(201,168,76,.3),0 0 60px rgba(201,168,76,.1);
+  opacity:0;pointer-events:none;z-index:3;
+}
+.e-scan-line.sweep{
+  animation:scanSweep 2.5s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes scanSweep{
+  0%{top:0%;opacity:1}
+  85%{opacity:1}
+  100%{top:95%;opacity:0}
+}
+/* Scanning panel highlights */
+.e-scan-grid{position:absolute;inset:0;z-index:2;pointer-events:none}
+.e-scan-panel{
+  position:absolute;
+  border:2px solid transparent;
+  border-radius:4px;
+  background:transparent;
   opacity:0;
-  transition:opacity .8s .3s;
+  transition:all .5s cubic-bezier(.16,1,.3,1);
 }
-.e-panel.installed .e-panel-shine{opacity:1}
-/* Panel drop shadow on roof */
-.e-panel-shadow{
-  position:absolute;bottom:-3px;left:5%;right:5%;height:6px;
-  background:rgba(0,0,0,.3);filter:blur(4px);
-  border-radius:50%;
-  opacity:0;transition:opacity .4s .2s;
+.e-scan-panel.scanned{
+  opacity:1;
+  border-color:var(--gold);
+  background:rgba(201,168,76,.12);
+  box-shadow:0 0 16px rgba(201,168,76,.2),inset 0 0 12px rgba(201,168,76,.06);
+  animation:panelPop .4s cubic-bezier(.34,1.56,.64,1);
 }
-.e-panel.installed .e-panel-shadow{opacity:1}
-
-/* Environment elements */
-.e-env-shadow{
-  position:absolute;bottom:2%;left:8%;width:84%;height:10%;
-  background:rgba(0,0,0,.2);filter:blur(20px);border-radius:50%;
+@keyframes panelPop{0%{transform:scale(0.8);opacity:0}100%{transform:scale(1);opacity:1}}
+/* Panel number badge */
+.e-scan-panel.scanned::after{
+  content:attr(data-num);
+  position:absolute;top:4px;right:4px;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--gold);color:var(--bg);
+  font-size:9px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  animation:checkPop .3s .1s cubic-bezier(.34,1.56,.64,1) both;
 }
-.e-env-tree{
-  position:absolute;width:40px;height:40px;border-radius:50%;
-  background:radial-gradient(circle at 40% 40%,#2a4a2a,#1a3a1a);
-  box-shadow:0 8px 16px rgba(0,0,0,.3);
-}
-.e-env-tree-1{top:8%;right:6%}
-.e-env-tree-2{bottom:14%;left:4%;width:32px;height:32px}
-.e-env-yard{
-  position:absolute;bottom:0;left:0;right:0;height:12%;
-  background:linear-gradient(180deg,transparent,rgba(30,45,30,.3));
-}
-
 /* HUD Overlay */
 .e-roof-hud{
   position:absolute;bottom:12px;left:12px;right:12px;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(13,13,10,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:rgba(13,13,10,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border:1px solid rgba(201,168,76,.15);border-radius:10px;
-  padding:10px 16px;
+  padding:10px 16px;z-index:4;
 }
 .e-hud-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--td)}
 .e-hud-dot{
@@ -368,12 +312,11 @@ nav.scrolled{top:0;background:rgba(20,20,16,.92);backdrop-filter:blur(20px);-web
 @keyframes hudPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.4)}50%{box-shadow:0 0 0 6px rgba(201,168,76,0)}}
 .e-hud-counter{font-size:13px;font-weight:700;color:var(--t)}
 .e-hud-kw{font-size:14px;font-weight:900;color:var(--gold)}
-
 @media(max-width:768px){
-  .e-roof-scene{aspect-ratio:4/3}
-  .e-panel-grid{gap:3px}
+  .e-roof-photo{aspect-ratio:4/3}
   .e-roof-hud{padding:8px 12px}
   .e-hud-item span{display:none}
+  .e-scan-panel.scanned::after{width:14px;height:14px;font-size:7px}
 }
 
 /* Reveal stats */
@@ -831,55 +774,38 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <!-- STEP 5: Animated Reveal -->
 <div class="e-reveal" id="eReveal">
 
-<!-- Animated Roof — Isometric Aerial View -->
+<!-- Roof Reveal — Real Photo + Scanning Animation -->
 <div class="e-roof-wrap">
-<div class="e-roof-scene">
-<!-- Roof surface (isometric aerial perspective) -->
-<div class="e-roof-surface">
-<!-- Shingle texture lines -->
-<div class="e-shingle-line" style="top:12%"></div>
-<div class="e-shingle-line" style="top:24%"></div>
-<div class="e-shingle-line" style="top:36%"></div>
-<div class="e-shingle-line" style="top:48%"></div>
-<div class="e-shingle-line" style="top:60%"></div>
-<div class="e-shingle-line" style="top:72%"></div>
-<div class="e-shingle-line" style="top:84%"></div>
-<!-- Ridge line -->
-<div class="e-ridge"></div>
-<!-- Panels grid -->
-<div class="e-panel-grid" id="panelGrid">
-<!-- Row 1 -->
-<div class="e-panel" data-idx="0"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
-<div class="e-panel" data-idx="1"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
-<div class="e-panel" data-idx="2"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
-<div class="e-panel" data-idx="3"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
-<!-- Row 2 -->
-<div class="e-panel" data-idx="4"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
-<div class="e-panel" data-idx="5"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
-<div class="e-panel" data-idx="6"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
-<div class="e-panel" data-idx="7"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
-<!-- Row 3 -->
-<div class="e-panel" data-idx="8"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
-<div class="e-panel" data-idx="9"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
-<div class="e-panel" data-idx="10"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
-<div class="e-panel" data-idx="11"><div class="e-panel-inner"><div class="e-panel-cells"></div><div class="e-panel-shine"></div></div><div class="e-panel-shadow"></div></div>
+<div class="e-roof-photo">
+<img src="/images/roof-aerial-reveal.jpg" alt="Stellar Upgrades solar installation — Edmonton rooftop" class="e-roof-bg">
+<!-- Scan overlay — gold highlights appear over each panel -->
+<div class="e-scan-grid" id="scanGrid">
+<!-- Row 1 (left cluster - 4 panels top) -->
+<div class="e-scan-panel" style="top:22%;left:5%;width:13%;height:20%"></div>
+<div class="e-scan-panel" style="top:22%;left:19%;width:13%;height:20%"></div>
+<div class="e-scan-panel" style="top:22%;left:33%;width:13%;height:20%"></div>
+<div class="e-scan-panel" style="top:22%;left:47%;width:13%;height:20%"></div>
+<!-- Row 2 (left cluster - 4 panels bottom) -->
+<div class="e-scan-panel" style="top:44%;left:5%;width:13%;height:20%"></div>
+<div class="e-scan-panel" style="top:44%;left:19%;width:13%;height:20%"></div>
+<div class="e-scan-panel" style="top:44%;left:33%;width:13%;height:20%"></div>
+<div class="e-scan-panel" style="top:44%;left:47%;width:13%;height:20%"></div>
+<!-- Row 3 (right cluster - 4 panels) -->
+<div class="e-scan-panel" style="top:18%;left:62%;width:11%;height:18%"></div>
+<div class="e-scan-panel" style="top:18%;left:74%;width:11%;height:18%"></div>
+<div class="e-scan-panel" style="top:38%;left:62%;width:11%;height:18%"></div>
+<div class="e-scan-panel" style="top:38%;left:74%;width:11%;height:18%"></div>
 </div>
-<!-- Gutters / edges -->
-<div class="e-gutter e-gutter-l"></div>
-<div class="e-gutter e-gutter-r"></div>
-<div class="e-gutter e-gutter-b"></div>
-</div>
-<!-- Environment -->
-<div class="e-env-shadow"></div>
-<div class="e-env-tree e-env-tree-1"></div>
-<div class="e-env-tree e-env-tree-2"></div>
-<div class="e-env-yard"></div>
-</div>
-<!-- HUD overlay -->
+<!-- Scan line sweep -->
+<div class="e-scan-line" id="scanLine"></div>
+<!-- Dark overlay that lifts -->
+<div class="e-roof-dim" id="roofDim"></div>
+<!-- HUD -->
 <div class="e-roof-hud">
-<div class="e-hud-item"><div class="e-hud-dot"></div><span>Installing</span></div>
+<div class="e-hud-item"><div class="e-hud-dot"></div><span>Scanning roof</span></div>
 <div class="e-hud-counter"><span id="panelCount">0</span>/<span id="panelTotal">12</span> panels</div>
 <div class="e-hud-kw" id="hudKw">0.0 kW</div>
+</div>
 </div>
 </div>
 
@@ -1280,9 +1206,10 @@ document.getElementById('gSubmit').addEventListener('click',function(){
   const bill=document.getElementById('billS').value,s=calcSys(parseInt(bill));
   const answers=Object.entries(stairAnswers).map(([k,v])=>'Q'+k+':'+v).join(', ');
   // Partial lead — address + qualifying answers, no contact info yet
-  const params=new URLSearchParams({schema:'stellarupgrades',address:ad,
-    notes:'Calculator Lead (qualified) | Bill: $'+bill+'/mo | System: '+s.kw.toFixed(1)+'kW | Est: $'+s.costRange.lo.toLocaleString()+'–$'+s.costRange.hi.toLocaleString()+' | '+answers,
-    assigned_to:'f51909f89cb8465ab31ace5ebf26f4c8',source:'Website - Solar Engine'});
+  const params=new URLSearchParams({schema_name:'stellarupgrades',last_name:'(Website Lead)',address1:ad,
+    customField37:bill,
+    apptcomments:'Calculator Lead (qualified) | Bill: $'+bill+'/mo | System: '+s.kw.toFixed(1)+'kW | Est: $'+s.costRange.lo.toLocaleString()+'–$'+s.costRange.hi.toLocaleString()+' | '+answers,
+    salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - Solar Engine'});
   const img=new Image();
   img.onload=img.onerror=function(){
     if(typeof gtag==='function')gtag('event','calculator_address',{event_category:'engagement',value:parseInt(bill)});
@@ -1301,9 +1228,10 @@ document.getElementById('capSubmit').addEventListener('click',function(){
   this.disabled=true;this.textContent='Submitting...';this.style.opacity='.6';
   const bill=document.getElementById('billS').value,ad=document.getElementById('gAddr').value.trim(),s=calcSys(parseInt(bill));
   const answers=Object.entries(stairAnswers).map(([k,v])=>'Q'+k+':'+v).join(', ');
-  const params=new URLSearchParams({schema:'stellarupgrades',first_name:nm,phone:ph,email:em,address:ad,
-    notes:'Solar Engine Lead (full) | Bill: $'+bill+'/mo | System: '+s.kw.toFixed(1)+'kW | Est: $'+s.costRange.lo.toLocaleString()+'–$'+s.costRange.hi.toLocaleString()+' | '+answers,
-    assigned_to:'f51909f89cb8465ab31ace5ebf26f4c8',source:'Website - Solar Engine'});
+  const params=new URLSearchParams({schema_name:'stellarupgrades',first_name:nm,last_name:'(Website Lead)',phone:ph,email:em,address1:ad,
+    customField37:bill,
+    apptcomments:'Solar Engine Lead (full) | Bill: $'+bill+'/mo | System: '+s.kw.toFixed(1)+'kW | Est: $'+s.costRange.lo.toLocaleString()+'–$'+s.costRange.hi.toLocaleString()+' | '+answers,
+    salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - Solar Engine'});
   const img=new Image();
   img.onload=img.onerror=function(){
     if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','generate_lead',{event_category:'calculator',event_label:'full_capture',value:parseInt(bill)})}
@@ -1330,27 +1258,45 @@ function startReveal(){
 
 function animateReveal(){
   const d=window._calcData,s=d.sys,bill=parseInt(document.getElementById('billS').value);
-  // Set panel total in HUD
-  document.getElementById('panelTotal').textContent=s.panels;
-  // Animate panels appearing one by one (drop-in effect)
-  const panels=document.querySelectorAll('.e-panel');
+  const roofPhoto=document.querySelector('.e-roof-photo');
   const panelCountEl=document.getElementById('panelCount');
   const hudKw=document.getElementById('hudKw');
+  const scanLine=document.getElementById('scanLine');
+  const panels=document.querySelectorAll('.e-scan-panel');
+  
+  // Set panel total in HUD
+  document.getElementById('panelTotal').textContent=s.panels;
+  
+  // Step 1: Start scan line sweep (0ms)
+  scanLine.classList.add('sweep');
+  
+  // Step 2: As scan line passes each panel row, highlight panels (staggered)
   let count=0;
   const kwPerPanel=0.5;
-  // Stagger panels with random-ish order for realism
-  const order=[0,4,8,1,5,9,2,6,10,3,7,11];
-  order.forEach((idx,i)=>{
-    if(i>=Math.min(s.panels,12)){return}
+  const scanOrder=[0,1,2,3,8,9,4,5,6,7,10,11]; // top-left sweep pattern
+  
+  scanOrder.forEach((idx,i)=>{
+    if(i>=Math.min(s.panels,12)) return;
+    const delay=400+(i*220); // start after scan line begins, stagger 220ms
     setTimeout(()=>{
-      if(panels[idx])panels[idx].classList.add('installed');
+      if(panels[idx]){
+        panels[idx].setAttribute('data-num',i+1);
+        panels[idx].classList.add('scanned');
+      }
       count++;
       panelCountEl.textContent=count;
       hudKw.textContent=(count*kwPerPanel).toFixed(1)+' kW';
-    },i*280+Math.random()*80);
+    },delay);
   });
+  
+  // Step 3: After scan completes, brighten photo + lift dim overlay
+  const scanDone=400+(Math.min(s.panels,12)*220)+400;
+  setTimeout(()=>{
+    roofPhoto.classList.add('revealed');
+  },scanDone);
+  
   // After panels, animate stats
-  const statsDelay=Math.min(s.panels,12)*280+600;
+  const statsDelay=scanDone+600;
   setTimeout(()=>{
     document.getElementById('rSysV').textContent=s.kw.toFixed(1)+' kW';
     document.getElementById('rPnV').textContent=s.panels;
@@ -1476,9 +1422,10 @@ document.querySelectorAll('.pkg-cta-track').forEach(btn=>{
     const s=calcSys(parseInt(bill));
     if(typeof gtag==='function')gtag('event','package_selected',{event_category:'engagement',event_label:pkg,value:parseInt(bill)});
     // Fire SunBase lead with package preference
-    const params=new URLSearchParams({schema:'stellarupgrades',address:ad,
-      notes:'Package Interest | '+pkg+' | Bill: $'+bill+'/mo | System: '+s.kw.toFixed(1)+'kW | Est: $'+s.costRange.lo.toLocaleString()+'–$'+s.costRange.hi.toLocaleString(),
-      assigned_to:'f51909f89cb8465ab31ace5ebf26f4c8',source:'Website - Solar Package Click ('+pkg+')'});
+    const params=new URLSearchParams({schema_name:'stellarupgrades',last_name:'(Package Interest)',address1:ad,
+      customField37:bill,
+      apptcomments:'Package Interest | '+pkg+' | Bill: $'+bill+'/mo | System: '+s.kw.toFixed(1)+'kW | Est: $'+s.costRange.lo.toLocaleString()+'–$'+s.costRange.hi.toLocaleString(),
+      salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - Solar Package Click ('+pkg+')'});
     const img=new Image();img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString();
   });
 });
@@ -1492,9 +1439,10 @@ document.querySelectorAll('.zp-win-btn').forEach(btn=>{
     const qualified=zpScore>=7?'QUALIFIED':'MAYBE';
     if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','zero_pct_click',{event_category:'financing',event_label:qualified,value:parseInt(bill)})}
     // Fire SunBase lead — hottest lead type
-    const params=new URLSearchParams({schema:'stellarupgrades',address:ad,
-      notes:'0% FINANCING LEAD ('+qualified+') | Bill: $'+bill+'/mo | System: '+s.kw.toFixed(1)+'kW | Score: '+zpScore+'/9 | Clicked Financeit 0% link',
-      assigned_to:'f51909f89cb8465ab31ace5ebf26f4c8',source:'Website - 0% Challenge ('+qualified+')'});
+    const params=new URLSearchParams({schema_name:'stellarupgrades',last_name:'(0% Finance Lead)',address1:ad,
+      customField37:bill,
+      apptcomments:'0% FINANCING LEAD ('+qualified+') | Bill: $'+bill+'/mo | System: '+s.kw.toFixed(1)+'kW | Score: '+zpScore+'/9 | Clicked Financeit 0% link',
+      salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - 0% Challenge ('+qualified+')'});
     const img=new Image();img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString();
   });
 });
@@ -1522,7 +1470,7 @@ const fn=document.getElementById('qFname').value.trim(),ln=document.getElementBy
 if(!fn||!em||!ph){st.textContent='Please fill name, email, and phone.';st.style.color='#e87c6c';return}
 btn.disabled=true;btn.textContent='Submitting...';btn.style.opacity='.7';
 const score=document.getElementById('qScoreN').textContent,answers=qAnswers.map(a=>a?a.val:'').join(', ');
-const params=new URLSearchParams({schema:'stellarupgrades',first_name:fn,last_name:ln,email:em,phone:ph,address:ad,notes:'Quiz Lead | Score: '+score+'/100 | Answers: '+answers,assigned_to:'f51909f89cb8465ab31ace5ebf26f4c8',source:'Website - Solar Quiz'});
+const params=new URLSearchParams({schema_name:'stellarupgrades',first_name:fn,last_name:ln,email:em,phone:ph,address1:ad,customField37:String(qBill),apptcomments:'Quiz Lead | Score: '+score+'/100 | Bill: $'+qBill+'/mo | Answers: '+answers,salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - Solar Quiz'});
 const img=new Image();img.onload=img.onerror=function(){if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'})}document.getElementById('qForm').style.display='none';document.getElementById('qSuccess').style.display='block'};
 img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString()});
 
@@ -1532,9 +1480,9 @@ document.getElementById('hfSubmit').addEventListener('click',function(){
   const st=document.getElementById('hfStatus'),btn=this;
   if(!nm||!ph){st.textContent='Please enter your name and phone.';st.style.color='#e87c6c';st.style.display='block';return}
   btn.disabled=true;btn.textContent='Submitting...';btn.style.opacity='.6';
-  const params=new URLSearchParams({schema:'stellarupgrades',first_name:nm,phone:ph,
-    notes:'Hero Fast Track Lead | Wants assessment ASAP',
-    assigned_to:'f51909f89cb8465ab31ace5ebf26f4c8',source:'Website - Solar Hero Fast Track'});
+  const params=new URLSearchParams({schema_name:'stellarupgrades',first_name:nm,last_name:'(Fast Track)',phone:ph,
+    apptcomments:'Hero Fast Track Lead | Wants assessment ASAP',
+    salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - Solar Hero Fast Track'});
   const img=new Image();
   img.onload=img.onerror=function(){
     if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','generate_lead',{event_category:'hero_fast',event_label:'assessment'})}
