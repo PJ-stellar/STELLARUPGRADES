@@ -103,28 +103,22 @@ nav{position:fixed;top:39px;left:0;right:0;z-index:1000;height:68px;display:flex
 @media(max-width:768px){.calc-savings{flex-direction:column;gap:8px}.calc-arrow{transform:rotate(90deg)}.calc-form{flex-direction:column}.calc-slider::-webkit-slider-thumb{width:38px;height:38px}}
 /* ═══ TRUST ═══ */
 .trust{padding:18px clamp(24px,5vw,80px)}.trust-inner{display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,40px);flex-wrap:wrap;max-width:1200px;margin:0 auto}.trust-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--td);white-space:nowrap}.trust-stars{color:var(--gold);font-size:14px;letter-spacing:1px}.trust-sep{width:1px;height:18px;background:var(--b)}@media(max-width:768px){.trust-sep{display:none}.trust-inner{gap:10px}.trust-item{font-size:12px}}
-/* ═══ SERVICES — solar dominant, others secondary ═══ */
-.svc-hero{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch;margin-top:32px}
-.svc-main{background:rgba(240,232,216,.02);border:1px solid var(--bG);border-radius:16px;overflow:hidden;transition:all .5s;grid-row:span 2}
-.svc-main:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.35)}
-.svc-main-img{height:280px;overflow:hidden;position:relative}.svc-main-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s}.svc-main:hover .svc-main-img img{transform:scale(1.04)}
-.svc-main-body{padding:28px}
-.svc-main-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.svc-main h3{font-family:'DM Serif Display',serif;font-size:clamp(24px,2.5vw,32px);margin-bottom:10px;line-height:1.12}
-.svc-main p{font-size:14px;color:var(--td);line-height:1.7;font-weight:300;margin-bottom:16px}
-.svc-main-specs{display:flex;gap:16px;margin-bottom:18px;flex-wrap:wrap}
-.svc-main-spec{background:rgba(201,168,76,.05);border:1px solid var(--b);border-radius:8px;padding:8px 14px;text-align:center}
-.svc-main-spec strong{display:block;font-size:14px;color:var(--gold);font-weight:800}
-.svc-main-spec span{font-size:9px;color:var(--tdd);text-transform:uppercase;letter-spacing:.06em}
-.svc-link{font-size:14px;font-weight:700;color:var(--gold);display:inline-flex;align-items:center;gap:8px;transition:gap .3s}.svc-link:hover{gap:12px}
-.svc-side{background:rgba(240,232,216,.02);border:1px solid var(--b);border-radius:16px;overflow:hidden;transition:all .5s;display:flex;gap:0}
-.svc-side:hover{border-color:var(--bG);transform:translateY(-3px)}
-.svc-side-img{width:140px;flex-shrink:0;overflow:hidden}.svc-side-img img{width:100%;height:100%;object-fit:cover}
-.svc-side-body{padding:20px;display:flex;flex-direction:column;justify-content:center}
-.svc-side-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-.svc-side h4{font-size:16px;font-weight:800;margin-bottom:6px;line-height:1.2}
-.svc-side p{font-size:12px;color:var(--td);font-weight:300;line-height:1.5;margin-bottom:10px}
-@media(max-width:768px){.svc-hero{grid-template-columns:1fr}.svc-main{grid-row:auto}.svc-side{flex-direction:row}.svc-side-img{width:120px;height:140px}}
+/* ═══ SERVICES — 3 equal cards ═══ */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.svc{background:rgba(240,232,216,.02);border:1px solid var(--b);border-radius:16px;overflow:hidden;transition:all .5s}
+.svc:hover{border-color:var(--bG);transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.svc-img{height:220px;overflow:hidden;position:relative}.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s}.svc:hover .svc-img img{transform:scale(1.05)}
+.svc-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(26,26,23,.6))}
+.svc-body{padding:24px}
+.svc-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.svc h3{font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:10px;line-height:1.15}
+.svc p{font-size:13px;color:var(--td);line-height:1.7;font-weight:300;margin-bottom:14px}
+.svc-specs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.svc-spec{background:rgba(201,168,76,.05);border:1px solid var(--b);border-radius:8px;padding:6px 12px;text-align:center}
+.svc-spec strong{display:block;font-size:13px;color:var(--gold);font-weight:800}
+.svc-spec span{font-size:9px;color:var(--tdd);text-transform:uppercase;letter-spacing:.05em}
+.svc-cta{font-size:13px;font-weight:700;color:var(--gold);display:inline-flex;align-items:center;gap:8px;transition:gap .3s}.svc:hover .svc-cta{gap:12px}
+@media(max-width:768px){.svc-grid{grid-template-columns:1fr}.svc-img{height:200px}}
 
 /* ═══ CASE STUDY — one powerful proof point ═══ */
 .case{background:linear-gradient(135deg,rgba(110,207,128,.04),rgba(110,207,128,.01));border:1px solid rgba(110,207,128,.12);border-radius:16px;display:grid;grid-template-columns:1fr 1.3fr;overflow:hidden;margin-top:32px}
@@ -248,29 +242,36 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <section class="sec"><div class="sec-i">
 <div class="tag tag-c rv">What We Install</div>
 <h2 class="stitle stitle-c rv">Three services. One crew.<br>Every install done right.</h2>
-<div class="svc-hero">
-<div class="svc-main rv">
-<div class="svc-main-img"><img src="/images/roof-suburb.webp" alt="Solar panels on Edmonton home roof" loading="lazy"></div>
-<div class="svc-main-body">
-<div class="svc-main-tag">Solar Panels &mdash; Our Core</div>
-<h3>Kill your electricity bill<br>with premium equipment.</h3>
-<p>LONGi Hi-MO 7 500W panels + APsystems DS3 microinverters. Each panel works independently &mdash; shade on one doesn't affect the rest. Net metering banks summer surplus for winter. From $2.80/W installed with 30-year panel warranty.</p>
-<div class="svc-main-specs">
-<div class="svc-main-spec"><strong>500W</strong><span>Per Panel</span></div>
-<div class="svc-main-spec"><strong>30yr</strong><span>Panel</span></div>
-<div class="svc-main-spec"><strong>25yr</strong><span>Inverter</span></div>
-<div class="svc-main-spec"><strong>$2.80</strong><span>/Watt</span></div>
-</div>
-<a href="/solar" class="svc-link">Full solar details + savings calculator &rarr;</a>
+<div class="svc-grid">
+<div class="svc rv">
+<div class="svc-img"><img src="/images/roof-suburb.webp" alt="LONGi solar panels installed on Edmonton home by Stellar Upgrades" loading="lazy"></div>
+<div class="svc-body">
+<div class="svc-tag">Solar Panels</div>
+<h3>Kill your electricity bill.</h3>
+<p>LONGi Hi-MO 7 500W panels + APsystems DS3 microinverters. Net metering banks summer surplus for winter. Most customers reach $0 annual cost. From $2.80/W installed.</p>
+<div class="svc-specs"><div class="svc-spec"><strong>500W</strong><span>Per Panel</span></div><div class="svc-spec"><strong>30yr</strong><span>Warranty</span></div><div class="svc-spec"><strong>25yr</strong><span>Inverter</span></div><div class="svc-spec"><strong>$2.80</strong><span>/Watt</span></div></div>
+<a href="/solar" class="svc-cta">Solar details + calculator &rarr;</a>
 </div>
 </div>
-<div class="svc-side rv rv-d1">
-<div class="svc-side-img"><img src="/images/ep-cube.jpg" alt="EP Cube battery backup system" loading="lazy"></div>
-<div class="svc-side-body"><div class="svc-side-tag">Battery Backup</div><h4>Never lose power.</h4><p>EP Cube &mdash; whole-home backup, &lt;20ms switchover. Charges from solar.</p><a href="/battery" class="svc-link">Learn more &rarr;</a></div>
+<div class="svc rv rv-d1">
+<div class="svc-img"><img src="/images/ep-cube.jpg" alt="EP Cube battery backup system installed by Stellar Upgrades Edmonton" loading="lazy"></div>
+<div class="svc-body">
+<div class="svc-tag">Battery Backup</div>
+<h3>Never lose power.</h3>
+<p>EP Cube whole-home battery. Auto-switchover under 20 milliseconds. Charges from your solar panels. Powers your home through Alberta storms and outages.</p>
+<div class="svc-specs"><div class="svc-spec"><strong>&lt;20ms</strong><span>Switchover</span></div><div class="svc-spec"><strong>Whole</strong><span>Home</span></div></div>
+<a href="/battery" class="svc-cta">Battery details &rarr;</a>
 </div>
-<div class="svc-side rv rv-d2">
-<div class="svc-side-img"><img src="/images/Image 1.jpg" alt="Wallbox Pulsar Plus EV charger" loading="lazy"></div>
-<div class="svc-side-body"><div class="svc-side-tag">EV Chargers</div><h4>Charge free with solar.</h4><p>Wallbox Pulsar Plus &mdash; 40A ($3,999) or 48A ($4,499) installed.</p><a href="/ev-chargers" class="svc-link">Details &rarr;</a></div>
+</div>
+<div class="svc rv rv-d2">
+<div class="svc-img"><img src="/images/Image 1.jpg" alt="Wallbox Pulsar Plus EV charger installed by Stellar Upgrades Edmonton" loading="lazy"></div>
+<div class="svc-body">
+<div class="svc-tag">EV Chargers</div>
+<h3>Charge at home. Pay nothing.</h3>
+<p>Wallbox Pulsar Plus &mdash; 40A ($3,999) or 48A ($4,499) installed. Pair with solar to fuel your EV for free. Full charge overnight.</p>
+<div class="svc-specs"><div class="svc-spec"><strong>$3,999</strong><span>40A</span></div><div class="svc-spec"><strong>$4,499</strong><span>48A</span></div></div>
+<a href="/ev-chargers" class="svc-cta">EV charger details &rarr;</a>
+</div>
 </div>
 </div></div></section>
 
