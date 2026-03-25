@@ -25,6 +25,8 @@
 <meta name="geo.position" content="53.5461;-113.4938">
 <meta name="ICBM" content="53.5461, -113.4938">
 <link rel="canonical" href="https://stellarupgrades.ca">
+<link rel="icon" type="image/png" href="/images/logo-icon-white.png">
+<link rel="apple-touch-icon" href="/images/logo-icon-white.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -56,7 +58,7 @@ nav{position:fixed;top:39px;left:0;right:0;z-index:1000;height:68px;display:flex
 /* ═══ HERO ═══ */
 .hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(24px,5vw,80px) 60px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 30%,rgba(201,168,76,.08),transparent 55%)}
-.hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(32px,5vw,72px);align-items:center;position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%}
+.hero-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:center;position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%}
 .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(36px,5.2vw,72px);line-height:1.04;letter-spacing:-.03em;margin-bottom:16px;opacity:0;animation:fu .7s .3s forwards}
 .hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--goldL));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-proof{display:flex;align-items:center;gap:14px;padding:14px 18px;background:rgba(110,207,128,.06);border:1px solid rgba(110,207,128,.15);border-radius:12px;margin-bottom:20px;opacity:0;animation:fu .7s .5s forwards}
@@ -65,9 +67,9 @@ nav{position:fixed;top:39px;left:0;right:0;z-index:1000;height:68px;display:flex
 .hero-proof-text strong{color:var(--t);font-weight:700}
 .hero-sub{font-size:15px;color:var(--td);line-height:1.7;max-width:440px;margin-bottom:24px;font-weight:300;opacity:0;animation:fu .7s .6s forwards}
 .hero-btns{display:flex;gap:16px;align-items:center;flex-wrap:wrap;opacity:0;animation:fu .7s .7s forwards}
-.hero-visual{position:relative;opacity:0;animation:fu .7s .5s forwards}
-.hero-visual>img,.hero-visual>video{border-radius:16px;width:100%;aspect-ratio:16/10;object-fit:cover;box-shadow:0 32px 80px rgba(0,0,0,.4)}
-@media(max-width:768px){.hero-grid{grid-template-columns:1fr}.hero{min-height:auto;padding-top:130px}.hero-btns .btn-g{display:none}}
+.hero-visual{position:relative;opacity:0;animation:fu .7s .5s forwards;display:flex;justify-content:center}
+.hero-visual video{border-radius:20px;width:100%;max-width:420px;height:auto;max-height:75vh;object-fit:cover;box-shadow:0 32px 80px rgba(0,0,0,.5),0 0 0 1px rgba(240,232,216,.06)}
+@media(max-width:768px){.hero-grid{grid-template-columns:1fr}.hero{min-height:auto;padding-top:130px}.hero-btns .btn-g{display:none}.hero-visual{margin-top:24px}.hero-visual video{max-width:280px;max-height:50vh}}
 @media(max-width:480px){.hero{padding-top:115px}.hero h1{font-size:32px}.hero-proof-num{font-size:22px}}
 
 /* ═══ CALCULATOR ═══ */
@@ -154,6 +156,7 @@ nav{position:fixed;top:39px;left:0;right:0;z-index:1000;height:68px;display:flex
 .founders{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
 .founder{display:flex;align-items:center;gap:14px;background:rgba(240,232,216,.03);border:1px solid var(--b);border-radius:var(--r);padding:16px 20px;transition:border-color .3s}
 .founder:hover{border-color:var(--bG)}
+.founder-arrow{color:var(--gold);font-size:18px;margin-left:auto;flex-shrink:0;opacity:.4;transition:all .3s}.founder:hover .founder-arrow{opacity:1;transform:translateX(3px)}
 .founder-img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--bG);flex-shrink:0}
 .founder-name{font-weight:700;font-size:14px}.founder-role{font-size:12px;color:var(--td);font-weight:300;line-height:1.4}
 @media(max-width:768px){.why-grid{grid-template-columns:1fr}.founders{grid-template-columns:1fr}}
@@ -212,7 +215,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <h1>Your electricity bill<br>should be <em>zero.</em></h1>
 <div class="hero-proof">
 <div class="hero-proof-num">$0<span style="font-size:14px;font-weight:300;color:var(--td)">/mo</span></div>
-<div class="hero-proof-text"><strong>Patt Gunn</strong> was paying $600&ndash;$800/month. After Stellar Upgrades installed solar, she pays nothing. <a href="https://www.google.com/maps/place/Stellar+Upgrades" target="_blank" style="color:var(--gold);font-weight:700">Read her review &rarr;</a></div>
+<div class="hero-proof-text"><strong>Patt Gunn</strong> was paying $600&ndash;$800/month. After Stellar Upgrades installed solar, she pays nothing. <a href="https://www.google.com/maps/place/Stellar+Upgrades" target="_blank" rel="noopener noreferrer" style="color:var(--gold);font-weight:700">Read her review &rarr;</a></div>
 </div>
 <p class="hero-sub"><strong>Stellar Upgrades</strong> installs solar panels, battery backup, and EV chargers across Edmonton and Alberta. 500+ installs. 8 in-house electricians. Zero subcontractors.</p>
 <div class="hero-btns"><a href="#calc" class="btn">See What You'd Save &rarr;</a><a href="tel:7802005265" class="btn-g">(780) 200-5265</a></div>
@@ -234,7 +237,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="calc-savings">
 <div class="calc-sav-item"><div class="calc-sav-label">Cost Without Solar (25yr)</div><div class="calc-sav-val red" id="crNo">$96,000</div><div class="calc-sav-note">paid to the grid, gone forever</div></div>
 <div class="calc-arrow">&rarr;</div>
-<div class="calc-sav-item"><div class="calc-sav-label">Net Savings With Solar</div><div class="calc-sav-val green" id="crYes">$0</div><div class="calc-sav-note">after system cost (financed)</div></div>
+<div class="calc-sav-item"><div class="calc-sav-label">Net Savings With Solar</div><div class="calc-sav-val green" id="crYes">$0</div><div class="calc-sav-note">after system cost &middot; includes $2,000 rebate</div></div>
 </div>
 <div class="calc-capture" id="calcCapture">
 <h3>Want the exact numbers for your home?</h3>
@@ -277,7 +280,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div>
 </div>
 <div class="svc rv rv-d2">
-<div class="svc-img"><img src="/images/wallbox-charger.jpg" alt="Wallbox Pulsar Plus EV charger installed by Stellar Upgrades Edmonton" loading="lazy"></div>
+<div class="svc-img"><img src="/images/Image%201.jpg" alt="Wallbox Pulsar Plus EV charger installed by Stellar Upgrades Edmonton" loading="lazy"></div>
 <div class="svc-body">
 <div class="svc-tag">EV Chargers</div>
 <h3>Charge at home. Pay nothing.</h3>
@@ -304,7 +307,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 
 <!-- ═══ REVIEWS — 6 strong reviews ═══ -->
 <section class="sec rev-sec"><div class="sec-i">
-<div class="rev-header rv"><span class="rev-stars">&starf;&starf;&starf;&starf;&starf;</span><span class="rev-score">5.0</span><a href="https://www.google.com/maps/place/Stellar+Upgrades" target="_blank" class="rev-link">All reviews &rarr;</a></div>
+<div class="rev-header rv"><span class="rev-stars">&starf;&starf;&starf;&starf;&starf;</span><span class="rev-score">5.0</span><a href="https://www.google.com/maps/place/Stellar+Upgrades" target="_blank" rel="noopener noreferrer" class="rev-link">All reviews &rarr;</a></div>
 <div class="rev-scroll rv">
 
 <div class="rev"><div class="rev-s">&starf;&starf;&starf;&starf;&starf;</div><p class="rev-t">"We installed our solar system almost two years ago, and it's performing exactly the same as day one. The company actually called us after two years just to check if everything was still working properly. That kind of follow-up and care is rare these days."</p><p class="rev-a">James</p><p class="rev-al">Google Review</p></div>
@@ -344,14 +347,16 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 
 <!-- Founder strip -->
 <div class="founders rv">
-<div class="founder">
+<a href="/about" class="founder">
 <img src="/images/pj.webp" alt="PJ Singh - Co-Founder, Stellar Upgrades" class="founder-img">
 <div><div class="founder-name">PJ Singh</div><div class="founder-role">Co-Founder &middot; Sales &amp; Marketing<br>Your first call. Runs every assessment.</div></div>
-</div>
-<div class="founder">
+<span class="founder-arrow">&rarr;</span>
+</a>
+<a href="/about" class="founder">
 <img src="/images/jordan.webp" alt="Jordan Walsh - Co-Founder, Stellar Upgrades" class="founder-img">
 <div><div class="founder-name">Jordan Walsh</div><div class="founder-role">Co-Founder &middot; Master Electrician<br>On site for every install.</div></div>
-</div>
+<span class="founder-arrow">&rarr;</span>
+</a>
 </div>
 </div></section>
 
@@ -407,9 +412,9 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <footer><div class="ft-top">
 <div class="ft-brand"><h3>Stellar Upgrades</h3><p>Solar, battery &amp; EV charger installation by master electricians. Edmonton &amp; Alberta since 2018.</p><a href="tel:7802005265">(780) 200-5265</a><a href="mailto:info@stellarupgrades.ca">info@stellarupgrades.ca</a><a>6005 103A St NW, Edmonton, AB</a></div>
 <div class="ft-col"><h4>Services</h4><a href="/solar">Solar Panels</a><a href="/battery">Battery Backup</a><a href="/ev-chargers">EV Chargers</a></div>
-<div class="ft-col"><h4>Company</h4><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="https://www.financeit.ca/s/SeBbyA" target="_blank">Financing</a></div>
+<div class="ft-col"><h4>Company</h4><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="https://www.financeit.ca/s/SeBbyA" target="_blank" rel="noopener noreferrer">Financing</a></div>
 <div class="ft-col"><h4>Areas</h4><a href="/areas/edmonton">Edmonton</a><a href="/areas/st-albert">St. Albert</a><a href="/areas/sherwood-park">Sherwood Park</a><a href="/areas/spruce-grove">Spruce Grove</a><a href="/areas/leduc">Leduc</a></div>
-</div><div class="ft-bot"><span>&copy; 2026 Stellar Upgrades Ltd.</span><div class="ft-soc"><a href="https://www.instagram.com/stellarupgrades_ca" target="_blank">Instagram</a><a href="https://www.facebook.com/profile.php?id=61585966448071" target="_blank">Facebook</a><a href="https://www.google.com/maps/place/Stellar+Upgrades" target="_blank">Google</a></div></div></footer>
+</div><div class="ft-bot"><span>&copy; 2026 Stellar Upgrades Ltd.</span><div class="ft-soc"><a href="https://www.instagram.com/stellarupgrades_ca" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.facebook.com/profile.php?id=61585966448071" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.google.com/maps/place/Stellar+Upgrades" target="_blank" rel="noopener noreferrer">Google</a></div></div></footer>
 
 <div class="mob-cta"><a href="tel:7802005265" class="mob-cta-call">Call Now</a><a href="#calc" class="mob-cta-quote">Check Savings</a></div>
 
@@ -436,10 +441,12 @@ function updateCalc(){
   // 25yr cost with 5% annual increase
   var ann=bill*12,cum=0,yr=ann;for(var i=0;i<25;i++){cum+=yr;yr*=1.05}
   var costNo=Math.round(cum);
-  // System cost (financed)
+  // System cost (financed) minus $2,000 promo rebate
   var kwh=ann/0.25,kw=Math.max(3,Math.round(kwh/1150*10)/10);
   var sysCost=Math.round(14000+(kw-3)*(36000/27));
-  var mr=0.0699/12,np=240,mp=sysCost*(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1);
+  var rebate=2000;
+  var financed=sysCost-rebate;
+  var mr=0.0699/12,np=240,mp=financed*(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1);
   var totalFinanced=Math.round(mp*240);
   var savings=costNo-totalFinanced;
   document.getElementById('crNo').textContent='$'+costNo.toLocaleString();
@@ -454,7 +461,10 @@ updateCalc();
 // Calc form submit
 document.getElementById('cSubmit').addEventListener('click',function(){
   var nm=document.getElementById('cName').value.trim(),ph=document.getElementById('cPhone').value.trim(),em=document.getElementById('cEmail').value.trim(),btn=this,bill=document.getElementById('billS').value;
-  if(!nm||!ph)return;
+  var phClean=ph.replace(/\D/g,'');
+  if(!nm||!ph){return}
+  if(phClean.length<10){document.getElementById('cPhone').style.borderColor='var(--red)';document.getElementById('cPhone').focus();return}
+  document.getElementById('cPhone').style.borderColor='';
   btn.disabled=true;btn.textContent='Submitting...';btn.style.opacity='.6';
   var params=new URLSearchParams({schema_name:'stellarupgrades',first_name:nm,last_name:'(Homepage Calculator)',phone:ph,customField37:bill,apptcomments:'Homepage Calculator Lead | Bill: $'+bill+'/mo | 25yr grid cost: '+document.getElementById('crNo').textContent+(em?' | Email: '+em:''),salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - Homepage Calculator'});
   if(em)params.set('email',em);
@@ -466,7 +476,7 @@ document.getElementById('cSubmit').addEventListener('click',function(){
 var exitShown=false;document.addEventListener('mouseout',function(e){if(exitShown||e.clientY>10||window.innerWidth<768)return;exitShown=true;var ov=document.getElementById('exitOverlay');ov.style.display='flex';requestAnimationFrame(function(){requestAnimationFrame(function(){ov.classList.add('show')})});if(typeof gtag==='function')gtag('event','exit_popup_shown',{event_category:'engagement'})});
 document.getElementById('exitClose').addEventListener('click',function(){var ov=document.getElementById('exitOverlay');ov.classList.remove('show');setTimeout(function(){ov.style.display='none'},400)});
 document.getElementById('exitOverlay').addEventListener('click',function(e){if(e.target===this)document.getElementById('exitClose').click()});
-document.getElementById('exitSubmit').addEventListener('click',function(){var nm=document.getElementById('exitName').value.trim(),ph=document.getElementById('exitPhone').value.trim(),em=document.getElementById('exitEmail').value.trim(),bill=document.getElementById('exitBill').value.trim();if(!nm||!ph)return;this.disabled=true;this.textContent='Submitting...';this.style.opacity='.6';var params=new URLSearchParams({schema_name:'stellarupgrades',first_name:nm,last_name:'(Exit Popup)',phone:ph,customField37:bill,apptcomments:'Exit Popup Lead | Bill: '+bill+(em?' | Email: '+em:''),salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - Exit Popup'});if(em)params.set('email',em);var img=new Image();img.onload=img.onerror=function(){if(typeof gtag==='function')gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});document.getElementById('exitForm').style.display='none';document.getElementById('exitSuccess').style.display='block'};img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString()});
+document.getElementById('exitSubmit').addEventListener('click',function(){var nm=document.getElementById('exitName').value.trim(),ph=document.getElementById('exitPhone').value.trim(),em=document.getElementById('exitEmail').value.trim(),bill=document.getElementById('exitBill').value.trim();var phClean=ph.replace(/\D/g,'');if(!nm||!ph)return;if(phClean.length<10){document.getElementById('exitPhone').style.borderColor='var(--red)';document.getElementById('exitPhone').focus();return}document.getElementById('exitPhone').style.borderColor='';this.disabled=true;this.textContent='Submitting...';this.style.opacity='.6';var params=new URLSearchParams({schema_name:'stellarupgrades',first_name:nm,last_name:'(Exit Popup)',phone:ph,customField37:bill,apptcomments:'Exit Popup Lead | Bill: '+bill+(em?' | Email: '+em:''),salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - Exit Popup'});if(em)params.set('email',em);var img=new Image();img.onload=img.onerror=function(){if(typeof gtag==='function')gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});document.getElementById('exitForm').style.display='none';document.getElementById('exitSuccess').style.display='block'};img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString()});
 // Phone
 document.querySelectorAll('a[href^="tel:"]').forEach(function(l){l.addEventListener('click',function(){if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','phone_call',{event_category:'contact'})}})});
 </script>
