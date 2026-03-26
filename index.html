@@ -58,7 +58,7 @@ nav{position:fixed;top:39px;left:0;right:0;z-index:1000;height:68px;display:flex
 /* ═══ HERO ═══ */
 .hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(24px,5vw,80px) 60px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 30%,rgba(201,168,76,.08),transparent 55%)}
-.hero-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:center;position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:center;position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%}
 .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(36px,5.2vw,72px);line-height:1.04;letter-spacing:-.03em;margin-bottom:16px;opacity:0;animation:fu .7s .3s forwards}
 .hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--goldL));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-proof{display:flex;align-items:center;gap:14px;padding:14px 18px;background:rgba(110,207,128,.06);border:1px solid rgba(110,207,128,.15);border-radius:12px;margin-bottom:20px;opacity:0;animation:fu .7s .5s forwards}
@@ -67,9 +67,9 @@ nav{position:fixed;top:39px;left:0;right:0;z-index:1000;height:68px;display:flex
 .hero-proof-text strong{color:var(--t);font-weight:700}
 .hero-sub{font-size:15px;color:var(--td);line-height:1.7;max-width:440px;margin-bottom:24px;font-weight:300;opacity:0;animation:fu .7s .6s forwards}
 .hero-btns{display:flex;gap:16px;align-items:center;flex-wrap:wrap;opacity:0;animation:fu .7s .7s forwards}
-.hero-visual{position:relative;opacity:0;animation:fu .7s .5s forwards;display:flex;justify-content:center}
-.hero-visual video{border-radius:20px;width:100%;max-width:420px;height:auto;max-height:75vh;object-fit:cover;box-shadow:0 32px 80px rgba(0,0,0,.5),0 0 0 1px rgba(240,232,216,.06)}
-@media(max-width:768px){.hero-grid{grid-template-columns:1fr}.hero{min-height:auto;padding-top:130px}.hero-btns .btn-g{display:none}.hero-visual{margin-top:24px}.hero-visual video{max-width:280px;max-height:50vh}}
+.hero-visual{position:relative;opacity:0;animation:fu .7s .5s forwards;display:flex;justify-content:center;align-items:center}
+.hero-visual video{border-radius:24px;width:100%;max-height:82vh;object-fit:cover;box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 1px rgba(240,232,216,.06)}
+@media(max-width:768px){.hero-grid{grid-template-columns:1fr}.hero{min-height:auto;padding-top:130px}.hero-btns .btn-g{display:none}.hero-visual{margin-top:24px}.hero-visual video{max-height:55vh;border-radius:18px}}
 @media(max-width:480px){.hero{padding-top:115px}.hero h1{font-size:32px}.hero-proof-num{font-size:22px}}
 
 /* ═══ CALCULATOR ═══ */
@@ -152,13 +152,13 @@ nav{position:fixed;top:39px;left:0;right:0;z-index:1000;height:68px;display:flex
 .why-point-icon{width:40px;height:40px;border-radius:12px;background:rgba(201,168,76,.08);border:1px solid var(--bG);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .why-point h4{font-size:15px;font-weight:700;margin-bottom:3px}.why-point p{font-size:13px;color:var(--td);font-weight:300;line-height:1.6}
 
-/* Founders strip */
-.founders{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
-.founder{display:flex;align-items:center;gap:14px;background:rgba(240,232,216,.03);border:1px solid var(--b);border-radius:var(--r);padding:16px 20px;transition:border-color .3s}
-.founder:hover{border-color:var(--bG)}
-.founder-arrow{color:var(--gold);font-size:18px;margin-left:auto;flex-shrink:0;opacity:.4;transition:all .3s}.founder:hover .founder-arrow{opacity:1;transform:translateX(3px)}
-.founder-img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--bG);flex-shrink:0}
-.founder-name{font-weight:700;font-size:14px}.founder-role{font-size:12px;color:var(--td);font-weight:300;line-height:1.4}
+/* Founders */
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.founder{display:flex;align-items:center;gap:18px;background:rgba(240,232,216,.03);border:1px solid var(--b);border-radius:var(--r);padding:24px 28px;transition:all .4s}
+.founder:hover{border-color:var(--bG);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.founder-arrow{color:var(--gold);font-size:20px;margin-left:auto;flex-shrink:0;opacity:.3;transition:all .3s}.founder:hover .founder-arrow{opacity:1;transform:translateX(4px)}
+.founder-img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid var(--bG);flex-shrink:0}
+.founder-name{font-family:'DM Serif Display',serif;font-weight:400;font-size:20px;margin-bottom:2px}.founder-title{font-size:12px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}.founder-bio{font-size:13px;color:var(--td);font-weight:300;line-height:1.5}
 @media(max-width:768px){.why-grid{grid-template-columns:1fr}.founders{grid-template-columns:1fr}}
 
 /* PROCESS */
@@ -337,7 +337,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="tag rv">Why Stellar</div>
 <h2 class="stitle rv">The difference is who shows up.</h2>
 <div class="why-grid rv">
-<div class="why-photo"><img src="/images/crew-work.webp" alt="Stellar Upgrades installation crew Edmonton" loading="lazy"></div>
+<div class="why-photo"><img src="/images/20260315_131242.jpeg" alt="Stellar Upgrades electricians on roof in safety harnesses — Edmonton solar installation crew" loading="lazy"></div>
 <div class="why-points">
 <div class="why-point"><div class="why-point-icon">&#128119;</div><div><h4>Our Electricians. Every Time.</h4><p>8 in-house, full-time electricians. Master Electrician on every job. Never subcontracted a single install since 2018.</p></div></div>
 <div class="why-point"><div class="why-point-icon">&#128683;</div><div><h4>We Turn Down 10% of Jobs</h4><p>If solar doesn't save you money, we tell you. We'd rather lose the sale than waste your investment.</p></div></div>
@@ -345,16 +345,24 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="why-point"><div class="why-point-icon">&#127942;</div><div><h4>500+ Installs. Zero Negatives.</h4><p>5.0 stars across 50+ Google reviews. Ask your neighbours &mdash; we've probably installed on your street.</p></div></div>
 </div></div>
 
-<!-- Founder strip -->
+<!-- Founders -->
 <div class="founders rv">
 <a href="/about" class="founder">
 <img src="/images/pj.webp" alt="PJ Singh - Co-Founder, Stellar Upgrades" class="founder-img">
-<div><div class="founder-name">PJ Singh</div><div class="founder-role">Co-Founder &middot; Sales &amp; Marketing<br>Your first call. Runs every assessment.</div></div>
+<div>
+<div class="founder-name">PJ Singh</div>
+<div class="founder-title">Co-Founder &middot; Director of Sales</div>
+<div class="founder-bio">Every assessment starts with PJ. He'll tell you exactly what the numbers look like &mdash; and whether solar actually makes sense for your home.</div>
+</div>
 <span class="founder-arrow">&rarr;</span>
 </a>
 <a href="/about" class="founder">
 <img src="/images/jordan.webp" alt="Jordan Walsh - Co-Founder, Stellar Upgrades" class="founder-img">
-<div><div class="founder-name">Jordan Walsh</div><div class="founder-role">Co-Founder &middot; Master Electrician<br>On site for every install.</div></div>
+<div>
+<div class="founder-name">Jordan Walsh</div>
+<div class="founder-title">Co-Founder &middot; Master Electrician</div>
+<div class="founder-bio">Jordan built this company with his hands. Master Electrician. 500+ installs supervised. On site for every job since day one.</div>
+</div>
 <span class="founder-arrow">&rarr;</span>
 </a>
 </div>
