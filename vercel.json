@@ -4,6 +4,14 @@
   "redirects": [
     { "source": "/finance", "destination": "/financing", "permanent": true }
   ],
+  "rewrites": [
+    { "source": "/areas/edmonton", "destination": "/areas-edmonton.html" },
+    { "source": "/areas/sherwood-park", "destination": "/areas-sherwood-park.html" },
+    { "source": "/areas/leduc", "destination": "/areas-leduc.html" },
+    { "source": "/areas/st-albert", "destination": "/areas-st-albert.html" },
+    { "source": "/areas/beaumont", "destination": "/areas-beaumont.html" },
+    { "source": "/areas/spruce-grove", "destination": "/areas-spruce-grove.html" }
+  ],
   "headers": [
     {
       "source": "/images/(.*)",
