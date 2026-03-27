@@ -55,7 +55,7 @@ nav{position:fixed;top:39px;left:0;right:0;z-index:1000;height:68px;display:flex
 .rv{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}.rv.v{opacity:1;transform:translateY(0)}.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
 @keyframes fu{to{opacity:1;transform:translateY(0)}}[style*="animation"]{transform:translateY(28px)}
 
-/* ═══ HERO ═══ */
+/* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(24px,5vw,80px) 40px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 20%,rgba(201,168,76,.08),transparent 55%)}
 .hero-content{position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%}
@@ -68,12 +68,12 @@ nav{position:fixed;top:39px;left:0;right:0;z-index:1000;height:68px;display:flex
 .hero-proof-text strong{color:var(--t);font-weight:700}
 .hero-sub{font-size:15px;color:var(--td);line-height:1.7;max-width:520px;margin-bottom:24px;font-weight:300;opacity:0;animation:fu .7s .6s forwards}
 .hero-btns{display:flex;gap:16px;align-items:center;flex-wrap:wrap;opacity:0;animation:fu .7s .7s forwards;margin-bottom:clamp(28px,4vw,48px)}
-.hero-video-wrap{position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%;opacity:0;animation:fu .8s .5s forwards}
-.hero-video-wrap video{width:100%;border-radius:24px;max-height:70vh;object-fit:cover;box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 1px rgba(240,232,216,.06)}
-@media(max-width:768px){.hero{padding-top:120px;min-height:auto}.hero-btns .btn-g{display:none}.hero-video-wrap video{border-radius:16px;max-height:50vh}}
+.hero-img-wrap{position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%;opacity:0;animation:fu .8s .5s forwards}
+.hero-img-wrap img{width:100%;border-radius:24px;max-height:70vh;object-fit:cover;box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 1px rgba(240,232,216,.06)}
+@media(max-width:768px){.hero{padding-top:120px;min-height:auto}.hero-btns .btn-g{display:none}.hero-img-wrap img{border-radius:16px;max-height:50vh}}
 @media(max-width:480px){.hero{padding-top:110px}.hero h1{font-size:32px}.hero-proof-num{font-size:22px}}
 
-/* ═══ CALCULATOR ═══ */
+/* CALCULATOR */
 .calc{background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b);position:relative;overflow:hidden}
 .calc::before{content:'';position:absolute;top:50%;left:50%;width:800px;height:800px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.04),transparent 50%);pointer-events:none}
 .calc-inner{max-width:720px;margin:0 auto;position:relative;z-index:2;text-align:center}
@@ -145,15 +145,13 @@ nav{position:fixed;top:39px;left:0;right:0;z-index:1000;height:68px;display:flex
 .rev-s{color:var(--gold);font-size:12px;letter-spacing:2px;margin-bottom:8px}.rev-t{font-size:13px;color:var(--td);line-height:1.6;margin-bottom:auto;font-weight:300;flex:1}.rev-a{font-size:12px;font-weight:700;margin-top:12px}.rev-al{font-size:11px;color:var(--tdd);margin-top:2px}
 @media(max-width:768px){.rev{flex:0 0 85vw}}
 
-/* WHY — with founder photos */
+/* WHY */
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:28px;align-items:center}
 .why-photo{border-radius:16px;overflow:hidden;border:1px solid var(--b)}.why-photo img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .why-points{display:grid;gap:18px}
 .why-point{display:flex;gap:14px;align-items:flex-start}
 .why-point-icon{width:40px;height:40px;border-radius:12px;background:rgba(201,168,76,.08);border:1px solid var(--bG);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .why-point h4{font-size:15px;font-weight:700;margin-bottom:3px}.why-point p{font-size:13px;color:var(--td);font-weight:300;line-height:1.6}
-
-/* Founders */
 .founders{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px}
 .founder{display:flex;gap:20px;background:rgba(240,232,216,.03);border:1px solid var(--b);border-radius:18px;padding:28px 32px;transition:all .4s;align-items:flex-start}
 .founder:hover{border-color:var(--bG);transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.35)}
@@ -210,7 +208,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div><button class="n-toggle" id="nt" aria-label="Menu"><span></span><span></span><span></span></button></nav>
 <div class="mob-menu" id="mm"><a href="/">Home</a><a href="/solar">Solar</a><a href="/battery">Battery</a><a href="/ev-chargers">EV Chargers</a><a href="/about">About</a><a href="tel:7802005265" style="color:var(--gold)">(780) 200-5265</a><a href="#calc" class="mg">Get Free Assessment &rarr;</a></div>
 
-<!-- ═══ HERO ═══ -->
+<!-- HERO -->
 <main>
 <section class="hero" itemscope itemtype="https://schema.org/LocalBusiness">
 <meta itemprop="name" content="Stellar Upgrades">
@@ -229,15 +227,15 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <p class="hero-sub"><strong>Stellar Upgrades</strong> installs solar panels, battery backup, and EV chargers across Edmonton and Alberta. 500+ installs. 8 in-house electricians. Zero subcontractors.</p>
 <div class="hero-btns"><a href="#calc" class="btn">See What You'd Save &rarr;</a><a href="tel:7802005265" class="btn-g">(780) 200-5265</a></div>
 </div>
-<div class="hero-video-wrap">
-<video autoplay muted loop playsinline poster="/images/house-sunset.webp"><source src="/images/hero-video%202.mp4" type="video/mp4"></video>
+<div class="hero-img-wrap">
+<img src="/images/house-sunset.webp" alt="Solar panels on Edmonton home at sunset — Stellar Upgrades installation">
 </div>
 </section>
 
-<!-- ═══ TRUST ═══ -->
+<!-- TRUST -->
 <div class="trust"><div class="trust-inner"><div class="trust-item"><span class="trust-stars">&starf;&starf;&starf;&starf;&starf;</span> 5.0 on Google</div><div class="trust-sep"></div><div class="trust-item">500+ Installs</div><div class="trust-sep"></div><div class="trust-item">Master Electrician Certified</div><div class="trust-sep"></div><div class="trust-item">Licensed &amp; Insured</div></div></div>
 
-<!-- ═══ CALCULATOR ═══ -->
+<!-- CALCULATOR -->
 <section class="sec calc" id="calc"><div class="calc-inner">
 <div class="tag tag-c rv">What Are You Paying the Grid?</div>
 <div class="calc-bill rv"><div class="calc-bill-label">Your Monthly Electricity Bill</div><div class="calc-bill-amt">$<span id="billD">200</span><span>/mo</span></div></div>
@@ -265,7 +263,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div>
 </div></section>
 
-<!-- ═══ SERVICES ═══ -->
+<!-- SERVICES -->
 <section class="sec"><div class="sec-i">
 <div class="tag tag-c rv">What We Install</div>
 <h2 class="stitle stitle-c rv">Three services. One crew.<br>Every install done right.</h2>
@@ -302,7 +300,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div>
 </div></div></section>
 
-<!-- ═══ CASE STUDY ═══ -->
+<!-- CASE STUDY -->
 <section class="sec" style="background:var(--bg2)"><div class="sec-i">
 <div class="tag rv">Real Results</div>
 <h2 class="stitle rv">Real bills. Real savings.</h2>
@@ -316,7 +314,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div>
 </div></div></section>
 
-<!-- ═══ REVIEWS — 6 strong reviews ═══ -->
+<!-- REVIEWS -->
 <section class="sec rev-sec"><div class="sec-i">
 <div class="rev-header rv"><span class="rev-stars">&starf;&starf;&starf;&starf;&starf;</span><span class="rev-score">5.0</span><a href="https://www.google.com/maps/place/Stellar+Upgrades" target="_blank" rel="noopener noreferrer" class="rev-link">All reviews &rarr;</a></div>
 <div class="rev-scroll rv">
@@ -335,7 +333,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 
 </div></div></section>
 
-<!-- ═══ STATS ═══ -->
+<!-- STATS -->
 <div class="stats-bar"><div class="stats-grid">
 <div class="rv"><div class="stat-num">500+</div><div class="stat-label">Installs Since 2018</div></div>
 <div class="rv rv-d1"><div class="stat-num">5.0&starf;</div><div class="stat-label">Google Rating</div></div>
@@ -343,7 +341,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="rv rv-d3"><div class="stat-num">0</div><div class="stat-label">Subcontractors. Ever.</div></div>
 </div></div>
 
-<!-- ═══ WHY — with founder photos ═══ -->
+<!-- WHY -->
 <section class="sec"><div class="sec-i">
 <div class="tag rv">Why Stellar</div>
 <h2 class="stitle rv">The difference is who shows up.</h2>
@@ -379,7 +377,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div>
 </div></section>
 
-<!-- ═══ PROCESS ═══ -->
+<!-- PROCESS -->
 <section class="sec" style="background:var(--bg2)"><div class="sec-i">
 <div class="tag tag-c rv">How It Works</div>
 <h2 class="stitle stitle-c rv">Four steps. Done in weeks.</h2>
@@ -390,31 +388,28 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="hiw-step"><div class="hiw-icon">&#9989;</div><h4>4. Power On</h4><p>Inspected. Connected. Meter runs backward.</p></div>
 </div></div></section>
 
-<!-- ═══ FINANCING ═══ -->
+<!-- FINANCING -->
 <section class="sec"><div class="sec-i">
 <div class="tag rv">Financing</div>
 <h2 class="stitle rv">$0 down. Pay less than your current bill.</h2>
 <div class="fin-grid">
-<a href="https://www.financeit.ca/s/SeBbyA" target="_blank" rel="noopener noreferrer" class="fin-card rv rv-d1" style="text-decoration:none;color:inherit"><h4>Financeit</h4><div class="fin-tag">Most Popular</div><p>$0 down. 6.99% fixed rate. Up to 20-year term. Monthly payments are usually lower than the electricity bill they replace. Apply online in 5 minutes &mdash; instant approval for most homeowners.</p><div class="fin-hl">Apply Now &rarr;</div></a>
+<a href="https://www.financeit.ca/s/LdG2EQ" target="_blank" rel="noopener noreferrer" class="fin-card rv rv-d1" style="text-decoration:none;color:inherit"><h4>Financeit</h4><div class="fin-tag">Most Popular</div><p>$0 down. 6.99% fixed rate. Up to 20-year term. Monthly payments are usually lower than the electricity bill they replace. Apply online in 5 minutes &mdash; instant approval for most homeowners.</p><div class="fin-hl">Apply Now &rarr;</div></a>
 <a href="/financing#ceip" class="fin-card rv rv-d2" style="text-decoration:none;color:inherit"><h4>CEIP</h4><div class="fin-tag">Property Tax Financing</div><p>Clean Energy Improvement Program &mdash; finance through your property tax bill. No credit check required. Transfers automatically if you sell. Available in Edmonton, Leduc, Spruce Grove, and participating municipalities.</p><div class="fin-hl">Learn More &rarr;</div></a>
 <a href="#calc" class="fin-card rv rv-d3" style="text-decoration:none;color:inherit"><h4>Cash Purchase</h4><div class="fin-tag">Best Value</div><p>Save 10% on total system cost. Typical payback in 7&ndash;8 years, then 20+ years of free electricity. Best ROI of any option &mdash; no interest, no monthly payments.</p><div class="fin-hl">Calculate Savings &rarr;</div></a>
 </div></div></section>
 
-<!-- ═══ AREAS ═══ -->
+<!-- AREAS -->
 <section class="sec" style="background:var(--bg2)"><div class="sec-i">
 <div class="tag rv">Service Areas</div>
 <h2 class="stitle rv">200 km in every direction from Edmonton.</h2>
 <p style="font-size:14px;color:var(--td);font-weight:300;margin-bottom:20px;max-width:600px">Rooftop and ground-mount systems. Urban and rural. If you're in central Alberta, we'll come to you.</p>
 <div class="area-grid rv">
-<!-- Edmonton Metro -->
 <a class="area-tag" href="/areas/edmonton">Edmonton</a><a class="area-tag" href="/areas/st-albert">St. Albert</a><a class="area-tag" href="/areas/sherwood-park">Sherwood Park</a><a class="area-tag" href="/areas/spruce-grove">Spruce Grove</a><a class="area-tag" href="/areas/leduc">Leduc</a><a class="area-tag" href="/areas/beaumont">Beaumont</a><a class="area-tag">Fort Saskatchewan</a><a class="area-tag">Stony Plain</a><a class="area-tag">Devon</a><a class="area-tag">Morinville</a><a class="area-tag">Gibbons</a><a class="area-tag">Bon Accord</a><a class="area-tag">Legal</a><a class="area-tag">Calmar</a><a class="area-tag">Nisku</a>
-<!-- 50-100km -->
 <a class="area-tag">Camrose</a><a class="area-tag">Wetaskiwin</a><a class="area-tag">Drayton Valley</a><a class="area-tag">Barrhead</a><a class="area-tag">Westlock</a><a class="area-tag">Vegreville</a><a class="area-tag">Tofield</a><a class="area-tag">Lamont</a><a class="area-tag">Redwater</a><a class="area-tag">Thorsby</a><a class="area-tag">Millet</a><a class="area-tag">Mundare</a><a class="area-tag">Bruderheim</a><a class="area-tag">Warburg</a>
-<!-- 100-200km -->
 <a class="area-tag">Red Deer</a><a class="area-tag">Lacombe</a><a class="area-tag">Ponoka</a><a class="area-tag">Rimbey</a><a class="area-tag">Stettler</a><a class="area-tag">Innisfail</a><a class="area-tag">Olds</a><a class="area-tag">Didsbury</a><a class="area-tag">Sylvan Lake</a><a class="area-tag">Rocky Mountain House</a><a class="area-tag">Athabasca</a><a class="area-tag">Whitecourt</a><a class="area-tag">Edson</a><a class="area-tag">Hinton</a><a class="area-tag">Smoky Lake</a><a class="area-tag">St. Paul</a><a class="area-tag">Bonnyville</a><a class="area-tag">Vermilion</a><a class="area-tag">Wainwright</a><a class="area-tag">Killam</a><a class="area-tag">Sedgewick</a><a class="area-tag">Mayerthorpe</a><a class="area-tag">Slave Lake</a><a class="area-tag">Cold Lake</a><a class="area-tag">Lloydminster</a><a class="area-tag">Rural Alberta</a>
 </div></div></section>
 
-<!-- ═══ FAQ ═══ -->
+<!-- FAQ -->
 <section class="sec"><div class="sec-i">
 <div class="tag rv">Common Questions</div>
 <h2 class="stitle rv">Quick answers. Deep dives on each service page.</h2>
@@ -426,19 +421,19 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="faq-i rv"><button class="faq-q">How is Stellar Upgrades different from other solar companies?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-a-in">8 in-house electricians (zero subcontractors), both co-founders on every project, 500+ installs with a 5.0-star Google rating and zero negative reviews, and we decline ~10% of assessments when the math doesn't work. We encourage homeowners to get quotes from SkyFire, Kuby, and us &mdash; then compare. <a href="/about">More about us &rarr;</a></div></div></div>
 </div></div></section>
 
-<!-- ═══ CTA ═══ -->
+<!-- CTA -->
 <section class="cta-sec">
 <h2 class="rv">Your electricity bill<br>should be zero.</h2>
 <p class="rv">Free 15-minute assessment. If solar doesn't make sense, we'll tell you.</p>
 <div class="cta-btns rv"><a href="#calc" class="btn">Check My Savings</a><a href="tel:7802005265" class="btn-g">(780) 200-5265 &rarr;</a></div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
+<!-- FOOTER -->
 </main>
 <footer><div class="ft-top">
 <div class="ft-brand"><h3>Stellar Upgrades</h3><p>Solar, battery &amp; EV charger installation by master electricians. Edmonton &amp; Alberta since 2018.</p><a href="tel:7802005265">(780) 200-5265</a><a href="mailto:info@stellarupgrades.ca">info@stellarupgrades.ca</a><a>6005 103A St NW, Edmonton, AB</a></div>
 <div class="ft-col"><h4>Services</h4><a href="/solar">Solar Panels</a><a href="/battery">Battery Backup</a><a href="/ev-chargers">EV Chargers</a></div>
-<div class="ft-col"><h4>Company</h4><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="https://www.financeit.ca/s/SeBbyA" target="_blank" rel="noopener noreferrer">Financing</a></div>
+<div class="ft-col"><h4>Company</h4><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="https://www.financeit.ca/s/LdG2EQ" target="_blank" rel="noopener noreferrer">Financing</a></div>
 <div class="ft-col"><h4>Areas</h4><a href="/areas/edmonton">Edmonton</a><a href="/areas/st-albert">St. Albert</a><a href="/areas/sherwood-park">Sherwood Park</a><a href="/areas/spruce-grove">Spruce Grove</a><a href="/areas/leduc">Leduc</a><a>Red Deer</a><a>Camrose</a><a>+ 40 more towns</a></div>
 </div><div class="ft-bot"><span>&copy; 2026 Stellar Upgrades Ltd.</span><div class="ft-soc"><a href="https://www.instagram.com/stellarupgrades_ca" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.facebook.com/profile.php?id=61585966448071" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.google.com/maps/place/Stellar+Upgrades" target="_blank" rel="noopener noreferrer">Google</a></div></div></footer>
 
@@ -457,17 +452,15 @@ document.querySelectorAll('.rv').forEach(function(el){ro.observe(el)});
 // FAQ
 document.querySelectorAll('.faq-q').forEach(function(b){b.addEventListener('click',function(){var i=b.parentElement,o=i.classList.contains('open');document.querySelectorAll('.faq-i').forEach(function(x){x.classList.remove('open')});if(!o)i.classList.add('open')})});
 
-// ═══ CALCULATOR ═══
+// CALCULATOR
 var sliderMoved=false;
 function updateCalc(){
   var bill=parseInt(document.getElementById('billS').value);
   document.getElementById('billD').textContent=bill;
   var sl=document.getElementById('billS'),pct=((bill-sl.min)/(sl.max-sl.min))*100;
   sl.style.background='linear-gradient(90deg,rgba(201,168,76,0.4) '+pct+'%,rgba(240,232,216,0.06) '+pct+'%)';
-  // 25yr cost with 5% annual increase
   var ann=bill*12,cum=0,yr=ann;for(var i=0;i<25;i++){cum+=yr;yr*=1.05}
   var costNo=Math.round(cum);
-  // System cost (financed) minus $2,000 promo rebate
   var kwh=ann/0.25,kw=Math.max(3,Math.round(kwh/1150*10)/10);
   var sysCost=Math.round(14000+(kw-3)*(36000/27));
   var rebate=2000;
