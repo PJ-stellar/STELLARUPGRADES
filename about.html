@@ -765,21 +765,34 @@ function submitForm(){
     source:'about_page'
   };
 
-  // SunBase lead submission
-  var params=new URLSearchParams({
-    api_key:'1fbc45f0-ed5a-11ea-ab4a-2959a4f9da20',
+  // SunBase lead submission via dynamic form POST (matches native SunBase POST behavior)
+  var sbForm=document.createElement('form');
+  sbForm.method='POST';
+  sbForm.action='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp';
+  sbForm.target='submit_iframe';
+  sbForm.style.display='none';
+  var sbFields={
+    schema_name:'stellarupgrades',
     first_name:data.first_name,
     last_name:data.last_name,
     email:data.email,
     phone:data.phone,
-    address:data.address,
+    address1:data.address,
     city:data.city,
-    company_name:'',
-    notes:'Source: About Page | Services: '+data.services+' | Home: '+data.home_type+' | Bill: '+data.monthly_bill+' | Notes: '+data.notes,
-    assign_to:'f51909f89cb8465ab31ace5ebf26f4c8'
-  });
-  var img=new Image();
-  img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString();
+    state:'AB',
+    lead_source:'Website',
+    lead_other:'About Page',
+    apptcomments:'Services: '+data.services+' | Home: '+data.home_type+' | Bill: '+data.monthly_bill+' | Notes: '+data.notes,
+    salesRep:'f51909f89cb8465ab31ace5ebf26f4c8'
+  };
+  for(var key in sbFields){
+    var inp=document.createElement('input');
+    inp.type='hidden';inp.name=key;inp.value=sbFields[key];
+    sbForm.appendChild(inp);
+  }
+  document.body.appendChild(sbForm);
+  sbForm.submit();
+  setTimeout(function(){document.body.removeChild(sbForm)},2000);
 
   // GA events
   if(typeof gtag==='function'){
