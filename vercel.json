@@ -5,12 +5,12 @@
     { "source": "/finance", "destination": "/financing", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/areas/edmonton", "destination": "/edmonton.html" },
-    { "source": "/areas/sherwood-park", "destination": "/sherwood-park.html" },
-    { "source": "/areas/leduc", "destination": "/leduc.html" },
-    { "source": "/areas/st-albert", "destination": "/st-albert.html" },
-    { "source": "/areas/beaumont", "destination": "/beaumont.html" },
-    { "source": "/areas/spruce-grove", "destination": "/spruce-grove.html" }
+    { "source": "/areas/edmonton", "destination": "/edmonton" },
+    { "source": "/areas/sherwood-park", "destination": "/sherwood-park" },
+    { "source": "/areas/leduc", "destination": "/leduc" },
+    { "source": "/areas/st-albert", "destination": "/st-albert" },
+    { "source": "/areas/beaumont", "destination": "/beaumont" },
+    { "source": "/areas/spruce-grove", "destination": "/spruce-grove" }
   ],
   "headers": [
     {
