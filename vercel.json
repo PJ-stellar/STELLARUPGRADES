@@ -10,6 +10,26 @@
   ],
   "rewrites": [
     {
+      "source": "/blog/solar-panel-cost-alberta",
+      "destination": "/blog-solar-panel-cost-alberta"
+    },
+    {
+      "source": "/blog/alberta-solar-incentives-rebates-2026",
+      "destination": "/blog-alberta-solar-incentives-rebates-2026"
+    },
+    {
+      "source": "/blog/does-solar-work-in-alberta-winters",
+      "destination": "/blog-does-solar-work-in-alberta-winters"
+    },
+    {
+      "source": "/blog/net-metering-alberta-how-it-works",
+      "destination": "/blog-net-metering-alberta-how-it-works"
+    },
+    {
+      "source": "/blog/microinverters-vs-string-inverters-alberta",
+      "destination": "/blog-microinverters-vs-string-inverters-alberta"
+    },
+    {
       "source": "/areas",
       "destination": "/areas"
     },
