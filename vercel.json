@@ -38,6 +38,11 @@
       "permanent": true
     },
     {
+      "source": "/solar-panel-installation-edmonton",
+      "destination": "/solar",
+      "permanent": true
+    },
+    {
       "source": "/home-battery-backup-edmonton",
       "destination": "/battery",
       "permanent": true
@@ -45,6 +50,11 @@
     {
       "source": "/ep-cube-battery-backup-edmonton",
       "destination": "/battery",
+      "permanent": true
+    },
+    {
+      "source": "/ev-charger-installation-edmonton",
+      "destination": "/ev-chargers",
       "permanent": true
     },
     {
