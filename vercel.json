@@ -6,6 +6,81 @@
       "source": "/finance",
       "destination": "/financing",
       "permanent": true
+    },
+    {
+      "source": "/solar-panels-edmonton",
+      "destination": "/solar",
+      "permanent": true
+    },
+    {
+      "source": "/incentives-finance",
+      "destination": "/financing",
+      "permanent": true
+    },
+    {
+      "source": "/solar-guide",
+      "destination": "/solar",
+      "permanent": true
+    },
+    {
+      "source": "/why-solar-edmonton",
+      "destination": "/solar",
+      "permanent": true
+    },
+    {
+      "source": "/best-solar-services-edmonton-alberta",
+      "destination": "/solar",
+      "permanent": true
+    },
+    {
+      "source": "/solar-solutions-faq-edmonton",
+      "destination": "/solar",
+      "permanent": true
+    },
+    {
+      "source": "/home-battery-backup-edmonton",
+      "destination": "/battery",
+      "permanent": true
+    },
+    {
+      "source": "/ep-cube-battery-backup-edmonton",
+      "destination": "/battery",
+      "permanent": true
+    },
+    {
+      "source": "/ev-charger-installation-edmonton-stellarupgrades",
+      "destination": "/ev-chargers",
+      "permanent": true
+    },
+    {
+      "source": "/ev-charging-faq-edmonton",
+      "destination": "/ev-chargers",
+      "permanent": true
+    },
+    {
+      "source": "/about-stellar-upgrades-edmonton-trusted-solar-company",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact-edmonton-solar",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/warranties",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/gallery",
+      "destination": "/projects",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/about",
+      "permanent": true
     }
   ],
   "rewrites": [
