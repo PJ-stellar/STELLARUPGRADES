@@ -209,7 +209,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(32px,4vw,48px) clamp(
 </div>
 <div class="about-hero-content">
 <div class="tag rv">About Us</div>
-<h1 class="rv">Built by <em>electricians,</em><br>not salespeople.</h1>
+<h1 class="rv">Our <em>electricians</em> install it.<br>Not subcontractors.</h1>
 <p class="rv">Stellar Upgrades is an Edmonton-based solar, battery storage, and EV charger installation company founded in 2018. Every install is performed by our in-house certified electricians, supervised by a Red Seal master electrician. No subcontractors. No shortcuts.</p>
 </div>
 </section>
@@ -253,7 +253,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(32px,4vw,48px) clamp(
 <h2 class="h2">PJ &amp; Jordan.</h2>
 <p style="font-size:15px;color:var(--td);line-height:1.8;font-weight:300;margin-bottom:18px">Stellar Upgrades was co-founded by <strong style="color:var(--t);font-weight:600">Pawanjeet (PJ) Singh</strong> and <strong style="color:var(--t);font-weight:600">Jordan Walsh</strong> with a simple premise: homeowners deserve an energy company that's honest about what solar can and can't do for them.</p>
 <p style="font-size:15px;color:var(--td);line-height:1.8;font-weight:300;margin-bottom:18px">Jordan is a <strong style="color:var(--t);font-weight:600">Red Seal certified Master Electrician</strong> who oversees every installation. PJ leads sales and operations. Together, they built a company where the people who sell you the system are the same people accountable for how it performs.</p>
-<p style="font-size:15px;color:var(--td);line-height:1.8;font-weight:300;margin-bottom:0">The result: 500+ installations since 2018, a 4.9-star Google rating, and roughly 10% of assessments where they tell homeowners <em style="color:var(--gold)">not</em> to go solar &mdash; because the math doesn't work for that home.</p>
+<p style="font-size:15px;color:var(--td);line-height:1.8;font-weight:300;margin-bottom:0">The result: 500+ installations since 2018, a 5.0-star Google rating, and roughly 10% of assessments where they tell homeowners <em style="color:var(--gold)">not</em> to go solar &mdash; because the math doesn't work for that home.</p>
 </div>
 <div class="rv">
 <div class="founders-photos">
@@ -403,7 +403,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(32px,4vw,48px) clamp(
 <!-- REVIEWS — ENHANCED WITH SCROLL -->
 <section class="s"><div class="si">
 <div class="tag rv" style="justify-content:center;display:flex">What Homeowners Say</div>
-<h2 class="h2 rv" style="text-align:center">4.9 stars from real customers.</h2>
+<h2 class="h2 rv" style="text-align:center">5.0 stars from real customers.</h2>
 <div class="rev-scroll rv" id="revScroll">
 <div class="rev"><div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Had an amazing experience with this team! Their service, from installations to consultations, was top-notch, and every service call was met with such positive energy. They made the whole process incredibly easy to understand too."</p><div class="rev-who">Gautham Singh <span class="rev-src">&middot; Google</span></div></div>
 <div class="rev"><div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Their transparent pricing and honest advice stood out. They didn't try to sell me a generic package &mdash; they provided a personalized design based on my actual utility bills. Five stars for integrity and knowledge!"</p><div class="rev-who">Emma <span class="rev-src">&middot; Google</span></div></div>
@@ -506,7 +506,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(32px,4vw,48px) clamp(
 <h2 class="h2 rv">Edmonton and 40+ surrounding communities.</h2>
 <p style="font-size:14px;color:var(--td);line-height:1.8;font-weight:300;margin-bottom:18px;max-width:600px;margin-left:auto;margin-right:auto" class="rv">If you're within an hour of Edmonton, we'll come to you.</p>
 <div class="area-pills rv" style="justify-content:center">
-<span class="area-pill">Edmonton</span><span class="area-pill">St. Albert</span><span class="area-pill">Sherwood Park</span><span class="area-pill">Spruce Grove</span><span class="area-pill">Leduc</span><span class="area-pill">Fort Saskatchewan</span><span class="area-pill">Beaumont</span><span class="area-pill">Stony Plain</span><span class="area-pill">Devon</span><span class="area-pill">Morinville</span><span class="area-pill gold">+ 30 more</span>
+<span class="area-pill">Edmonton</span><span class="area-pill">St. Albert</span><span class="area-pill">Sherwood Park</span><span class="area-pill">Spruce Grove</span><span class="area-pill">Leduc</span><span class="area-pill">Fort Saskatchewan</span><span class="area-pill">Beaumont</span><span class="area-pill">Stony Plain</span><span class="area-pill">Devon</span><span class="area-pill">Morinville</span><a href="/areas" class="area-pill gold">+ 40 more</a>
 </div>
 </div></section>
 
@@ -560,7 +560,7 @@ var countObserver=new IntersectionObserver(function(entries){
   entries.forEach(function(e){
     if(e.isIntersecting){
       animateCount(document.getElementById('count-installs'),500,'+',1200);
-      animateCount(document.getElementById('count-rating'),4.9,'★',800);
+      animateCount(document.getElementById('count-rating'),5.0,'★',800);
       countObserver.disconnect();
     }
   });
@@ -570,7 +570,7 @@ countObserver.observe(document.querySelector('.nums'));
 // ===== PHONE CALL TRACKING =====
 document.querySelectorAll('a[href^="tel:"]').forEach(function(l){l.addEventListener('click',function(){if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','phone_call',{event_category:'contact',event_label:'about_page'})}})});
 
-// ===== COUNTER SPECIAL FOR 4.9 =====
+// ===== COUNTER SPECIAL FOR 5.0 =====
 (function(){
   var el=document.getElementById('count-rating');
   var origAnim=animateCount;
@@ -582,7 +582,7 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(l){l.addEventListe
         function step(ts){
           if(!startTime)startTime=ts;
           var p=Math.min((ts-startTime)/dur,1);
-          var val=(p*4.9).toFixed(1);
+          var val=(p*5.0).toFixed(1);
           el.textContent=val+(p>=1?'★':'');
           if(p<1)requestAnimationFrame(step);
         }
@@ -829,7 +829,7 @@ document.head.appendChild(shakeStyle);
     {"@type": "Person", "name": "Pawanjeet Singh", "jobTitle": "Co-Founder & Director of Sales & Marketing"},
     {"@type": "Person", "name": "Jordan Walsh", "jobTitle": "Co-Founder & Red Seal Master Electrician"}
   ],
-  "address": {"@type": "PostalAddress", "addressLocality": "Edmonton", "addressRegion": "AB", "addressCountry": "CA"},
+  "address": {"@type": "PostalAddress", "streetAddress": "Unit 10, 6005 103A St NW", "addressLocality": "Edmonton", "addressRegion": "AB", "postalCode": "T6H 2J7", "addressCountry": "CA"},
   "geo": {"@type": "GeoCoordinates", "latitude": 53.5461, "longitude": -113.4938},
   "areaServed": {"@type": "GeoCircle", "geoMidpoint": {"@type": "GeoCoordinates", "latitude": 53.5461, "longitude": -113.4938}, "geoRadius": "50000"},
   "priceRange": "$$",
