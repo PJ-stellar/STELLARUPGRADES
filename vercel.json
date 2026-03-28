@@ -10,6 +10,10 @@
   ],
   "rewrites": [
     {
+      "source": "/areas",
+      "destination": "/areas"
+    },
+    {
       "source": "/areas/edmonton",
       "destination": "/edmonton"
     },
