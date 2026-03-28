@@ -2,21 +2,238 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/finance", "destination": "/financing", "permanent": true }
+    {
+      "source": "/finance",
+      "destination": "/financing",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/areas/edmonton", "destination": "/edmonton" },
-    { "source": "/areas/sherwood-park", "destination": "/sherwood-park" },
-    { "source": "/areas/leduc", "destination": "/leduc" },
-    { "source": "/areas/st-albert", "destination": "/st-albert" },
-    { "source": "/areas/beaumont", "destination": "/beaumont" },
-    { "source": "/areas/spruce-grove", "destination": "/spruce-grove" }
+    {
+      "source": "/areas/edmonton",
+      "destination": "/edmonton"
+    },
+    {
+      "source": "/areas/sherwood-park",
+      "destination": "/sherwood-park"
+    },
+    {
+      "source": "/areas/leduc",
+      "destination": "/leduc"
+    },
+    {
+      "source": "/areas/st-albert",
+      "destination": "/st-albert"
+    },
+    {
+      "source": "/areas/beaumont",
+      "destination": "/beaumont"
+    },
+    {
+      "source": "/areas/spruce-grove",
+      "destination": "/spruce-grove"
+    },
+    {
+      "source": "/areas/fort-saskatchewan",
+      "destination": "/fort-saskatchewan"
+    },
+    {
+      "source": "/areas/stony-plain",
+      "destination": "/stony-plain"
+    },
+    {
+      "source": "/areas/devon",
+      "destination": "/devon"
+    },
+    {
+      "source": "/areas/morinville",
+      "destination": "/morinville"
+    },
+    {
+      "source": "/areas/gibbons",
+      "destination": "/gibbons"
+    },
+    {
+      "source": "/areas/bon-accord",
+      "destination": "/bon-accord"
+    },
+    {
+      "source": "/areas/legal",
+      "destination": "/legal"
+    },
+    {
+      "source": "/areas/calmar",
+      "destination": "/calmar"
+    },
+    {
+      "source": "/areas/nisku",
+      "destination": "/nisku"
+    },
+    {
+      "source": "/areas/camrose",
+      "destination": "/camrose"
+    },
+    {
+      "source": "/areas/wetaskiwin",
+      "destination": "/wetaskiwin"
+    },
+    {
+      "source": "/areas/drayton-valley",
+      "destination": "/drayton-valley"
+    },
+    {
+      "source": "/areas/barrhead",
+      "destination": "/barrhead"
+    },
+    {
+      "source": "/areas/westlock",
+      "destination": "/westlock"
+    },
+    {
+      "source": "/areas/vegreville",
+      "destination": "/vegreville"
+    },
+    {
+      "source": "/areas/tofield",
+      "destination": "/tofield"
+    },
+    {
+      "source": "/areas/lamont",
+      "destination": "/lamont"
+    },
+    {
+      "source": "/areas/redwater",
+      "destination": "/redwater"
+    },
+    {
+      "source": "/areas/thorsby",
+      "destination": "/thorsby"
+    },
+    {
+      "source": "/areas/millet",
+      "destination": "/millet"
+    },
+    {
+      "source": "/areas/mundare",
+      "destination": "/mundare"
+    },
+    {
+      "source": "/areas/bruderheim",
+      "destination": "/bruderheim"
+    },
+    {
+      "source": "/areas/warburg",
+      "destination": "/warburg"
+    },
+    {
+      "source": "/areas/red-deer",
+      "destination": "/red-deer"
+    },
+    {
+      "source": "/areas/lacombe",
+      "destination": "/lacombe"
+    },
+    {
+      "source": "/areas/ponoka",
+      "destination": "/ponoka"
+    },
+    {
+      "source": "/areas/rimbey",
+      "destination": "/rimbey"
+    },
+    {
+      "source": "/areas/stettler",
+      "destination": "/stettler"
+    },
+    {
+      "source": "/areas/innisfail",
+      "destination": "/innisfail"
+    },
+    {
+      "source": "/areas/olds",
+      "destination": "/olds"
+    },
+    {
+      "source": "/areas/didsbury",
+      "destination": "/didsbury"
+    },
+    {
+      "source": "/areas/sylvan-lake",
+      "destination": "/sylvan-lake"
+    },
+    {
+      "source": "/areas/rocky-mountain-house",
+      "destination": "/rocky-mountain-house"
+    },
+    {
+      "source": "/areas/athabasca",
+      "destination": "/athabasca"
+    },
+    {
+      "source": "/areas/whitecourt",
+      "destination": "/whitecourt"
+    },
+    {
+      "source": "/areas/edson",
+      "destination": "/edson"
+    },
+    {
+      "source": "/areas/hinton",
+      "destination": "/hinton"
+    },
+    {
+      "source": "/areas/smoky-lake",
+      "destination": "/smoky-lake"
+    },
+    {
+      "source": "/areas/st-paul",
+      "destination": "/st-paul"
+    },
+    {
+      "source": "/areas/bonnyville",
+      "destination": "/bonnyville"
+    },
+    {
+      "source": "/areas/vermilion",
+      "destination": "/vermilion"
+    },
+    {
+      "source": "/areas/wainwright",
+      "destination": "/wainwright"
+    },
+    {
+      "source": "/areas/killam",
+      "destination": "/killam"
+    },
+    {
+      "source": "/areas/sedgewick",
+      "destination": "/sedgewick"
+    },
+    {
+      "source": "/areas/mayerthorpe",
+      "destination": "/mayerthorpe"
+    },
+    {
+      "source": "/areas/slave-lake",
+      "destination": "/slave-lake"
+    },
+    {
+      "source": "/areas/cold-lake",
+      "destination": "/cold-lake"
+    },
+    {
+      "source": "/areas/lloydminster",
+      "destination": "/lloydminster"
+    }
   ],
   "headers": [
     {
       "source": "/images/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]
