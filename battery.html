@@ -47,11 +47,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:68px;display:flex;al
 
 /* PAGE HERO */
 .pg-hero{padding:clamp(120px,14vw,160px) clamp(24px,5vw,80px) clamp(48px,6vw,80px);position:relative;overflow:hidden;text-align:center}
-.pg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,.06),transparent 55%)}
+.pg-hero-bg{position:absolute;inset:0}.pg-hero-bg img{width:100%;height:100%;object-fit:cover}.pg-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(20,28,20,.95) 0%,rgba(20,28,20,.7) 40%,rgba(20,28,20,.5) 100%)}
 .pg-hero .sec-i{position:relative;z-index:2}
-.pg-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(34px,5vw,64px);line-height:1.06;letter-spacing:-.03em;margin-bottom:16px}
+.pg-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(34px,5vw,64px);line-height:1.06;letter-spacing:-.03em;margin-bottom:16px;color:#fff}
 .pg-hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--goldL));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.pg-hero-summary{font-size:15px;color:var(--td);line-height:1.7;max-width:720px;margin:0 auto 24px;font-weight:300}
+.pg-hero-summary{font-size:15px;color:rgba(255,255,255,.8);line-height:1.7;max-width:720px;margin:0 auto 24px;font-weight:300}
+.pg-hero .btn-g{color:rgba(255,255,255,.6)}.pg-hero .btn-g:hover{color:#fff}
 .pg-hero-img{max-width:800px;margin:32px auto 0;border-radius:20px;overflow:hidden;border:1px solid var(--b);box-shadow:0 32px 80px rgba(0,0,0,.4)}
 .pg-hero-img img{width:100%;height:auto}
 
@@ -183,6 +184,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <main>
 <!-- ═══ PAGE HERO ═══ -->
 <section class="pg-hero">
+<div class="pg-hero-bg"><img src="/images/Diseno-sin-titulo-4.gif" alt="Home battery backup system visualization" loading="eager"></div>
 <div class="sec-i">
 <div class="tag tag-c">Battery Backup &middot; EP Cube</div>
 <h1>Never lose <em>power.</em></h1>
