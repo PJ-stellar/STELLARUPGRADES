@@ -213,7 +213,7 @@
 
     // Show opening message if first time
     if (messages.length === 0) {
-      var greeting = "Hey there! I'm Stellar's AI assistant. I can answer questions about solar panels, battery backup, EV chargers, pricing, financing \u2014 whatever's on your mind. How can I help?";
+      var greeting = "Hey! I'm PJ's personal assistant. PJ is the co-founder of Stellar Upgrades \u2014 I can answer any questions about solar, battery backup, EV chargers, pricing, financing, or our process. How can I help you today?";
       messages.push({ role: 'assistant', content: [{ type: 'text', text: greeting }], _displayText: greeting });
       addMessageBubble('assistant', greeting);
       saveSession();
