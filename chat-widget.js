@@ -92,6 +92,14 @@
 .sc-input-area{padding-bottom:env(safe-area-inset-bottom,12px)}\
 }\
 \
+/* Option buttons */\
+.sc-options{display:flex;flex-wrap:wrap;gap:8px;align-self:flex-start;max-width:82%;margin-top:2px;transition:opacity .3s}\
+.sc-options.fade-out{opacity:0;pointer-events:none}\
+.sc-opt{background:#fff;color:#2C3A2C;border:1px solid #2C3A2C;border-radius:60px;padding:10px 18px;font-family:"Outfit",sans-serif;font-size:14px;font-weight:500;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;transition:background .2s,color .2s;line-height:1.3}\
+.sc-opt:hover{background:#2C3A2C;color:#fff}\
+.sc-opt.selected{background:#2C3A2C;color:#fff}\
+@media(max-width:360px){.sc-options{flex-direction:column}.sc-opt{justify-content:center}}\
+\
 /* Powered by */\
 .sc-powered{text-align:center;padding:4px;font-size:10px;color:rgba(30,42,30,.3);background:#fff;flex-shrink:0}\
 ';
@@ -157,11 +165,57 @@
     return text.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
   }
 
-  function addMessageBubble(role, text) {
+  function parseOptions(text) {
+    var options = [];
+    var cleanText = text.replace(/\[\[([^\]]+)\]\]/g, function(_, opt) {
+      options.push(opt.trim());
+      return '';
+    }).replace(/\n+$/, '').trim();
+    return { text: cleanText, options: options };
+  }
+
+  function addMessageBubble(role, text, showOptions) {
+    var parsed = (role === 'assistant') ? parseOptions(text) : { text: text, options: [] };
     var div = document.createElement('div');
     div.className = 'sc-msg ' + (role === 'assistant' ? 'sc-msg-agent' : 'sc-msg-user');
-    div.innerHTML = linkify(text);
+    div.innerHTML = linkify(parsed.text);
     messagesEl.insertBefore(div, typingEl);
+
+    // Render option buttons for assistant messages
+    if (role === 'assistant' && parsed.options.length > 0 && showOptions !== false) {
+      renderOptions(parsed.options);
+    }
+
+    scrollToBottom();
+  }
+
+  function renderOptions(options) {
+    // Remove any existing option buttons
+    var old = messagesEl.querySelectorAll('.sc-options');
+    old.forEach(function(el) { el.remove(); });
+
+    var wrap = document.createElement('div');
+    wrap.className = 'sc-options';
+
+    options.forEach(function(optText) {
+      var btn = document.createElement('button');
+      btn.className = 'sc-opt';
+      btn.textContent = optText;
+      btn.addEventListener('click', function() {
+        // Highlight tapped button, fade out siblings
+        btn.classList.add('selected');
+        wrap.classList.add('fade-out');
+        setTimeout(function() {
+          wrap.remove();
+          // Send as user message
+          inputEl.value = optText;
+          sendMessage();
+        }, 250);
+      });
+      wrap.appendChild(btn);
+    });
+
+    messagesEl.insertBefore(wrap, typingEl);
     scrollToBottom();
   }
 
@@ -183,23 +237,33 @@
   }
 
   function renderExistingMessages() {
-    // Remove all existing bubbles (not typing indicator)
-    var existing = messagesEl.querySelectorAll('.sc-msg');
+    // Remove all existing bubbles and option buttons (not typing indicator)
+    var existing = messagesEl.querySelectorAll('.sc-msg, .sc-options');
     existing.forEach(function(el) { el.remove(); });
-    // Re-render from messages array
+
+    // Find last assistant message index to show options only on it
+    var lastAssistantIdx = -1;
+    for (var j = messages.length - 1; j >= 0; j--) {
+      if (messages[j].role === 'assistant' && typeof messages[j]._displayText === 'string') {
+        lastAssistantIdx = j;
+        break;
+      }
+    }
+
+    // Check if last message is from assistant (options still active)
+    var lastMsgIsAssistant = messages.length > 0 && messages[messages.length - 1].role === 'assistant';
+
     for (var i = 0; i < messages.length; i++) {
       var msg = messages[i];
-      if (msg.role === 'assistant' || msg.role === 'user') {
-        // For assistant messages, only render text content blocks
-        if (msg.role === 'assistant' && typeof msg._displayText === 'string') {
-          addMessageBubble('assistant', msg._displayText);
-        } else if (msg.role === 'user') {
-          var text = typeof msg.content === 'string' ? msg.content : '';
-          if (Array.isArray(msg.content)) {
-            text = msg.content.filter(function(b) { return b.type === 'text'; }).map(function(b) { return b.text; }).join('');
-          }
-          if (text) addMessageBubble('user', text);
+      if (msg.role === 'assistant' && typeof msg._displayText === 'string') {
+        var showOpts = (i === lastAssistantIdx && lastMsgIsAssistant);
+        addMessageBubble('assistant', msg._displayText, showOpts);
+      } else if (msg.role === 'user') {
+        var text = typeof msg.content === 'string' ? msg.content : '';
+        if (Array.isArray(msg.content)) {
+          text = msg.content.filter(function(b) { return b.type === 'text'; }).map(function(b) { return b.text; }).join('');
         }
+        if (text) addMessageBubble('user', text);
       }
     }
   }
@@ -215,7 +279,8 @@
     if (messages.length === 0) {
       var greeting = "Hey! I'm PJ's personal assistant. PJ is the co-founder of Stellar Upgrades \u2014 I can answer any questions about solar, battery backup, EV chargers, pricing, financing, or our process. How can I help you today?";
       messages.push({ role: 'assistant', content: [{ type: 'text', text: greeting }], _displayText: greeting });
-      addMessageBubble('assistant', greeting);
+      addMessageBubble('assistant', greeting, false);
+      renderOptions(['How much does solar cost?', 'Tell me about battery backup', 'EV charger pricing', 'Talk to PJ directly']);
       saveSession();
     } else {
       renderExistingMessages();
@@ -248,6 +313,10 @@
   function sendMessage() {
     var text = inputEl.value.trim();
     if (!text || isTyping) return;
+
+    // Remove any existing option buttons
+    var oldOpts = messagesEl.querySelectorAll('.sc-options');
+    oldOpts.forEach(function(el) { el.remove(); });
 
     // Add user message
     messages.push({ role: 'user', content: text });
