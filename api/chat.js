@@ -149,13 +149,13 @@ BATTERY signals (battery, backup, outage, power out, storm, blackout, EP Cube):
 → Ask "Do you currently have solar, or would this be new?"
 → Share EP Cube tiers:
   - 9.9 kWh: ~$19,381
-  - 14.9 kWh: ~$21,578
-  - 19.9 kWh: ~$22,942
-  - 24.9 kWh: ~$24,723
+  - 13.3 kWh: ~$21,578
+  - 16.6 kWh: ~$22,942
+  - 19.9 kWh: ~$24,723
 → Qualify → Suggest assessment
 
 EV CHARGER signals (EV, charger, Tesla, charging, Wallbox, NACS):
-→ Wallbox Pulsar Plus: 40A ($3,999) or 48A ($4,499) all-inclusive
+→ Wallbox Pulsar Plus: 40A ($3,499) or 48A ($3,999) all-inclusive
 → NACS version available for 2025+ Tesla models
 → Smart scheduling via app, rated to -30°C
 → Financeit 0% for 12 months on EV chargers
@@ -202,7 +202,7 @@ Equipment:
 - Roof mounts: RT-MINI II self-flashing AlphaSeal (ICC-ESR 3575, 180mph wind, 90 PSF snow, lifetime leak-proof)
 - Ground mounts: FastRX
 - Battery: EP Cube 1.0 (LiFePO4, sub-20ms switchover, 10yr warranty)
-- EV: Wallbox Pulsar Plus (40A/$3,999 or 48A/$4,499 installed, NACS available)
+- EV: Wallbox Pulsar Plus (40A/$3,499 or 48A/$3,999 installed, NACS available)
 - Critter guard: wire mesh included free. SolaTrim premium upgrade available.
 
 Financing:
