@@ -92,7 +92,7 @@ nav.scrolled{top:0;background:rgba(250,250,248,.92);backdrop-filter:blur(20px);-
 .hero-fast-btn:hover{box-shadow:0 4px 16px var(--glow)}
 .hero-fast-status{font-size:11px;margin-top:6px;display:none}
 .hero-fast-success{font-size:13px;font-weight:600;color:var(--gold);margin-top:8px;display:none}
-@media(max-width:768px){.hero-grid{grid-template-columns:1fr}.hero-app{display:none}.hero{min-height:auto;padding-top:100px}.hero-visual>img:first-child{width:100%;height:auto;max-height:none}.hero-fast-form{flex-direction:column}.hero-fast-btn{padding:13px 20px}}
+@media(max-width:768px){.hero{min-height:auto;padding:68px 0 0}.hero-grid{grid-template-columns:1fr;gap:0}.hero-visual{order:-1}.hero-visual>img:first-child{width:100%;height:auto;max-height:none;border-radius:0;aspect-ratio:auto}.hero-app{display:none}.hero-grid>div:first-child{padding:0 20px 32px}.hero h1{font-size:clamp(26px,7vw,34px);margin-top:-60px;position:relative;z-index:2;text-shadow:0 2px 16px rgba(0,0,0,.3);color:#fff;-webkit-text-fill-color:#fff}.hero h1 em{-webkit-text-fill-color:transparent}.hero>div>p{color:var(--td);text-shadow:none}.hero-btns{display:flex!important}.hero-fast-form{flex-direction:column}.hero-fast-btn{padding:13px 20px}}
 
 /* ═══ TRUST STRIP ═══ */
 .trust{background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:18px clamp(24px,5vw,80px);overflow:hidden}
@@ -101,18 +101,6 @@ nav.scrolled{top:0;background:rgba(250,250,248,.92);backdrop-filter:blur(20px);-
 .trust-stars{color:var(--gold);font-size:14px;letter-spacing:1px}
 .trust-sep{width:1px;height:18px;background:var(--b)}
 @media(max-width:768px){.trust-sep{display:none}.trust-inner{gap:10px}.trust-item{font-size:12px}}
-
-/* ═══ REVIEWS ═══ */
-.rev-sec{background:var(--bg2);border-bottom:1px solid var(--b)}
-.rev-header{display:flex;align-items:baseline;gap:16px;margin-bottom:20px;flex-wrap:wrap}
-.rev-score{font-weight:900;font-size:26px}.rev-stars{color:var(--gold);font-size:16px;letter-spacing:2px}
-.rev-link{font-size:12px;color:var(--gold);font-weight:600;margin-left:auto}
-.rev-scroll{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:8px;scrollbar-width:none}.rev-scroll::-webkit-scrollbar{display:none}
-.rev{flex:0 0 320px;scroll-snap-align:start;background:rgba(240,232,216,.03);border:1px solid var(--b);border-radius:var(--r);padding:20px}
-.rev-s{color:var(--gold);font-size:12px;letter-spacing:2px;margin-bottom:8px}
-.rev-t{font-size:13px;color:var(--td);line-height:1.6;margin-bottom:12px;font-weight:300}
-.rev-a{font-size:12px;font-weight:700}.rev-al{font-size:11px;color:var(--tdd);margin-top:2px}
-@media(max-width:768px){.rev{flex:0 0 85vw}}
 
 /* ═══════════════════════════════════════
    THE ENGINE — Interactive Selling Tool
@@ -525,8 +513,8 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
   .e-bill-amt{font-size:52px}
 }
 @media(max-width:480px){
-  .hero{padding-top:110px;padding-bottom:40px}
-  .hero h1{font-size:30px}
+  .hero{padding-top:68px;padding-bottom:0}
+  .hero h1{font-size:26px}
   .hero-fast-form{gap:6px}
   .trust-item{font-size:11px;gap:5px}
   .stair-opt{padding:12px 14px}
@@ -576,7 +564,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="hero-fast-status" id="hfStatus"></div>
 <div class="hero-fast-success" id="hfSuccess">✓ We'll call you within 24 hours.</div>
 </div>
-</div><div class="hero-visual"><img src="/images/roof-suburb.webp" alt="Solar panel installation on Edmonton home" loading="eager"><img src="/images/ema-app.png" alt="APsystems EMA monitoring app" class="hero-app" loading="lazy"></div></div></section>
+</div><div class="hero-visual"><img src="/images/jw-install.webp" alt="Solar panel installation covering full rooftop on residential home in Edmonton Alberta" loading="eager"><img src="/images/ema-app.png" alt="APsystems EMA monitoring app" class="hero-app" loading="lazy"></div></div></section>
 
 <!-- ═══ 2. TRUST STRIP ═══ -->
 <div class="trust"><div class="trust-inner">
@@ -585,16 +573,6 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="trust-item">Master Electrician Certified</div><div class="trust-sep"></div>
 <div class="trust-item">Licensed & Insured</div>
 </div></div>
-
-<!-- ═══ 3. REVIEWS ═══ -->
-<section class="sec rev-sec"><div class="sec-i">
-<div class="rev-header rv"><span class="rev-stars">★★★★★</span><span class="rev-score">5.0</span><a href="https://www.google.com/maps/place/Stellar+Upgrades" target="_blank" class="rev-link">All reviews on Google →</a></div>
-<div class="rev-scroll rv">
-<div class="rev"><div class="rev-s">★★★★★</div><p class="rev-t">"We used to pay $600–$800 in bills, but now we pay nothing to the utility company! PJ and Jordan were incredibly helpful."</p><p class="rev-a">Patt Gunn</p><p class="rev-al">Google Review</p></div>
-<div class="rev"><div class="rev-s">★★★★★</div><p class="rev-t">"Professional, honest and local. Would highly recommend Jordan and his team to anyone looking for solar panels."</p><p class="rev-a">Kelsey Bilyk</p><p class="rev-al">Local Guide</p></div>
-<div class="rev"><div class="rev-s">★★★★★</div><p class="rev-t">"The best experience I ever had start to finish. Not paying anything to utility anymore."</p><p class="rev-a">Gurdil Singh</p><p class="rev-al">Commercial Install</p></div>
-<div class="rev"><div class="rev-s">★★★★★</div><p class="rev-t">"Not here to just take my money — actually help me save money on my bills."</p><p class="rev-a">Japdeep</p><p class="rev-al">Google Review</p></div>
-</div></div></section>
 
 <!-- Google Reviews Strip -->
 <section class="grev-sec"><style>
@@ -660,6 +638,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div>
 </div>
 </div>
+<div class="rv" style="text-align:center;margin-top:32px"><p style="font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,24px);margin-bottom:14px;color:var(--t)">Want the same result?</p><a href="/contact" class="btn" onclick="openQuoteForm(event)">Get My Free Assessment &rarr;</a></div>
 </div></section>
 
 <!-- ═══════════════════════════════════════
