@@ -49,7 +49,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;al
 .b-meta{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--tdd);font-weight:500;opacity:0;animation:fu .5s .4s forwards}.b-meta-sep{width:3px;height:3px;border-radius:50%;background:var(--tdd)}
 /* Article */
 .b-article{max-width:740px;margin:0 auto;padding:0 clamp(24px,5vw,80px) 60px}
-.b-article p{font-size:15px;color:var(--td);line-height:1.85;margin-bottom:18px;font-weight:300}
+.b-article p{font-size:16px;color:var(--td);line-height:1.85;margin-bottom:18px;font-weight:300}
 .b-article h2{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);margin:36px 0 14px;letter-spacing:-.01em;color:var(--t)}
 .b-article strong{color:var(--t);font-weight:700}
 .b-article a{color:var(--gold);font-weight:700}
@@ -67,7 +67,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;al
 .btn{background:#1E2A1E;color:#fff;padding:16px 34px;border-radius:60px;font-family:inherit;font-size:14px;font-weight:700;border:none;cursor:pointer;transition:all .35s;box-shadow:none;display:inline-block}.btn:hover{transform:translateY(-2px);box-shadow:none}
 /* Footer */
 footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(24px,5vw,80px) 28px;border-top:1px solid var(--b)}.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(20px,3vw,48px);padding-bottom:40px;border-bottom:1px solid var(--b)}.ft-brand h3{font-family:'DM Serif Display',serif;font-size:18px;color:var(--t);margin-bottom:10px}.ft-brand p{font-size:13px;color:#5A6B5A;line-height:1.7;margin-bottom:16px;max-width:280px}.ft-brand a{display:block;color:#5A6B5A;font-size:13px;margin-bottom:6px;font-weight:500;transition:color .2s}.ft-brand a:hover{color:#B8953F}.ft-col h4{font-size:10px;font-weight:700;color:#5A6B5A;text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px}.ft-col a{display:block;font-size:13px;color:#5A6B5A;margin-bottom:10px;transition:color .2s}.ft-col a:hover{color:#B8953F}.ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:20px;font-size:12px;color:#94A494}.ft-soc{display:flex;gap:14px}.ft-soc a{color:#94A494;transition:color .2s}.ft-soc a:hover{color:var(--gold)}
-@media(max-width:768px){.ft-top{grid-template-columns:1fr 1fr}.ft-bot{flex-direction:column;gap:10px;text-align:center}.b-hero{padding-top:100px}}
+@media(max-width:768px){.ft-top{grid-template-columns:1fr 1fr}.ft-bot{flex-direction:column;gap:10px;text-align:center}.b-hero{padding-top:100px}}@media(max-width:480px){.ft-top{grid-template-columns:1fr}.mob-cta a{min-height:48px}.b-table table{font-size:11px}.b-table th,.b-table td{padding:8px 10px}.b-article{padding:0 16px 60px}.b-hero{padding-left:16px;padding-right:16px}.b-cta{padding:0 16px 60px}.grev-card{width:260px;padding:14px}.grev-card p{font-size:12px;line-height:1.6}}
 .mob-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:rgba(250,250,248,.95);backdrop-filter:blur(12px);border-top:1px solid var(--b);padding:12px 16px;gap:10px}.mob-cta a{flex:1;text-align:center;padding:14px 8px;border-radius:60px;font-weight:700;font-size:14px;font-family:inherit}.mob-cta-call{background:transparent;border:2px solid var(--gold);color:var(--gold)}.mob-cta-quote{background:#1E2A1E;color:#fff;border:2px solid transparent}
 @media(max-width:768px){.mob-cta{display:flex}body{padding-bottom:72px}footer{padding-bottom:80px}}
 </style>
@@ -213,16 +213,16 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(l){l.addEventListe
 </div>
 <div style="padding:24px">
 <div id="quoteForm" style="display:grid;gap:10px">
-<input id="qName" placeholder="First name" style="padding:16px;border:1px solid rgba(30,42,30,0.1);border-radius:12px;font-family:inherit;font-size:15px;background:#FAFAF8;color:var(--t);width:100%;box-sizing:border-box">
-<input id="qPhone" placeholder="Phone" type="tel" style="padding:16px;border:1px solid rgba(30,42,30,0.1);border-radius:12px;font-family:inherit;font-size:15px;background:#FAFAF8;color:var(--t);width:100%;box-sizing:border-box">
-<input id="qEmail" placeholder="Email (optional)" type="email" style="padding:16px;border:1px solid rgba(30,42,30,0.1);border-radius:12px;font-family:inherit;font-size:15px;background:#FAFAF8;color:var(--t);width:100%;box-sizing:border-box">
-<input id="qBill" placeholder="Monthly electricity bill (approx)" style="padding:16px;border:1px solid rgba(30,42,30,0.1);border-radius:12px;font-family:inherit;font-size:15px;background:#FAFAF8;color:var(--t);width:100%;box-sizing:border-box">
+<input id="qName" placeholder="First name" style="padding:16px;border:1px solid rgba(30,42,30,0.1);border-radius:12px;font-family:inherit;font-size:16px;background:#FAFAF8;color:var(--t);width:100%;box-sizing:border-box">
+<input id="qPhone" placeholder="Phone" type="tel" style="padding:16px;border:1px solid rgba(30,42,30,0.1);border-radius:12px;font-family:inherit;font-size:16px;background:#FAFAF8;color:var(--t);width:100%;box-sizing:border-box">
+<input id="qEmail" placeholder="Email (optional)" type="email" style="padding:16px;border:1px solid rgba(30,42,30,0.1);border-radius:12px;font-family:inherit;font-size:16px;background:#FAFAF8;color:var(--t);width:100%;box-sizing:border-box">
+<input id="qBill" placeholder="Monthly electricity bill (approx)" style="padding:16px;border:1px solid rgba(30,42,30,0.1);border-radius:12px;font-family:inherit;font-size:16px;background:#FAFAF8;color:var(--t);width:100%;box-sizing:border-box">
 <button id="quoteSubmit" style="width:100%;padding:18px;border-radius:60px;background:#1E2A1E;color:#fff;font-family:inherit;font-size:16px;font-weight:700;border:none;cursor:pointer;transition:all .3s;margin-top:4px">Get My Assessment &rarr;</button>
 <p style="font-size:11px;color:var(--tdd);text-align:center;margin-top:4px">No spam. Response within 24 hours.</p>
 </div>
 <div id="quoteSuccess" style="display:none;text-align:center;padding:20px 0">
 <h4 style="font-size:20px;font-weight:700;color:var(--gold);margin-bottom:6px">&check; We're on it.</h4>
-<p style="font-size:14px;color:var(--td)">We'll call within 24 hours.</p>
+<p style="font-size:16px;color:var(--td)">We'll call within 24 hours.</p>
 </div>
 </div>
 </div>
