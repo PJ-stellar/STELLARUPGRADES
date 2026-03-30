@@ -227,44 +227,5 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(l){l.addEventListe
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Solar Panel Installation Rimbey","description":"Solar panel, battery backup, and EV charger installation in Rimbey, Alberta by Stellar Upgrades. Master electricians. 500+ installs.","url":"https://stellarupgrades.ca/areas/rimbey","provider":{"@type":"LocalBusiness","name":"Stellar Upgrades","telephone":"+17802005265","address":{"@type":"PostalAddress","streetAddress":"Unit 10, 6005 103A St NW","addressLocality":"Edmonton","addressRegion":"AB","postalCode":"T6H 2J7","addressCountry":"CA"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"18"}},"areaServed":{"@type":"City","name":"Rimbey"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stellarupgrades.ca"},{"@type":"ListItem","position":2,"name":"Areas","item":"https://stellarupgrades.ca/areas"},{"@type":"ListItem","position":3,"name":"Rimbey","item":"https://stellarupgrades.ca/areas/rimbey"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does Stellar Upgrades serve Rimbey?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rimbey is 2 hours south of the Edmonton office. Stellar Upgrades serves all of Rimbey with rooftop and ground-mount solar, battery backup, and EV charger installations by in-house master electricians."}},{"@type":"Question","name":"How much does solar cost in Rimbey?","acceptedAnswer":{"@type":"Answer","text":"A typical residential system costs $14,000-$50,000 depending on size. Most homes need 6-12 kW at $2.80-$3.10/W installed. $0-down financing at 6.99% over 20 years."}},{"@type":"Question","name":"Who is the electricity provider in Rimbey?","acceptedAnswer":{"@type":"Answer","text":"The distribution provider in Rimbey is FortisAlberta. Alberta is deregulated so you can choose any retailer. Net metering is available through all retailers."}}]}</script>
-<!-- Exit Intent Popup -->
-<div id="exitPopup" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center">
-<div style="background:#1a1a17;border:1px solid rgba(201,168,76,.18);border-radius:20px;padding:clamp(32px,4vw,48px);max-width:440px;width:90%;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.5)">
-<button id="exitClose" style="position:absolute;top:14px;right:14px;background:none;border:none;color:rgba(240,232,216,.3);font-size:20px;cursor:pointer;padding:6px;line-height:1">&times;</button>
-<div style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,28px);text-align:center;color:#f0e8d8;margin-bottom:6px;line-height:1.15">Before you go &mdash;<br>what would <em style="font-style:italic;background:linear-gradient(135deg,#c9a84c,#e6c86e);-webkit-background-clip:text;-webkit-text-fill-color:transparent">$0 electricity</em> look like?</div>
-<p style="font-size:13px;color:rgba(240,232,216,.5);text-align:center;margin-bottom:20px;font-weight:300;font-family:'Outfit',sans-serif">Free 15-minute assessment. No obligation.</p>
-<div id="exitForm" style="display:grid;gap:10px;font-family:'Outfit',sans-serif">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><input id="exFirst" placeholder="First name" style="padding:13px 14px;border:1px solid rgba(240,232,216,.07);border-radius:10px;font-family:inherit;font-size:14px;background:rgba(240,232,216,.03);color:#f0e8d8;width:100%"><input id="exPhone" placeholder="Phone" type="tel" style="padding:13px 14px;border:1px solid rgba(240,232,216,.07);border-radius:10px;font-family:inherit;font-size:14px;background:rgba(240,232,216,.03);color:#f0e8d8;width:100%"></div>
-<button id="exSubmit" style="width:100%;padding:15px;border-radius:60px;background:#1E2A1E;color:#1a1a17;font-family:inherit;font-size:15px;font-weight:700;border:none;cursor:pointer;box-shadow:none;transition:all .3s">Get My Free Assessment &rarr;</button>
-<p id="exStatus" style="font-size:12px;text-align:center;margin:0;font-family:'Outfit',sans-serif"></p>
-</div>
-<div id="exSuccess" style="display:none;text-align:center;padding:18px 0;font-family:'Outfit',sans-serif"><h4 style="font-size:20px;font-weight:700;color:#c9a84c;margin-bottom:6px">&check; We'll be in touch.</h4><p style="font-size:14px;color:rgba(240,232,216,.5)">PJ will contact you within 24 hours.</p></div>
-</div>
-</div>
-<script>
-(function(){
-  var shown=false;
-  document.addEventListener('mouseout',function(e){
-    if(e.clientY<5&&!shown&&!sessionStorage.getItem('exitShown')){
-      shown=true;sessionStorage.setItem('exitShown','1');
-      document.getElementById('exitPopup').style.display='flex';
-    }
-  });
-  document.getElementById('exitClose').addEventListener('click',function(){document.getElementById('exitPopup').style.display='none'});
-  document.getElementById('exitPopup').addEventListener('click',function(e){if(e.target===this)this.style.display='none'});
-  document.getElementById('exSubmit').addEventListener('click',function(){
-    var fn=document.getElementById('exFirst').value.trim(),ph=document.getElementById('exPhone').value.trim();
-    var st=document.getElementById('exStatus'),btn=this;
-    if(!fn||!ph){st.textContent='Name and phone required.';st.style.color='#e87c6c';return;}
-    var phClean=ph.replace(/\D/g,'');
-    if(phClean.length<10){st.textContent='Enter a valid phone number.';st.style.color='#e87c6c';return;}
-    st.textContent='';btn.disabled=true;btn.textContent='Submitting...';btn.style.opacity='.6';
-    var params=new URLSearchParams({schema_name:'stellarupgrades',first_name:fn,last_name:'(Exit Popup)',phone:ph,lead_source:'Website - Exit Popup',salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',apptcomments:'Exit intent popup lead from: '+window.location.pathname});
-    var img=new Image();
-    img.onload=img.onerror=function(){if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','generate_lead',{event_category:'exit_popup'});}document.getElementById('exitForm').style.display='none';document.getElementById('exSuccess').style.display='block';};
-    img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString();
-  });
-})();
-</script>
 
 </body></html>
