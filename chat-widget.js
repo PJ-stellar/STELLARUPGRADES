@@ -145,7 +145,7 @@
     if (!mobCta) return;
     // Flag bubble to hide on mobile since sticky bar exists
     bubble.classList.add('has-mob-cta');
-    var quoteBtn = mobCta.querySelector('.mob-cta-quote');
+    var quoteBtn = mobCta.querySelector('.mob-cta-quote') || mobCta.querySelector('.mob-cta-q');
     if (!quoteBtn) return;
     // Create new chat button
     var chatBtn = document.createElement('button');
