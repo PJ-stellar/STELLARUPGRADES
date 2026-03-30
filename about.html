@@ -371,8 +371,8 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(32px,4vw,48px) clamp(
 </div>
 
 <div class="proj-card" data-cat="roof">
-<img src="/images/house-sunset.jpg" alt="Solar-powered home at sunset in Edmonton" loading="lazy">
-<div class="proj-card-body"><div class="proj-card-loc">Windermere, Edmonton</div><h4 class="proj-card-title">Golden hour — solar-powered home at sunset</h4><span class="proj-card-type">Roof Mount</span><a href="/contact" class="proj-card-cta" onclick="openQuoteForm(event)">Get a Quote for Your Home &rarr;</a></div>
+<img src="/images/house-sunset.jpg" alt="Solar-powered rural lakeside home at sunset in Alberta" loading="lazy">
+<div class="proj-card-body"><div class="proj-card-loc">Rural Alberta</div><h4 class="proj-card-title">Golden hour — solar-powered home at sunset</h4><span class="proj-card-type">Roof Mount</span><a href="/contact" class="proj-card-cta" onclick="openQuoteForm(event)">Get a Quote for Your Home &rarr;</a></div>
 </div>
 
 <div class="proj-card" data-cat="ground">
@@ -842,9 +842,9 @@ document.head.appendChild(shakeStyle);
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stellarupgrades.ca"},{"@type":"ListItem","position":2,"name":"About","item":"https://stellarupgrades.ca/about"}]}</script>
 
-<!-- Quote Form Popup -->
+<!-- Quote Form Popup + Exit Intent -->
 <div id="quoteOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(10,10,8,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .3s">
-<div style="background:#fff;border-radius:20px;max-width:440px;width:100%;overflow:hidden;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.15);transform:scale(.95) translateY(12px);transition:transform .4s cubic-bezier(.34,1.56,.64,1)">
+<div id="quotePopupInner" style="background:#fff;border-radius:20px;max-width:440px;width:100%;overflow:hidden;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.15);transform:scale(.95) translateY(12px);transition:transform .4s cubic-bezier(.34,1.56,.64,1)">
 <button id="quoteClose" style="position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(30,42,30,0.07);background:#fff;color:#5A6B5A;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;z-index:2;line-height:1">&times;</button>
 <div style="background:rgba(30,42,30,0.03);border-bottom:1px solid rgba(30,42,30,0.07);padding:28px 24px;text-align:center">
 <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(20px,3vw,26px);line-height:1.15;color:var(--t)">Get your free<br><em style="font-style:italic;color:var(--gold)">solar assessment.</em></h3>
@@ -867,22 +867,23 @@ document.head.appendChild(shakeStyle);
 </div>
 </div>
 <script>
-function openQuoteForm(e){e.preventDefault();var ov=document.getElementById('quoteOverlay');ov.style.display='flex';requestAnimationFrame(function(){requestAnimationFrame(function(){ov.style.opacity='1';ov.querySelector('div>div').style.transform='scale(1) translateY(0)'})});if(typeof gtag==='function')gtag('event','quote_popup_opened',{event_category:'engagement'})}
-document.getElementById('quoteClose').addEventListener('click',function(){var ov=document.getElementById('quoteOverlay');ov.style.opacity='0';ov.querySelector('div>div').style.transform='scale(.95) translateY(12px)';setTimeout(function(){ov.style.display='none'},300)});
-document.getElementById('quoteOverlay').addEventListener('click',function(e){if(e.target===this)document.getElementById('quoteClose').click()});
+function openQuoteForm(e){if(e)e.preventDefault();var ov=document.getElementById('quoteOverlay');if(!ov)return;ov.style.display='flex';requestAnimationFrame(function(){requestAnimationFrame(function(){ov.style.opacity='1';document.getElementById('quotePopupInner').style.transform='scale(1) translateY(0)'})});if(typeof gtag==='function')gtag('event','quote_popup_opened',{event_category:'engagement',event_label:window.location.pathname})}
+function closeQuoteForm(){var ov=document.getElementById('quoteOverlay');if(!ov)return;ov.style.opacity='0';document.getElementById('quotePopupInner').style.transform='scale(.95) translateY(12px)';setTimeout(function(){ov.style.display='none'},300)}
+document.getElementById('quoteClose').addEventListener('click',closeQuoteForm);
+document.getElementById('quoteOverlay').addEventListener('click',function(e){if(e.target===this)closeQuoteForm()});
 document.getElementById('quoteSubmit').addEventListener('click',function(){
-  var nm=document.getElementById('qName').value.trim(),ph=document.getElementById('qPhone').value.trim(),em=document.getElementById('qEmail').value.trim(),bill=document.getElementById('qBill').value.trim();
-  var phClean=ph.replace(/\D/g,'');
-  if(!nm||!ph){if(!nm)document.getElementById('qName').style.borderColor='#e87c6c';if(!ph)document.getElementById('qPhone').style.borderColor='#e87c6c';return}
-  if(phClean.length<10){document.getElementById('qPhone').style.borderColor='#e87c6c';document.getElementById('qPhone').focus();return}
-  document.getElementById('qName').style.borderColor='';document.getElementById('qPhone').style.borderColor='';
-  this.disabled=true;this.textContent='Submitting...';this.style.opacity='.6';
-  var params=new URLSearchParams({schema_name:'stellarupgrades',first_name:nm,last_name:'(Quote Popup)',phone:ph,customField37:bill,apptcomments:'Quote Popup Lead | Bill: '+bill+(em?' | Email: '+em:'')+' | Page: '+window.location.pathname,salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - Quote Popup'});
-  if(em)params.set('email',em);
-  var img=new Image();
-  img.onload=img.onerror=function(){if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','generate_lead',{event_category:'quote_popup'})}document.getElementById('quoteForm').style.display='none';document.getElementById('quoteSuccess').style.display='block'};
-  img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString();
-});
+var nm=document.getElementById('qName').value.trim(),ph=document.getElementById('qPhone').value.trim(),em=document.getElementById('qEmail').value.trim(),bill=document.getElementById('qBill').value.trim();
+var phClean=ph.replace(/\D/g,'');
+if(!nm||!ph){if(!nm)document.getElementById('qName').style.borderColor='#e87c6c';if(!ph)document.getElementById('qPhone').style.borderColor='#e87c6c';return}
+if(phClean.length<10){document.getElementById('qPhone').style.borderColor='#e87c6c';document.getElementById('qPhone').focus();return}
+document.getElementById('qName').style.borderColor='';document.getElementById('qPhone').style.borderColor='';
+this.disabled=true;this.textContent='Submitting...';this.style.opacity='.6';
+var params=new URLSearchParams({schema_name:'stellarupgrades',first_name:nm,last_name:'(Quote Popup)',phone:ph,customField37:bill,apptcomments:'Quote Popup Lead | Bill: '+bill+(em?' | Email: '+em:'')+' | Page: '+window.location.pathname,salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - Quote Popup'});
+if(em)params.set('email',em);
+var img=new Image();
+img.onload=img.onerror=function(){if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','generate_lead',{event_category:'quote_popup'})}document.getElementById('quoteForm').style.display='none';document.getElementById('quoteSuccess').style.display='block'};
+img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString()});
+// Exit intent - fires once per session on all pages
+(function(){var exitFired=false;document.addEventListener('mouseout',function(e){if(exitFired||e.clientY>10||window.innerWidth<768||sessionStorage.getItem('exitShown'))return;exitFired=true;sessionStorage.setItem('exitShown','1');openQuoteForm(null)});})();
 </script>
-
 </body></html>
