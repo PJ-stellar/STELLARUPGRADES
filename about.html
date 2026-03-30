@@ -81,27 +81,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;display:flex;al
 .princ p{font-size:13px;color:var(--td);line-height:1.7;font-weight:300}
 @media(max-width:600px){.princ-g{grid-template-columns:1fr}}
 
-/* ===== INTERACTIVE PROJECT GALLERY ===== */
-.proj-tabs{display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap}
-.proj-tab{padding:8px 18px;border-radius:60px;font-size:12px;font-weight:600;border:1px solid var(--b);background:transparent;color:var(--td);cursor:pointer;transition:.3s;font-family:inherit}.proj-tab:hover{color:var(--t);border-color:rgba(240,232,216,.15)}.proj-tab.active{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+/* ===== PROJECT CASE STUDY CARDS ===== */
+.proj-tabs{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap;padding-bottom:4px}
+.proj-tabs::-webkit-scrollbar{display:none}
+.proj-tab{padding:10px 20px;border-radius:60px;font-size:13px;font-weight:600;border:1px solid var(--b);background:transparent;color:var(--td);cursor:pointer;transition:.3s;font-family:inherit;white-space:nowrap;flex-shrink:0}.proj-tab:hover{color:var(--t);border-color:rgba(30,42,30,.15)}.proj-tab.active{background:#1E2A1E;color:#fff;border-color:#1E2A1E}
 .proj-counter{font-size:13px;color:var(--tdd);margin-bottom:20px;font-weight:400}
-.proj-counter b{color:var(--gold);font-weight:700}
-
-.proj-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:180px;gap:10px}
-.proj-card{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--b);cursor:pointer;transition:transform .4s cubic-bezier(.25,.46,.45,.94),border-color .3s,opacity .4s}
-.proj-card:hover{border-color:rgba(201,168,76,.25);transform:scale(1.02)}
-.proj-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}.proj-card:hover img{transform:scale(1.06)}
-.proj-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,9,.85) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
-.proj-card:hover .proj-card-overlay{opacity:1}
-.proj-card-overlay h4{font-size:13px;font-weight:700;margin-bottom:2px}.proj-card-overlay span{font-size:11px;color:var(--gold);font-weight:500}
-.proj-card-overlay .proj-tag{display:inline-flex;align-items:center;gap:4px;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--tdd);margin-top:6px}.proj-tag svg{width:10px;height:10px}
-
-/* Gallery layout sizes */
-.proj-card.w2{grid-column:span 4}.proj-card.w3{grid-column:span 6}.proj-card.w1{grid-column:span 3}.proj-card.h2{grid-row:span 2}
-@media(max-width:900px){.proj-grid{grid-template-columns:repeat(6,1fr);grid-auto-rows:160px}.proj-card.w2{grid-column:span 3}.proj-card.w3{grid-column:span 6}.proj-card.w1{grid-column:span 3}.proj-card.h2{grid-row:span 2}}
-@media(max-width:550px){.proj-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.proj-card.w1,.proj-card.w2,.proj-card.w3{grid-column:span 1}.proj-card.w3{grid-column:span 2}.proj-card.h2{grid-row:span 1}}
-
-/* Gallery animation */
+.proj-counter b{color:#1E2A1E;font-weight:700}
+.proj-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.proj-card{background:#fff;border:1px solid rgba(30,42,30,0.07);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s,opacity .4s}
+.proj-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.proj-card img{width:100%;height:auto;display:block}
+.proj-card-body{padding:20px}
+.proj-card-loc{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.proj-card-title{font-size:16px;font-weight:700;color:var(--t);margin-bottom:6px;line-height:1.3}
+.proj-card-type{display:inline-block;font-size:11px;font-weight:600;color:#5A6B5A;background:rgba(30,42,30,0.05);border:1px solid rgba(30,42,30,0.07);padding:4px 10px;border-radius:60px;margin-bottom:14px}
+.proj-card-cta{display:block;width:100%;padding:14px;border-radius:60px;background:#1E2A1E;color:#fff;font-family:inherit;font-size:14px;font-weight:700;border:none;cursor:pointer;text-align:center;text-decoration:none;transition:.3s}.proj-card-cta:hover{background:#2C3A2C}
+.proj-bottom-cta{text-align:center;padding:clamp(40px,6vw,72px) 20px;background:#1E2A1E;border-radius:20px;margin-top:32px}
+.proj-bottom-cta h3{font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,32px);color:#fff;margin-bottom:8px;letter-spacing:-.01em;line-height:1.1}
+.proj-bottom-cta p{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:20px;font-weight:300}
+.proj-bottom-cta a{display:inline-block;padding:16px 36px;border-radius:60px;background:#B8953F;color:#fff;font-family:inherit;font-size:15px;font-weight:700;text-decoration:none;transition:.3s}.proj-bottom-cta a:hover{transform:translateY(-2px)}
+@media(min-width:600px){.proj-grid{grid-template-columns:1fr 1fr;gap:20px}}
+@media(min-width:960px){.proj-grid{grid-template-columns:repeat(3,1fr);gap:24px}}
 .proj-card[data-animating]{animation:projFade .35s ease forwards}
 @keyframes projFade{0%{opacity:0;transform:scale(.95)}100%{opacity:1;transform:scale(1)}}
 
@@ -191,11 +191,6 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(32px,4vw,48px) clamp(
 @media(max-width:768px){.mob-cta{display:flex}body{padding-bottom:68px}footer{padding-bottom:76px}}
 
 /* LIGHTBOX — ENHANCED */
-.lightbox{display:none;position:fixed;inset:0;z-index:2000;background:rgba(10,10,9,.96);backdrop-filter:blur(24px);align-items:center;justify-content:center;padding:20px;cursor:zoom-out;flex-direction:column;gap:16px}.lightbox.active{display:flex}
-.lightbox img{max-width:90vw;max-height:75vh;object-fit:contain;border-radius:var(--r);box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.lightbox-info{text-align:center}.lightbox-info h4{font-size:15px;font-weight:700;margin-bottom:2px}.lightbox-info span{font-size:12px;color:var(--gold)}
-.lightbox-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--t);font-size:28px;cursor:pointer;opacity:.6;transition:.2s}.lightbox-close:hover{opacity:1}
-.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.2);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.3s;color:var(--t)}.lightbox-nav:hover{background:rgba(201,168,76,.25)}.lightbox-prev{left:20px}.lightbox-next{right:20px}
 </style>
 </head>
 <body>
@@ -344,13 +339,12 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(32px,4vw,48px) clamp(
 </div>
 </div></section>
 
-<!-- ===== INTERACTIVE PROJECT GALLERY ===== -->
+<!-- ===== REAL INSTALLS CASE STUDY CARDS ===== -->
 <section class="s"><div class="si">
-<div class="tag rv">Our Work</div>
-<h2 class="h2 rv">500+ installs. Here are a few.</h2>
-<p style="font-size:15px;color:var(--td);line-height:1.8;font-weight:300;margin-bottom:20px" class="rv">Roof mounts, ground mounts, urban and rural. Every season, every roof type. All installed by our in-house crew.</p>
+<div class="tag rv" style="justify-content:center;display:flex">Our Work</div>
+<h2 class="h2 rv" style="text-align:center">Real Installs Across Alberta</h2>
+<p style="font-size:15px;color:var(--td);line-height:1.8;font-weight:300;margin-bottom:24px;text-align:center;max-width:560px;margin-left:auto;margin-right:auto" class="rv">Every project shown is our own work. No stock photos. No subcontractors.</p>
 
-<!-- Filter Tabs -->
 <div class="proj-tabs rv">
 <button class="proj-tab active" data-filter="all">All Projects</button>
 <button class="proj-tab" data-filter="roof">Roof Mount</button>
@@ -359,53 +353,71 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(32px,4vw,48px) clamp(
 </div>
 <div class="proj-counter rv">Showing <b id="proj-count">11</b> projects</div>
 
-<!-- Masonry-ish Grid -->
 <div class="proj-grid rv" id="projGrid">
-<div class="proj-card w3 h2" data-cat="roof" data-title="Aerial Rooftop System" data-desc="32-panel residential array">
-<img src="/images/roof-aerial-reveal.jpg" alt="Aerial view of completed rooftop solar installation" loading="lazy">
-<div class="proj-card-overlay"><h4>Aerial Rooftop System</h4><span>32-panel residential array</span><div class="proj-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Edmonton, AB</div></div>
+
+<div class="proj-card" data-cat="roof">
+<img src="/images/roof-aerial-reveal.jpg" alt="Aerial view of 32-panel rooftop solar installation in Edmonton" loading="lazy">
+<div class="proj-card-body"><div class="proj-card-loc">Edmonton, AB</div><h4 class="proj-card-title">32-panel rooftop system — aerial view</h4><span class="proj-card-type">Roof Mount</span><a href="/contact" class="proj-card-cta">Get a Quote for Your Home &rarr;</a></div>
 </div>
-<div class="proj-card w1" data-cat="roof" data-title="Hands-On Install" data-desc="Jordan on the roof">
-<img src="/images/jw-install.webp" alt="Jordan Walsh installing solar panels" loading="lazy">
-<div class="proj-card-overlay"><h4>Hands-On Install</h4><span>Jordan on the roof</span></div>
+
+<div class="proj-card" data-cat="roof">
+<img src="/images/jw-install.webp" alt="Jordan Walsh installing solar panels on Edmonton rooftop" loading="lazy">
+<div class="proj-card-body"><div class="proj-card-loc">Edmonton, AB</div><h4 class="proj-card-title">Hands-on install — Jordan on the roof</h4><span class="proj-card-type">Roof Mount</span><a href="/contact" class="proj-card-cta">Get a Quote for Your Home &rarr;</a></div>
 </div>
-<div class="proj-card w1" data-cat="roof" data-title="Summer Rooftop" data-desc="Peak production season">
+
+<div class="proj-card" data-cat="roof">
 <img src="/images/roof-summer.webp" alt="Completed rooftop solar system in summer" loading="lazy">
-<div class="proj-card-overlay"><h4>Summer Rooftop</h4><span>Peak production season</span></div>
+<div class="proj-card-body"><div class="proj-card-loc">Sherwood Park, AB</div><h4 class="proj-card-title">Summer rooftop install — peak production</h4><span class="proj-card-type">Roof Mount</span><a href="/contact" class="proj-card-cta">Get a Quote for Your Home &rarr;</a></div>
 </div>
-<div class="proj-card w2" data-cat="roof" data-title="Golden Hour" data-desc="Solar-powered home at sunset">
-<img src="/images/house-sunset.jpg" alt="Solar-powered home at sunset" loading="lazy">
-<div class="proj-card-overlay"><h4>Golden Hour</h4><span>Solar-powered home at sunset</span></div>
+
+<div class="proj-card" data-cat="roof">
+<img src="/images/house-sunset.jpg" alt="Solar-powered home at sunset in Edmonton" loading="lazy">
+<div class="proj-card-body"><div class="proj-card-loc">Windermere, Edmonton</div><h4 class="proj-card-title">Golden hour — solar-powered home at sunset</h4><span class="proj-card-type">Roof Mount</span><a href="/contact" class="proj-card-cta">Get a Quote for Your Home &rarr;</a></div>
 </div>
-<div class="proj-card w2" data-cat="ground" data-title="Fall Ground Mount" data-desc="FastRX mounting system">
-<img src="/images/ground-fall.webp" alt="Ground mount solar installation in fall" loading="lazy">
-<div class="proj-card-overlay"><h4>Fall Ground Mount</h4><span>FastRX mounting system</span><div class="proj-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rural Alberta</div></div>
+
+<div class="proj-card" data-cat="ground">
+<img src="/images/ground-fall.webp" alt="Ground mount solar installation on rural Alberta acreage" loading="lazy">
+<div class="proj-card-body"><div class="proj-card-loc">Rural Alberta</div><h4 class="proj-card-title">Fall ground mount — FastRX racking system</h4><span class="proj-card-type">Ground Mount</span><a href="/contact" class="proj-card-cta">Get a Quote for Your Home &rarr;</a></div>
 </div>
-<div class="proj-card w3 h2" data-cat="ground winter" data-title="Winter Ground Array" data-desc="Performing in -30°C conditions">
-<img src="/images/ground-winter.webp" alt="Ground mount solar array in Alberta winter" loading="lazy">
-<div class="proj-card-overlay"><h4>Winter Ground Array</h4><span>Performing in &minus;30&deg;C conditions</span><div class="proj-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rural Alberta</div></div>
+
+<div class="proj-card" data-cat="ground winter">
+<img src="/images/ground-winter.webp" alt="Ground mount solar array performing in Alberta winter" loading="lazy">
+<div class="proj-card-body"><div class="proj-card-loc">Rural Alberta</div><h4 class="proj-card-title">Winter ground array — performing in &minus;30&deg;C</h4><span class="proj-card-type">Ground Mount</span><a href="/contact" class="proj-card-cta">Get a Quote for Your Home &rarr;</a></div>
 </div>
-<div class="proj-card w1" data-cat="roof winter" data-title="Snow Performance" data-desc="Panels shed snow naturally">
-<img src="/images/roof-winter.webp" alt="Rooftop solar panels in Edmonton winter" loading="lazy">
-<div class="proj-card-overlay"><h4>Snow Performance</h4><span>Panels shed snow naturally</span></div>
+
+<div class="proj-card" data-cat="roof winter">
+<img src="/images/roof-winter.webp" alt="Rooftop solar panels shedding snow in Edmonton winter" loading="lazy">
+<div class="proj-card-body"><div class="proj-card-loc">St. Albert, AB</div><h4 class="proj-card-title">Snow performance — panels shed snow naturally</h4><span class="proj-card-type">Winter Install</span><a href="/contact" class="proj-card-cta">Get a Quote for Your Home &rarr;</a></div>
 </div>
-<div class="proj-card w1" data-cat="roof" data-title="Rural Property" data-desc="Large format residential">
-<img src="/images/roof-rural.webp" alt="Solar installation on rural Alberta property" loading="lazy">
-<div class="proj-card-overlay"><h4>Rural Property</h4><span>Large format residential</span></div>
+
+<div class="proj-card" data-cat="roof">
+<img src="/images/roof-rural.webp" alt="Large format solar installation on rural Alberta property" loading="lazy">
+<div class="proj-card-body"><div class="proj-card-loc">Leduc County, AB</div><h4 class="proj-card-title">Rural property — large format residential</h4><span class="proj-card-type">Roof Mount</span><a href="/contact" class="proj-card-cta">Get a Quote for Your Home &rarr;</a></div>
 </div>
-<div class="proj-card w2" data-cat="roof winter" data-title="Winter Ready" data-desc="Year-round performance">
-<img src="/images/house-winter.webp" alt="Solar-powered home in Edmonton winter" loading="lazy">
-<div class="proj-card-overlay"><h4>Winter Ready</h4><span>Year-round performance</span></div>
+
+<div class="proj-card" data-cat="roof winter">
+<img src="/images/house-winter.webp" alt="Solar-powered home in Edmonton winter with snow" loading="lazy">
+<div class="proj-card-body"><div class="proj-card-loc">Beaumont, AB</div><h4 class="proj-card-title">Winter ready — year-round solar performance</h4><span class="proj-card-type">Winter Install</span><a href="/contact" class="proj-card-cta">Get a Quote for Your Home &rarr;</a></div>
 </div>
-<div class="proj-card w1" data-cat="roof" data-title="Suburban Install" data-desc="Neighbourhood-friendly design">
+
+<div class="proj-card" data-cat="roof">
 <img src="/images/roof-suburb.webp" alt="Solar panels on Edmonton suburban home" loading="lazy">
-<div class="proj-card-overlay"><h4>Suburban Install</h4><span>Neighbourhood-friendly design</span></div>
+<div class="proj-card-body"><div class="proj-card-loc">Spruce Grove, AB</div><h4 class="proj-card-title">Suburban install — neighbourhood-friendly design</h4><span class="proj-card-type">Roof Mount</span><a href="/contact" class="proj-card-cta">Get a Quote for Your Home &rarr;</a></div>
 </div>
-<div class="proj-card w1" data-cat="roof winter" data-title="Crew at Work" data-desc="Winter roof installation">
-<img src="/images/20260315_131242.jpeg" alt="Stellar Upgrades crew on roof during winter installation" loading="lazy">
-<div class="proj-card-overlay"><h4>Crew at Work</h4><span>Winter roof installation</span></div>
+
+<div class="proj-card" data-cat="roof winter">
+<img src="/images/20260315_131242.jpeg" alt="Stellar Upgrades crew installing solar panels in winter" loading="lazy">
+<div class="proj-card-body"><div class="proj-card-loc">Edmonton, AB</div><h4 class="proj-card-title">Crew at work — winter roof installation</h4><span class="proj-card-type">Winter Install</span><a href="/contact" class="proj-card-cta">Get a Quote for Your Home &rarr;</a></div>
 </div>
+
 </div>
+
+<div class="proj-bottom-cta rv">
+<h3>Your home could be next.</h3>
+<p>Free 15-minute assessment. If solar doesn't make sense, we'll tell you.</p>
+<a href="/contact">Get Free Assessment &rarr;</a>
+</div>
+
 </div></section>
 
 <!-- EQUIPMENT -->
@@ -568,14 +580,6 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(32px,4vw,48px) clamp(
 
 <div class="mob-cta"><a href="tel:7802005265" class="mob-cta-c">Call Now</a><a href="#quote" class="mob-cta-q">Free Assessment</a></div>
 
-<!-- LIGHTBOX — ENHANCED WITH NAV -->
-<div class="lightbox" id="lb">
-<button class="lightbox-close" aria-label="Close">&times;</button>
-<button class="lightbox-nav lightbox-prev" aria-label="Previous" onclick="lbNav(-1)">&#8249;</button>
-<button class="lightbox-nav lightbox-next" aria-label="Next" onclick="lbNav(1)">&#8250;</button>
-<img src="" alt="">
-<div class="lightbox-info"><h4></h4><span></span></div>
-</div>
 
 <!-- HIDDEN IFRAME FOR SUNBASE -->
 <iframe name="submit_iframe" style="display:none"></iframe>
@@ -640,7 +644,7 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(l){l.addEventListe
   co2.observe(el);
 })();
 
-// ===== PROJECT GALLERY FILTER =====
+// ===== PROJECT CARD FILTER =====
 var tabs=document.querySelectorAll('.proj-tab');
 var cards=document.querySelectorAll('.proj-card');
 var projCount=document.getElementById('proj-count');
@@ -664,58 +668,6 @@ tabs.forEach(function(tab){
     });
     projCount.textContent=count;
   });
-});
-
-// ===== LIGHTBOX WITH NAVIGATION =====
-var lb=document.getElementById('lb');
-var lbImg=lb.querySelector('img');
-var lbTitle=lb.querySelector('.lightbox-info h4');
-var lbDesc=lb.querySelector('.lightbox-info span');
-var lbItems=[];
-var lbCurrent=0;
-
-function buildLbItems(){
-  lbItems=[];
-  cards.forEach(function(card){
-    if(card.style.display!=='none'){
-      lbItems.push({src:card.querySelector('img').src,title:card.dataset.title||'',desc:card.dataset.desc||''});
-    }
-  });
-}
-
-cards.forEach(function(card,i){
-  card.addEventListener('click',function(){
-    buildLbItems();
-    var src=card.querySelector('img').src;
-    lbCurrent=lbItems.findIndex(function(it){return it.src===src});
-    showLb(lbCurrent);
-  });
-});
-
-function showLb(idx){
-  if(idx<0)idx=lbItems.length-1;
-  if(idx>=lbItems.length)idx=0;
-  lbCurrent=idx;
-  lbImg.src=lbItems[idx].src;
-  lbTitle.textContent=lbItems[idx].title;
-  lbDesc.textContent=lbItems[idx].desc;
-  lb.classList.add('active');
-}
-
-function lbNav(dir){
-  event.stopPropagation();
-  showLb(lbCurrent+dir);
-}
-
-lb.addEventListener('click',function(e){
-  if(e.target===lb)lb.classList.remove('active');
-});
-lb.querySelector('.lightbox-close').addEventListener('click',function(){lb.classList.remove('active')});
-document.addEventListener('keydown',function(e){
-  if(!lb.classList.contains('active'))return;
-  if(e.key==='Escape')lb.classList.remove('active');
-  if(e.key==='ArrowLeft')showLb(lbCurrent-1);
-  if(e.key==='ArrowRight')showLb(lbCurrent+1);
 });
 
 // ===== REVIEWS SCROLL DOTS =====
