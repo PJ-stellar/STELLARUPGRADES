@@ -139,24 +139,52 @@
   var sendBtn = document.getElementById('scSend');
   var closeBtn = panel.querySelector('.sc-close');
 
-  // ── Mobile sticky bar: replace the quote button ──
+  // ── Mobile sticky bar: WhatsApp + Chat With Us ──
   function setupMobileCTA() {
     var mobCta = document.querySelector('.mob-cta');
     if (!mobCta) return;
     // Flag bubble to hide on mobile since sticky bar exists
     bubble.classList.add('has-mob-cta');
+
+    // Determine WhatsApp pre-fill message based on current page
+    var path = window.location.pathname.toLowerCase();
+    var waText;
+    if (path === '/' || path.indexOf('/index') !== -1 || path.indexOf('/solar') !== -1) {
+      waText = "Hi, I'm interested in solar for my home";
+    } else if (path.indexOf('/ev-charger') !== -1) {
+      waText = "Hi, I'm interested in an EV charger for my home";
+    } else if (path.indexOf('/battery') !== -1) {
+      waText = "Hi, I'm interested in battery backup for my home";
+    } else {
+      waText = "Hi, I'm interested in learning about solar, battery, or EV charging for my home";
+    }
+    var waUrl = 'https://wa.me/17802005265?text=' + encodeURIComponent(waText);
+
+    // Replace call button with WhatsApp
+    var callBtn = mobCta.querySelector('.mob-cta-call') || mobCta.querySelector('.mob-cta-c');
+    if (callBtn) {
+      var waBtn = document.createElement('a');
+      waBtn.href = waUrl;
+      waBtn.target = '_blank';
+      waBtn.rel = 'noopener noreferrer';
+      waBtn.textContent = 'WhatsApp PJ';
+      waBtn.style.cssText = 'flex:1;text-align:center;padding:14px 8px;border-radius:60px;font-weight:700;font-size:16px;font-family:inherit;background:transparent;color:#25D366;border:2px solid #25D366;text-decoration:none;cursor:pointer';
+      callBtn.replaceWith(waBtn);
+    }
+
+    // Replace quote/assessment button with Chat With Us
     var quoteBtn = mobCta.querySelector('.mob-cta-quote') || mobCta.querySelector('.mob-cta-q');
-    if (!quoteBtn) return;
-    // Create new chat button
-    var chatBtn = document.createElement('button');
-    chatBtn.className = 'mob-cta-quote';
-    chatBtn.textContent = 'Chat With Us';
-    chatBtn.style.cssText = 'flex:1;text-align:center;padding:14px 8px;border-radius:60px;font-weight:700;font-size:16px;font-family:inherit;background:#1E2A1E;color:#fff;border:2px solid transparent;cursor:pointer';
-    chatBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      openChat();
-    });
-    quoteBtn.replaceWith(chatBtn);
+    if (quoteBtn) {
+      var chatBtn = document.createElement('button');
+      chatBtn.className = 'mob-cta-quote';
+      chatBtn.textContent = 'Chat With Us';
+      chatBtn.style.cssText = 'flex:1;text-align:center;padding:14px 8px;border-radius:60px;font-weight:700;font-size:16px;font-family:inherit;background:#1E2A1E;color:#fff;border:2px solid transparent;cursor:pointer';
+      chatBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openChat();
+      });
+      quoteBtn.replaceWith(chatBtn);
+    }
   }
   setupMobileCTA();
 
