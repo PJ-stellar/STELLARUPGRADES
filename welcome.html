@@ -24,6 +24,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;al
 .sec{padding:clamp(40px,5vw,60px) clamp(24px,5vw,80px)}.sec-i{max-width:760px;margin:0 auto}
 .btn{background:#1E2A1E;color:#fff;padding:16px 34px;border-radius:60px;font-family:inherit;font-size:14px;font-weight:700;border:none;cursor:pointer;transition:all .35s;box-shadow:none;display:inline-block}.btn:hover{transform:translateY(-2px);box-shadow:none}
 .btn-o{border:2px solid rgba(201,168,76,.4);color:var(--gold);padding:14px 28px;border-radius:60px;font-family:inherit;font-size:14px;font-weight:600;background:transparent;display:inline-block;transition:all .3s}.btn-o:hover{border-color:var(--gold);background:rgba(201,168,76,.06)}
+.btn-wa{border:2px solid #25D366;color:#25D366;padding:14px 28px;border-radius:60px;font-family:inherit;font-size:14px;font-weight:600;background:transparent;display:inline-flex;align-items:center;gap:8px;transition:all .3s}.btn-wa:hover{background:rgba(37,211,102,.06);border-color:#1da851}
+.btn-wa svg{width:18px;height:18px;fill:#25D366}
 /* Hero */
 .w-hero{padding:100px clamp(24px,5vw,80px) 0;text-align:center;position:relative}
 .w-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,.06),transparent 55%)}
@@ -74,6 +76,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;al
 .w-eq span{font-size:10px;color:var(--gold);font-weight:600}
 .w-eq p{font-size:10px;color:var(--tdd);margin-top:4px}
 @media(max-width:600px){.w-equip{grid-template-columns:1fr 1fr}}
+/* Testimonial */
+.w-testi{background:#fff;border:1px solid var(--b);border-radius:var(--r);padding:24px;border-left:4px solid var(--gold);margin-top:24px}
+.w-testi-saving{display:inline-block;background:rgba(110,207,128,.1);color:var(--green);font-weight:900;font-size:12px;padding:5px 12px;border-radius:8px;margin-bottom:12px}
+.w-testi-quote{font-family:'DM Serif Display',serif;font-size:clamp(15px,1.6vw,18px);font-style:italic;color:var(--t);line-height:1.6;margin-bottom:12px}
+.w-testi-name{font-size:13px;font-weight:700;color:var(--t)}
+.w-testi-loc{font-size:12px;color:var(--td);font-weight:300}
+/* Founders */
+.w-founders{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.w-founder{background:#fff;border:1px solid var(--b);border-radius:var(--r);overflow:hidden;text-align:center;transition:all .3s}
+.w-founder:hover{border-color:var(--bG);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.05)}
+.w-founder img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center}
+.w-founder-info{padding:16px 14px}
+.w-founder-name{font-family:'DM Serif Display',serif;font-size:17px;color:var(--t);margin-bottom:2px}
+.w-founder-role{font-size:11px;color:var(--td);font-weight:500}
+.w-founder-desc{font-size:11px;color:var(--tdd);margin-top:6px;line-height:1.5;font-weight:300}
+@media(max-width:480px){.w-founders{grid-template-columns:1fr;max-width:280px;margin-left:auto;margin-right:auto}}
 /* Promise */
 .w-promise{background:var(--bg2);border:1px solid var(--bG);border-radius:16px;padding:28px;text-align:center;margin-top:24px}
 .w-promise h3{font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:8px}
@@ -103,7 +121,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;al
 </div>
 
 <div class="w-trust">
-<div class="w-trust-item"><span class="stars">&starf;&starf;&starf;&starf;&starf;</span> 5.0 Google</div>
+<div class="w-trust-item"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 Google</div>
 <div class="w-trust-sep"></div>
 <div class="w-trust-item">500+ Installs</div>
 <div class="w-trust-sep"></div>
@@ -112,19 +130,44 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;al
 <div class="w-trust-item">Since 2018</div>
 </div>
 
+<!-- WHO YOU'LL MEET -->
+<section class="sec"><div class="sec-i" style="text-align:center">
+<h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,30px);margin-bottom:6px">Who you'll meet</h2>
+<p style="font-size:14px;color:var(--td);font-weight:300;margin-bottom:0">You'll talk to PJ. Jordan will be on your roof.</p>
+
+<div class="w-founders">
+<div class="w-founder">
+<img src="/images/pj.webp" alt="PJ Singh — Co-Founder, Stellar Upgrades" loading="lazy">
+<div class="w-founder-info"><div class="w-founder-name">PJ Singh</div><div class="w-founder-role">Co-Founder · Sales & Marketing</div><div class="w-founder-desc">Every assessment starts with PJ. He'll tell you exactly what the numbers look like — and whether solar makes sense for your home.</div></div>
+</div>
+<div class="w-founder">
+<img src="/images/jordan.webp" alt="Jordan Walsh — Co-Founder & Master Electrician" loading="lazy">
+<div class="w-founder-info"><div class="w-founder-name">Jordan Walsh</div><div class="w-founder-role">Co-Founder · Red Seal Master Electrician</div><div class="w-founder-desc">Jordan built this company with his hands. 500+ installs supervised. On site for every job since day one.</div></div>
+</div>
+</div>
+</div></section>
+
 <!-- MOST IMPORTANT THINGS BEFORE GOING SOLAR -->
-<section class="sec" style="background:var(--bg2);border-bottom:1px solid var(--b)"><div class="sec-i">
+<section class="sec" style="background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b)"><div class="sec-i">
 <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,30px);margin-bottom:6px">The 6 things every homeowner should know before going solar.</h2>
 <p style="font-size:14px;color:var(--td);font-weight:300;margin-bottom:0">From 500+ installs, these are the questions that matter most.</p>
 
 <div class="w-cards">
 <div class="w-card"><div class="w-card-icon">&#128176;</div><h4>Your bill should hit $0</h4><p>A properly sized system eliminates your electricity bill. If someone is quoting a system that only "reduces" your bill, it's undersized or overpriced.</p></div>
-<div class="w-card"><div class="w-card-icon">&#10052;&#65039;</div><h4>Solar works in Alberta winters</h4><p>Edmonton gets 2,345 hours of sunshine/year &mdash; more than Toronto. Cold boosts panel efficiency. Net metering banks summer surplus for winter.</p></div>
+<div class="w-card"><div class="w-card-icon">&#10052;&#65039;</div><h4>Solar works in Alberta winters</h4><p>Edmonton gets 2,345 hours of sunshine/year &mdash; more than Toronto. Cold actually boosts panel efficiency. Net metering banks your summer surplus to cover winter months.</p></div>
 <div class="w-card"><div class="w-card-icon">&#128178;</div><h4>Monthly payment should be less than your bill</h4><p>With $0-down financing, your solar payment replaces your electricity bill &mdash; and it's usually lower. You save money from month one.</p></div>
 <div class="w-card"><div class="w-card-icon">&#128736;</div><h4>Who installs matters more than what they install</h4><p>Most solar companies subcontract. Stellar uses in-house electricians supervised by a Red Seal Master Electrician. The crew that installs your system is the crew that services it.</p></div>
 <div class="w-card"><div class="w-card-icon">&#127968;</div><h4>Your roof age matters</h4><p>If your roof needs replacing in the next 5&ndash;10 years, do that first. Removing panels to re-roof costs $2,000+. We'll check your roof during the assessment.</p></div>
-<div class="w-card"><div class="w-card-icon">&#128200;</div><h4>Payback is 7&ndash;8 years, savings last 30+</h4><p>After payback, electricity is free for the remaining 20+ years of panel warranty life. A $22K system saves $60K&ndash;$80K over its lifetime.</p></div>
+<div class="w-card"><div class="w-card-icon">&#128200;</div><h4>Electricity rates are rising 4&ndash;6% per year</h4><p>Alberta rates have climbed steadily over the past decade. A $200/mo bill today becomes $82,000+ over 25 years with compounding increases. Solar locks in your rate at $0.</p></div>
 </div>
+
+<!-- TESTIMONIAL -->
+<div class="w-testi">
+<div class="w-testi-saving">$600&ndash;$800/mo &rarr; $0/mo</div>
+<p class="w-testi-quote">"So thrilled with this company! Our system was installed over a year ago and it was the best decision we ever made. We used to pay $600&ndash;$800 in bills, but now we pay nothing to the utility company!"</p>
+<span class="w-testi-name">Patt G.</span> <span class="w-testi-loc">&mdash; Google Review</span>
+</div>
+
 </div></section>
 
 <!-- WHAT HAPPENS DURING THE VISIT -->
@@ -143,7 +186,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;al
 </div>
 <div class="w-step">
 <div class="w-step-num">3</div>
-<div class="w-step-content"><h3>We show you the real numbers</h3><p>System cost, monthly payment, break-even point, 30-year savings. Real math with adjustable assumptions &mdash; not sales promises.</p></div>
+<div class="w-step-content"><h3>We show you the real numbers</h3><p>System cost, monthly payment, break-even point, 25-year savings with rate inflation factored in. Real math &mdash; not sales promises.</p></div>
 </div>
 <div class="w-step">
 <div class="w-step-num">4</div>
@@ -165,7 +208,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;al
 <div class="w-check">
 <div class="w-check-item"><div class="w-check-icon green">&#10003;</div><p><strong>Have a recent electricity bill handy</strong> &mdash; any bill from the past 3 months. We need your monthly kWh usage to size the system correctly.</p></div>
 <div class="w-check-item"><div class="w-check-icon green">&#10003;</div><p><strong>Know your roof age</strong> &mdash; if it's over 20 years, we may recommend replacing it first.</p></div>
-<div class="w-check-item"><div class="w-check-icon green">&#10003;</div><p><strong>Both decision-makers present</strong> &mdash; solar is a significant investment. Having both homeowners there means you can make a decision together without delays.</p></div>
+<div class="w-check-item"><div class="w-check-icon green">&#10003;</div><p><strong>Have everyone involved in the decision there</strong> &mdash; it helps to make a call together without the back-and-forth. Saves everyone time.</p></div>
 <div class="w-check-item"><div class="w-check-icon green">&#10003;</div><p><strong>Think about your goals</strong> &mdash; saving money? Backup power? Charging an EV? Going green? This shapes the system design.</p></div>
 </div>
 </div></section>
@@ -222,7 +265,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;al
 <div style="font-size:10px;color:var(--tdd);text-transform:uppercase;letter-spacing:.06em;font-weight:700">Installs</div>
 </div>
 <div style="text-align:center;padding:12px 20px">
-<div style="font-weight:900;font-size:28px;color:var(--gold)">5.0&starf;</div>
+<div style="font-weight:900;font-size:28px;color:var(--gold)">5.0&#9733;</div>
 <div style="font-size:10px;color:var(--tdd);text-transform:uppercase;letter-spacing:.06em;font-weight:700">Google Rating</div>
 </div>
 <div style="text-align:center;padding:12px 20px">
@@ -246,13 +289,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;al
 <!-- CTA -->
 <div class="w-cta">
 <h2>Questions before your visit?</h2>
-<p>Call or text PJ directly. Happy to answer anything.</p>
+<p>Call, text, or WhatsApp PJ directly. Happy to answer anything.</p>
 <div class="w-cta-btns">
 <a href="tel:7802005265" class="btn">Call (780) 200-5265</a>
-<a href="https://www.instagram.com/stellarupgrades_ca" target="_blank" class="btn-o">DM on Instagram</a>
+<a href="sms:7802005265" class="btn-o">Text PJ</a>
+<a href="https://wa.me/17802005265?text=Hi%20PJ%2C%20I%20have%20a%20question%20about%20my%20upcoming%20solar%20assessment." target="_blank" class="btn-wa"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
 </div>
 </div>
-</main>
 
 <div class="w-footer">
 <p>&copy; 2026 Stellar Upgrades Ltd. &middot; <a href="/">stellarupgrades.ca</a> &middot; Unit 10, 6005 103A St NW, Edmonton, AB T6H 2J7</p>
