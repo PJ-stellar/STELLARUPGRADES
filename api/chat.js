@@ -289,7 +289,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'API key not configured' });
   }
 
-  const { messages, sessionMessageCount } = req.body;
+  const { messages, sessionMessageCount, currentPage, referrer } = req.body;
 
   if (!messages || !Array.isArray(messages) || messages.length === 0) {
     return res.status(400).json({ error: 'Messages array is required' });
@@ -297,6 +297,16 @@ export default async function handler(req, res) {
 
   if (sessionMessageCount && sessionMessageCount > MAX_REQUESTS_PER_SESSION) {
     return res.status(429).json({ error: 'Session limit reached. Please refresh the page to start a new conversation.' });
+  }
+
+  var pageContext = '';
+  if (currentPage) {
+    pageContext = '\n\nCURRENT PAGE: The visitor is currently on ' + currentPage + '. Tailor your responses to be relevant to this page.';
+    if (currentPage.indexOf('/ev-charger') !== -1) pageContext += ' They are looking at EV charger options. Lead with Wallbox Pulsar Plus pricing and 0% financing.';
+    else if (currentPage.indexOf('/battery') !== -1) pageContext += ' They are looking at battery backup. Lead with EP Cube tiers and backup power benefits.';
+    else if (currentPage.indexOf('/neighbour') !== -1) pageContext += ' They scanned a door hanger QR code. They are cold traffic — be especially warm and lead with their bill estimate.';
+    else if (currentPage.indexOf('/welcome') !== -1) pageContext += ' They already booked an assessment and are preparing. Answer pre-visit questions, reinforce their decision.';
+    if (referrer) pageContext += ' Referrer: ' + referrer;
   }
 
   try {
@@ -310,7 +320,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: MODEL,
         max_tokens: MAX_TOKENS,
-        system: SYSTEM_PROMPT,
+        system: SYSTEM_PROMPT + pageContext,
         tools: TOOLS,
         messages: messages
       })

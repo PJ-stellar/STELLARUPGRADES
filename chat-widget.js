@@ -11,6 +11,25 @@
   var isTyping = false;
   var leadCaptured = false;
 
+  var isReturnVisitor = false;
+  try {
+    var firstVisit = localStorage.getItem('stellar_first_visit');
+    if (firstVisit) {
+      isReturnVisitor = true;
+    } else {
+      localStorage.setItem('stellar_first_visit', Date.now().toString());
+    }
+  } catch(e) {}
+
+  var isAfterHours = false;
+  try {
+    var now = new Date();
+    var mstHour = new Date(now.toLocaleString('en-US', {timeZone: 'America/Edmonton'}));
+    var hour = mstHour.getHours();
+    var day = mstHour.getDay();
+    isAfterHours = (hour >= 20 || hour < 8 || day === 0 || day === 6);
+  } catch(e) {}
+
   // Restore session
   try {
     var saved = sessionStorage.getItem('stellar_chat');
@@ -142,6 +161,57 @@
   bubble.innerHTML = '<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/><path d="M7 9h10v2H7zm0-3h10v2H7z"/></svg>';
   document.body.appendChild(bubble);
 
+  // ── Page-aware peek greeting ──
+  var path = window.location.pathname.toLowerCase();
+  var peekGreeting = "Hey! I'm PJ. Have a question about solar, batteries, or EV chargers? I'm here to help.";
+  var peekQuickButtons = [
+    {label: 'Solar pricing', q: 'How much does solar cost?'},
+    {label: 'Battery backup', q: 'Tell me about battery backup'},
+    {label: 'EV chargers', q: 'EV charger pricing'}
+  ];
+
+  if (isReturnVisitor && messages.length === 0) {
+    peekGreeting = "Welcome back! Still thinking about it? I can answer any new questions or connect you with PJ directly.";
+  }
+
+  if (path.indexOf('/ev-charger') !== -1) {
+    peekGreeting = "Hey! Thinking about a home EV charger? I can walk you through pricing, installation, and 0% financing.";
+    peekQuickButtons = [
+      {label: '40A pricing', q: 'How much is the 40A Wallbox charger installed?'},
+      {label: '48A pricing', q: 'How much is the 48A Wallbox charger installed?'},
+      {label: '0% financing', q: 'Tell me about 0% financing for EV chargers'}
+    ];
+  } else if (path.indexOf('/battery') !== -1) {
+    peekGreeting = "Hey! Looking at battery backup? I can show you EP Cube pricing and what it covers during an outage.";
+    peekQuickButtons = [
+      {label: 'EP Cube pricing', q: 'How much does the EP Cube battery cost?'},
+      {label: 'What it powers', q: 'What can the EP Cube run during an outage?'},
+      {label: 'Solar + battery', q: 'Can I add battery to a solar system?'}
+    ];
+  } else if (path.indexOf('/neighbour') !== -1) {
+    peekGreeting = "Hey! Looks like you got one of our door hangers. What's your monthly electricity bill? I'll show you the real numbers.";
+    peekQuickButtons = [
+      {label: 'My bill is ~$200/mo', q: 'My electricity bill is about $200 per month, what would solar cost?'},
+      {label: 'My bill is ~$300/mo', q: 'My electricity bill is about $300 per month, what would solar cost?'},
+      {label: 'Just browsing', q: 'I just want to learn about solar first'}
+    ];
+  } else if (path.indexOf('/welcome') !== -1) {
+    peekGreeting = "Hey! Excited for your upcoming assessment. Have any questions before PJ visits?";
+    peekQuickButtons = [
+      {label: 'What to expect', q: 'What happens during the assessment?'},
+      {label: 'Financing options', q: 'What financing options do you offer?'},
+      {label: 'How long does install take?', q: 'How long does a solar installation take?'}
+    ];
+  }
+
+  if (isAfterHours) {
+    peekGreeting += " (PJ's offline right now, but I can still help and set up a callback.)";
+  }
+
+  var quickBtnsHtml = peekQuickButtons.map(function(b) {
+    return '<button class="sc-peek-quick-btn" data-q="' + b.q + '">' + b.label + '</button>';
+  }).join('');
+
   // ── HTML: Peek card ──
   var peek = document.createElement('div');
   peek.className = 'sc-peek';
@@ -151,16 +221,12 @@
 <div class="sc-peek-info"><p class="sc-peek-name">PJ Singh <span class="sc-peek-online"></span></p><p class="sc-peek-role">Co-Founder · Stellar Upgrades</p></div>\
 <button class="sc-peek-close" aria-label="Close">&times;</button>\
 </div>\
-<div class="sc-peek-greeting">Hey! I\'m PJ. Have a question about solar, batteries, or EV chargers? I\'m here to help.</div>\
+<div class="sc-peek-greeting">' + peekGreeting + '</div>\
 <div class="sc-peek-input-wrap">\
 <input class="sc-peek-input" id="scPeekInput" placeholder="Ask me anything..." type="text">\
 <button class="sc-peek-send" id="scPeekSend" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>\
 </div>\
-<div class="sc-peek-quick">\
-<button class="sc-peek-quick-btn" data-q="How much does solar cost?">Solar pricing</button>\
-<button class="sc-peek-quick-btn" data-q="Tell me about battery backup">Battery backup</button>\
-<button class="sc-peek-quick-btn" data-q="EV charger pricing">EV chargers</button>\
-</div>\
+<div class="sc-peek-quick">' + quickBtnsHtml + '</div>\
 ';
   document.body.appendChild(peek);
 
@@ -365,6 +431,28 @@
     }
   }, 4000);
 
+  // Exit intent — show peek when mouse leaves viewport
+  if (window.innerWidth > 768) {
+    var exitShown = false;
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY < 10 && !exitShown && !chatOpen && !peekOpen && !peekDismissed) {
+        exitShown = true;
+        showPeek();
+      }
+    });
+  }
+
+  // Scroll depth — show peek at 60% scroll if not yet shown
+  var scrollShown = false;
+  window.addEventListener('scroll', function() {
+    if (scrollShown || chatOpen || peekOpen || peekDismissed) return;
+    var scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    if (scrollPct > 60) {
+      scrollShown = true;
+      showPeek();
+    }
+  });
+
   // Peek close button
   peekCloseBtn.addEventListener('click', function() {
     dismissPeek();
@@ -481,7 +569,9 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         messages: apiMessages,
-        sessionMessageCount: sessionMessageCount
+        sessionMessageCount: sessionMessageCount,
+        currentPage: window.location.pathname,
+        referrer: document.referrer
       })
     })
     .then(function(res) {
@@ -551,7 +641,9 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           messages: apiMessages,
-          sessionMessageCount: sessionMessageCount
+          sessionMessageCount: sessionMessageCount,
+          currentPage: window.location.pathname,
+          referrer: document.referrer
         })
       })
       .then(function(res) { return res.json(); })
