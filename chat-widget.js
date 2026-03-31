@@ -1,3 +1,4 @@
+// v2.0 — PJ peek card + avatar header
 (function() {
   'use strict';
 
