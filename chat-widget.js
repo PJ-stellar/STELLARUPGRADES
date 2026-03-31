@@ -3,6 +3,8 @@
 
   // ── State ──
   var chatOpen = false;
+  var peekOpen = false;
+  var peekDismissed = false;
   var messages = [];
   var sessionMessageCount = 0;
   var isTyping = false;
@@ -16,6 +18,7 @@
       messages = parsed.messages || [];
       sessionMessageCount = parsed.count || 0;
       leadCaptured = parsed.leadCaptured || false;
+      peekDismissed = parsed.peekDismissed || false;
     }
   } catch(e) {}
 
@@ -24,7 +27,8 @@
       sessionStorage.setItem('stellar_chat', JSON.stringify({
         messages: messages,
         count: sessionMessageCount,
-        leadCaptured: leadCaptured
+        leadCaptured: leadCaptured,
+        peekDismissed: peekDismissed
       }));
     } catch(e) {}
   }
@@ -36,22 +40,48 @@
 .sc-bubble{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:#2C3A2C;border:none;cursor:pointer;z-index:9990;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s}\
 .sc-bubble:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(0,0,0,.3)}\
 .sc-bubble svg{width:28px;height:28px;fill:#fff}\
-/* Hide bubble on mobile when sticky bar exists - we use sticky bar button instead */\
+.sc-bubble.hidden{display:none}\
 @media(max-width:768px){.sc-bubble.has-mob-cta{display:none}.sc-bubble{bottom:24px}}\
 \
-/* Chat panel - desktop */\
+/* ═══ PEEK CARD ═══ */\
+.sc-peek{position:fixed;bottom:24px;right:24px;width:340px;background:#fff;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.15),0 0 0 1px rgba(30,42,30,.06);z-index:9992;overflow:hidden;transform:translateY(20px) scale(.95);opacity:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;pointer-events:none}\
+.sc-peek.show{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}\
+@media(max-width:768px){.sc-peek{display:none!important}}\
+\
+.sc-peek-header{display:flex;align-items:center;gap:12px;padding:18px 20px 14px}\
+.sc-peek-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #c9a84c}\
+.sc-peek-info{flex:1}\
+.sc-peek-name{font-family:"Outfit",sans-serif;font-size:15px;font-weight:700;color:#1E2A1E;margin:0;line-height:1.2}\
+.sc-peek-role{font-family:"Outfit",sans-serif;font-size:12px;color:#5A6B5A;font-weight:400;margin:0}\
+.sc-peek-online{display:inline-block;width:8px;height:8px;background:#6ecf80;border-radius:50%;margin-left:6px;vertical-align:middle}\
+.sc-peek-close{background:none;border:none;cursor:pointer;width:32px;height:32px;min-width:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:18px;color:#94A494;transition:background .2s,color .2s;flex-shrink:0}\
+.sc-peek-close:hover{background:rgba(30,42,30,.06);color:#1E2A1E}\
+\
+.sc-peek-greeting{padding:0 20px 14px;font-family:"Outfit",sans-serif;font-size:14px;color:#1E2A1E;line-height:1.5;font-weight:400}\
+\
+.sc-peek-input-wrap{display:flex;gap:8px;padding:0 16px 16px;align-items:center}\
+.sc-peek-input{flex:1;border:1px solid rgba(30,42,30,.12);border-radius:60px;padding:12px 18px;font-family:"Outfit",sans-serif;font-size:14px;color:#1E2A1E;background:#FAFAF8;outline:none;min-height:44px;box-sizing:border-box}\
+.sc-peek-input:focus{border-color:rgba(201,168,76,.5);box-shadow:0 0 0 3px rgba(201,168,76,.1)}\
+.sc-peek-input::placeholder{color:rgba(30,42,30,.35)}\
+.sc-peek-send{width:44px;height:44px;min-width:44px;border-radius:50%;background:#2C3A2C;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .1s;flex-shrink:0}\
+.sc-peek-send:hover{background:#3a4d3a}\
+.sc-peek-send:active{transform:scale(.94)}\
+.sc-peek-send svg{width:18px;height:18px;fill:#fff}\
+\
+.sc-peek-quick{display:flex;gap:6px;padding:0 16px 14px;flex-wrap:wrap}\
+.sc-peek-quick-btn{background:#FAFAF8;border:1px solid rgba(30,42,30,.1);border-radius:60px;padding:8px 14px;font-family:"Outfit",sans-serif;font-size:12px;font-weight:500;color:#2C3A2C;cursor:pointer;transition:all .2s;white-space:nowrap}\
+.sc-peek-quick-btn:hover{background:#2C3A2C;color:#fff;border-color:#2C3A2C}\
+\
+/* ═══ CHAT PANEL ═══ */\
 .sc-panel{position:fixed;bottom:96px;right:24px;width:400px;height:600px;background:#FAFAFA;border-radius:16px;box-shadow:0 12px 60px rgba(0,0,0,.18);z-index:9991;display:none;flex-direction:column;overflow:hidden;transform:translateY(16px) scale(.96);opacity:0;transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .2s}\
 .sc-panel.open{display:flex;transform:translateY(0) scale(1);opacity:1}\
-\
-/* Mobile: full screen */\
 @media(max-width:768px){\
 .sc-panel{inset:0;width:100%;height:100%;border-radius:0;bottom:0;right:0;top:0;left:0}\
 }\
 \
 /* Header */\
 .sc-header{background:#2C3A2C;color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px;flex-shrink:0}\
-.sc-header-logo{width:36px;height:36px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}\
-.sc-header-logo svg{width:20px;height:20px}\
+.sc-header-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #c9a84c}\
 .sc-header-info{flex:1}\
 .sc-header-info h4{font-family:"Outfit",sans-serif;font-size:15px;font-weight:700;margin:0;line-height:1.2}\
 .sc-header-info span{font-size:12px;opacity:.7;font-weight:400}\
@@ -86,8 +116,6 @@
 .sc-send:active{transform:scale(.94)}\
 .sc-send:disabled{opacity:.4;cursor:default;transform:none}\
 .sc-send svg{width:20px;height:20px;fill:#fff}\
-\
-/* Mobile input: stay above keyboard */\
 @media(max-width:768px){\
 .sc-input-area{padding-bottom:env(safe-area-inset-bottom,12px)}\
 }\
@@ -105,21 +133,50 @@
 ';
   document.head.appendChild(css);
 
-  // ── HTML ──
-  // Chat bubble (desktop)
+  // ── PJ avatar URL ──
+  var PJ_AVATAR = '/images/pj.webp';
+
+  // ── HTML: Chat bubble ──
   var bubble = document.createElement('button');
   bubble.className = 'sc-bubble';
   bubble.setAttribute('aria-label', 'Chat with us');
   bubble.innerHTML = '<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/><path d="M7 9h10v2H7zm0-3h10v2H7z"/></svg>';
   document.body.appendChild(bubble);
 
-  // Chat panel
+  // ── HTML: Peek card ──
+  var peek = document.createElement('div');
+  peek.className = 'sc-peek';
+  peek.innerHTML = '\
+<div class="sc-peek-header">\
+<img class="sc-peek-avatar" src="' + PJ_AVATAR + '" alt="PJ Singh">\
+<div class="sc-peek-info"><p class="sc-peek-name">PJ Singh <span class="sc-peek-online"></span></p><p class="sc-peek-role">Co-Founder · Stellar Upgrades</p></div>\
+<button class="sc-peek-close" aria-label="Close">&times;</button>\
+</div>\
+<div class="sc-peek-greeting">Hey! I\'m PJ. Have a question about solar, batteries, or EV chargers? I\'m here to help.</div>\
+<div class="sc-peek-input-wrap">\
+<input class="sc-peek-input" id="scPeekInput" placeholder="Ask me anything..." type="text">\
+<button class="sc-peek-send" id="scPeekSend" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>\
+</div>\
+<div class="sc-peek-quick">\
+<button class="sc-peek-quick-btn" data-q="How much does solar cost?">Solar pricing</button>\
+<button class="sc-peek-quick-btn" data-q="Tell me about battery backup">Battery backup</button>\
+<button class="sc-peek-quick-btn" data-q="EV charger pricing">EV chargers</button>\
+</div>\
+';
+  document.body.appendChild(peek);
+
+  var peekInput = document.getElementById('scPeekInput');
+  var peekSendBtn = document.getElementById('scPeekSend');
+  var peekCloseBtn = peek.querySelector('.sc-peek-close');
+  var peekQuickBtns = peek.querySelectorAll('.sc-peek-quick-btn');
+
+  // ── HTML: Chat panel ──
   var panel = document.createElement('div');
   panel.className = 'sc-panel';
   panel.innerHTML = '\
 <div class="sc-header">\
-<div class="sc-header-logo"><svg viewBox="0 0 24 24" fill="#2C3A2C"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>\
-<div class="sc-header-info"><h4>Stellar Upgrades</h4><span>AI Assistant</span></div>\
+<img class="sc-header-avatar" src="' + PJ_AVATAR + '" alt="PJ Singh">\
+<div class="sc-header-info"><h4>PJ Singh</h4><span>Co-Founder · Stellar Upgrades</span></div>\
 <button class="sc-close" aria-label="Close chat">&times;</button>\
 </div>\
 <div class="sc-messages" id="scMessages">\
@@ -139,14 +196,12 @@
   var sendBtn = document.getElementById('scSend');
   var closeBtn = panel.querySelector('.sc-close');
 
-  // ── Mobile sticky bar: WhatsApp + Chat With Us ──
+  // ── Mobile sticky bar ──
   function setupMobileCTA() {
     var mobCta = document.querySelector('.mob-cta');
     if (!mobCta) return;
-    // Flag bubble to hide on mobile since sticky bar exists
     bubble.classList.add('has-mob-cta');
 
-    // Determine WhatsApp pre-fill message based on current page
     var path = window.location.pathname.toLowerCase();
     var waText;
     if (path === '/' || path.indexOf('/index') !== -1 || path.indexOf('/solar') !== -1) {
@@ -160,7 +215,6 @@
     }
     var waUrl = 'https://wa.me/17802005265?text=' + encodeURIComponent(waText);
 
-    // Replace call button with WhatsApp
     var callBtn = mobCta.querySelector('.mob-cta-call') || mobCta.querySelector('.mob-cta-c');
     if (callBtn) {
       var waBtn = document.createElement('a');
@@ -172,7 +226,6 @@
       callBtn.replaceWith(waBtn);
     }
 
-    // Replace quote/assessment button with Chat With Us
     var quoteBtn = mobCta.querySelector('.mob-cta-quote') || mobCta.querySelector('.mob-cta-q');
     if (quoteBtn) {
       var chatBtn = document.createElement('button');
@@ -208,41 +261,32 @@
     div.className = 'sc-msg ' + (role === 'assistant' ? 'sc-msg-agent' : 'sc-msg-user');
     div.innerHTML = linkify(parsed.text);
     messagesEl.insertBefore(div, typingEl);
-
-    // Render option buttons for assistant messages
     if (role === 'assistant' && parsed.options.length > 0 && showOptions !== false) {
       renderOptions(parsed.options);
     }
-
     scrollToBottom();
   }
 
   function renderOptions(options) {
-    // Remove any existing option buttons
     var old = messagesEl.querySelectorAll('.sc-options');
     old.forEach(function(el) { el.remove(); });
-
     var wrap = document.createElement('div');
     wrap.className = 'sc-options';
-
     options.forEach(function(optText) {
       var btn = document.createElement('button');
       btn.className = 'sc-opt';
       btn.textContent = optText;
       btn.addEventListener('click', function() {
-        // Highlight tapped button, fade out siblings
         btn.classList.add('selected');
         wrap.classList.add('fade-out');
         setTimeout(function() {
           wrap.remove();
-          // Send as user message
           inputEl.value = optText;
           sendMessage();
         }, 250);
       });
       wrap.appendChild(btn);
     });
-
     messagesEl.insertBefore(wrap, typingEl);
     scrollToBottom();
   }
@@ -265,11 +309,8 @@
   }
 
   function renderExistingMessages() {
-    // Remove all existing bubbles and option buttons (not typing indicator)
     var existing = messagesEl.querySelectorAll('.sc-msg, .sc-options');
     existing.forEach(function(el) { el.remove(); });
-
-    // Find last assistant message index to show options only on it
     var lastAssistantIdx = -1;
     for (var j = messages.length - 1; j >= 0; j--) {
       if (messages[j].role === 'assistant' && typeof messages[j]._displayText === 'string') {
@@ -277,10 +318,7 @@
         break;
       }
     }
-
-    // Check if last message is from assistant (options still active)
     var lastMsgIsAssistant = messages.length > 0 && messages[messages.length - 1].role === 'assistant';
-
     for (var i = 0; i < messages.length; i++) {
       var msg = messages[i];
       if (msg.role === 'assistant' && typeof msg._displayText === 'string') {
@@ -296,22 +334,103 @@
     }
   }
 
-  // ── Open / Close ──
-  function openChat() {
-    chatOpen = true;
-    panel.classList.add('open');
-    // Force reflow for animation
-    panel.offsetHeight;
+  // ── Peek: show / hide ──
+  function showPeek() {
+    if (peekDismissed || chatOpen || peekOpen) return;
+    // Don't show on mobile
+    if (window.innerWidth <= 768) return;
+    peekOpen = true;
+    bubble.classList.add('hidden');
+    peek.classList.add('show');
+    if (typeof gtag === 'function') {
+      gtag('event', 'chat_peek_shown', { event_category: 'engagement' });
+    }
+  }
 
-    // Show opening message if first time
+  function hidePeek() {
+    peekOpen = false;
+    peek.classList.remove('show');
+    if (!chatOpen) {
+      bubble.classList.remove('hidden');
+    }
+  }
+
+  function dismissPeek() {
+    peekDismissed = true;
+    hidePeek();
+    saveSession();
+  }
+
+  // Auto-show peek after 4 seconds (desktop only, first visit)
+  if (!peekDismissed && messages.length === 0) {
+    setTimeout(function() {
+      showPeek();
+    }, 4000);
+  }
+
+  // Peek close button
+  peekCloseBtn.addEventListener('click', function() {
+    dismissPeek();
+  });
+
+  // Peek input: send from peek → open full chat with that message
+  function sendFromPeek(text) {
+    if (!text) return;
+    peekDismissed = true;
+    hidePeek();
+    openChat(text);
+  }
+
+  peekSendBtn.addEventListener('click', function() {
+    sendFromPeek(peekInput.value.trim());
+  });
+
+  peekInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      sendFromPeek(peekInput.value.trim());
+    }
+  });
+
+  // Peek quick buttons
+  peekQuickBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      sendFromPeek(btn.getAttribute('data-q'));
+    });
+  });
+
+  // ── Open / Close chat ──
+  function openChat(initialMessage) {
+    chatOpen = true;
+    peekDismissed = true;
+    hidePeek();
+    bubble.classList.add('hidden');
+    panel.classList.add('open');
+    panel.offsetHeight; // force reflow
+
     if (messages.length === 0) {
       var greeting = "Hey! I'm PJ's personal assistant. PJ is the co-founder of Stellar Upgrades \u2014 I can answer any questions about solar, battery backup, EV chargers, pricing, financing, or our process. How can I help you today?";
       messages.push({ role: 'assistant', content: [{ type: 'text', text: greeting }], _displayText: greeting });
       addMessageBubble('assistant', greeting, false);
-      renderOptions(['How much does solar cost?', 'Tell me about battery backup', 'EV charger pricing', 'Talk to PJ directly']);
+
+      if (initialMessage) {
+        // User typed something in peek — send it immediately
+        setTimeout(function() {
+          inputEl.value = initialMessage;
+          sendMessage();
+        }, 300);
+      } else {
+        renderOptions(['How much does solar cost?', 'Tell me about battery backup', 'EV charger pricing', 'Talk to PJ directly']);
+      }
       saveSession();
     } else {
       renderExistingMessages();
+      if (initialMessage) {
+        setTimeout(function() {
+          inputEl.value = initialMessage;
+          sendMessage();
+        }, 300);
+      }
     }
 
     setTimeout(function() { inputEl.focus(); }, 300);
@@ -324,6 +443,7 @@
   function closeChat() {
     chatOpen = false;
     panel.classList.remove('open');
+    bubble.classList.remove('hidden');
   }
 
   bubble.addEventListener('click', function() {
@@ -342,11 +462,9 @@
     var text = inputEl.value.trim();
     if (!text || isTyping) return;
 
-    // Remove any existing option buttons
     var oldOpts = messagesEl.querySelectorAll('.sc-options');
     oldOpts.forEach(function(el) { el.remove(); });
 
-    // Add user message
     messages.push({ role: 'user', content: text });
     addMessageBubble('user', text);
     inputEl.value = '';
@@ -357,11 +475,7 @@
     showTyping();
     sendBtn.disabled = true;
 
-    // Build API messages (strip _displayText for API)
     var apiMessages = messages.map(function(m) {
-      if (m._displayText !== undefined) {
-        return { role: m.role, content: m.content };
-      }
       return { role: m.role, content: m.content };
     });
 
@@ -409,19 +523,15 @@
     }
 
     var displayText = textParts.join('\n');
-
-    // Always store assistant message (needed for API context, even if no text)
     messages.push({ role: 'assistant', content: data.content, _displayText: displayText });
     if (displayText) {
       addMessageBubble('assistant', displayText);
     }
 
-    // Handle tool use - capture lead
     if (toolUse && !leadCaptured) {
       leadCaptured = true;
       submitLeadToSunbase(toolUse.input);
 
-      // Send tool result back and get final response
       messages.push({
         role: 'user',
         content: [{
@@ -477,7 +587,6 @@
 
     var img = new Image();
     img.onload = img.onerror = function() {
-      // Fire Google Ads conversion
       if (typeof gtag === 'function') {
         gtag('event', 'conversion', {
           send_to: 'AW-385606008/2VjbCMSd3_8bEPmVz_tC',
@@ -503,7 +612,7 @@
     }
   });
 
-  // ── Expose openChat globally for mobile CTA ──
+  // ── Expose openChat globally ──
   window.openStellarChat = openChat;
 
 })();
