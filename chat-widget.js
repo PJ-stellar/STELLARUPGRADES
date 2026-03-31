@@ -19,7 +19,6 @@
       messages = parsed.messages || [];
       sessionMessageCount = parsed.count || 0;
       leadCaptured = parsed.leadCaptured || false;
-      peekDismissed = parsed.peekDismissed || false;
     }
   } catch(e) {}
 
@@ -28,8 +27,7 @@
       sessionStorage.setItem('stellar_chat', JSON.stringify({
         messages: messages,
         count: sessionMessageCount,
-        leadCaptured: leadCaptured,
-        peekDismissed: peekDismissed
+        leadCaptured: leadCaptured
       }));
     } catch(e) {}
   }
@@ -47,7 +45,7 @@
 /* ═══ PEEK CARD ═══ */\
 .sc-peek{position:fixed;bottom:24px;right:24px;width:340px;background:#fff;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.15),0 0 0 1px rgba(30,42,30,.06);z-index:9992;overflow:hidden;transform:translateY(20px) scale(.95);opacity:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;pointer-events:none}\
 .sc-peek.show{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}\
-@media(max-width:768px){.sc-peek{display:none!important}}\
+@media(max-width:768px){.sc-peek{left:12px;right:12px;bottom:80px;width:auto}}\
 \
 .sc-peek-header{display:flex;align-items:center;gap:12px;padding:18px 20px 14px}\
 .sc-peek-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #c9a84c}\
@@ -337,9 +335,7 @@
 
   // ── Peek: show / hide ──
   function showPeek() {
-    if (peekDismissed || chatOpen || peekOpen) return;
-    // Don't show on mobile
-    if (window.innerWidth <= 768) return;
+    if (chatOpen || peekOpen) return;
     peekOpen = true;
     bubble.classList.add('hidden');
     peek.classList.add('show');
@@ -363,7 +359,7 @@
   }
 
   // Auto-show peek after 4 seconds (desktop only, first visit)
-  if (!peekDismissed && messages.length === 0) {
+  if (messages.length === 0) {
     setTimeout(function() {
       showPeek();
     }, 4000);
