@@ -29,196 +29,170 @@ img{max-width:100%;height:auto;display:block}
 .scroll-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--goldL));z-index:10001;width:0%}
 
 /* ═══ NAV ═══ */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;display:flex;align-items:center;justify-content:center;padding:0 clamp(20px,4vw,64px);background:rgba(250,250,248,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--b)}
-.ni{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1200px}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;display:flex;align-items:center;justify-content:center;padding:0 clamp(16px,4vw,64px);background:rgba(250,250,248,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--b)}
+.ni{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px}
 .n-logo{display:flex;align-items:center;flex-shrink:0}
-.n-logo img{height:50px;width:auto}
+.n-logo img{height:44px;width:auto}
 .n-actions{display:flex;align-items:center;gap:10px}
 .n-phone{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--tdd);padding:7px 12px;border-radius:60px;transition:all .25s}
-.n-phone:hover{color:var(--t);background:rgba(240,232,216,.04)}
+.n-phone:hover{color:var(--t)}
 .n-phone svg{width:13px;height:13px;flex-shrink:0}
-.n-cta{padding:10px 24px;border-radius:60px;font-size:12px;font-weight:700;background:#1E2A1E;color:#fff;transition:all .3s;display:inline-block;letter-spacing:.02em;white-space:nowrap;cursor:pointer;border:none;font-family:inherit}
+.n-cta{padding:10px 22px;border-radius:60px;font-size:12px;font-weight:700;background:#1E2A1E;color:#fff;transition:all .3s;display:inline-block;letter-spacing:.02em;white-space:nowrap;cursor:pointer;border:none;font-family:inherit}
 .n-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--glow)}
 @media(max-width:1100px){.n-phone{display:none!important}}
 @media(max-width:480px){.n-cta{font-size:11px;padding:9px 16px}}
 
 /* ═══ SECTIONS ═══ */
-.sec{padding:clamp(48px,7vw,100px) clamp(20px,5vw,80px)}
+.sec{padding:clamp(40px,6vw,80px) clamp(16px,5vw,80px)}
 .sec-i{max-width:1100px;margin:0 auto}
-.tag{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.tag{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
 .tag-c{justify-content:center}
-h1{font-family:'DM Serif Display',serif;font-size:clamp(34px,5.5vw,64px);letter-spacing:-.03em;line-height:1.08;color:var(--t)}
-h2{font-family:'DM Serif Display',serif;font-size:clamp(26px,3.2vw,44px);letter-spacing:-.02em;line-height:1.1}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(30px,5vw,56px);letter-spacing:-.03em;line-height:1.08;color:var(--t)}
+h2{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,40px);letter-spacing:-.02em;line-height:1.1}
 h1 em,h2 em{font-family:'DM Serif Display',serif;font-style:italic;background:linear-gradient(135deg,var(--gold),var(--goldL));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.btn{background:#1E2A1E;color:#fff;padding:16px 34px;border-radius:60px;font-family:inherit;font-size:14px;font-weight:700;border:none;cursor:pointer;transition:all .35s;display:inline-block}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,168,76,.2)}
-.btn-g{color:var(--td);font-size:14px;font-weight:500;padding:16px 4px;transition:color .25s;display:inline-block}
-.btn-g:hover{color:var(--t)}
 
-/* ═══ HERO ═══ */
-.hero{padding-top:100px}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,60px);align-items:center}
-.hero-text{max-width:540px}
-.hero-sub{font-size:16px;color:var(--td);line-height:1.7;font-weight:300;margin:18px 0 0}
-.hero-img{border-radius:var(--r);overflow:hidden;box-shadow:0 16px 60px rgba(0,0,0,.08)}
-.hero-img img{width:100%;height:100%;object-fit:cover;min-height:340px}
-@media(max-width:768px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero-text{max-width:100%}.hero-text .tag{justify-content:center}.hero-img{order:-1;max-height:260px}.hero-img img{min-height:260px}}
+/* ═══ HERO + FORM ═══ */
+.hero{padding-top:84px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.hero-text{max-width:520px}
+.hero-sub{font-size:15px;color:var(--td);line-height:1.7;font-weight:300;margin:14px 0 0}
+
+/* Inline form card */
+.form-card{background:#fff;border:1px solid var(--b);border-radius:var(--r);padding:clamp(24px,3vw,32px);box-shadow:0 8px 40px rgba(0,0,0,.06)}
+.form-card h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.4vw,26px);color:var(--t);margin-bottom:4px;text-align:center}
+.form-card>p{font-size:13px;color:var(--td);text-align:center;margin-bottom:20px;font-weight:300;line-height:1.5}
+.form-fields{display:grid;gap:10px}
+.form-input{padding:16px 18px;border:1px solid rgba(30,42,30,0.1);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--t);width:100%;transition:border-color .2s}
+.form-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--glow)}
+.form-submit{width:100%;padding:16px;border-radius:60px;background:#1E2A1E;color:#fff;font-family:inherit;font-size:15px;font-weight:700;border:none;cursor:pointer;transition:all .3s;margin-top:4px}
+.form-submit:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(201,168,76,.25)}
+.form-submit:disabled{opacity:.6;cursor:not-allowed}
+.form-trust{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px;font-size:11px;color:var(--tdd);flex-wrap:wrap}
+.form-trust span{display:flex;align-items:center;gap:3px}
+.form-success{display:none;text-align:center;padding:20px 0}
+.form-success .checkmark{width:56px;height:56px;background:rgba(110,207,128,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px}
+.form-success h4{font-family:'DM Serif Display',serif;font-size:22px;color:var(--t);margin-bottom:6px}
+.form-success h4 em{color:var(--gold)}
+.form-success p{font-size:14px;color:var(--td);line-height:1.6;font-weight:300}
+
+@media(max-width:768px){
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero-text{max-width:100%}
+  .hero-text .tag{justify-content:center}
+  .form-card{margin-top:8px}
+}
+
+/* ═══ PROOF BAR ═══ */
+.proof-bar{background:#1E2A1E;padding:clamp(28px,4vw,44px) clamp(16px,5vw,80px)}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:900px;margin:0 auto;text-align:center}
+.proof-num{font-family:'DM Serif Display',serif;font-size:clamp(26px,3.5vw,42px);color:var(--gold);line-height:1}
+.proof-label{font-size:10px;color:rgba(255,255,255,.4);font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+@media(max-width:600px){.proof-grid{grid-template-columns:repeat(2,1fr);gap:20px 12px}}
 
 /* ═══ CALCULATOR ═══ */
 .calc-sec{background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b)}
-.calc-wrap{max-width:680px;margin:0 auto;text-align:center}
-.calc-label{font-size:14px;font-weight:700;color:var(--t);margin-bottom:8px}
-.calc-bill{font-family:'DM Serif Display',serif;font-size:clamp(48px,6vw,72px);color:var(--gold);line-height:1;margin:8px 0 4px}
-.calc-bill span{font-size:clamp(20px,2.5vw,28px);color:var(--tdd);font-family:'Outfit',sans-serif;font-weight:300}
-.calc-slider{width:100%;max-width:500px;margin:20px auto;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;background:var(--b);outline:none;cursor:pointer}
+.calc-wrap{max-width:700px;margin:0 auto;text-align:center}
+.calc-label{font-size:14px;font-weight:700;color:var(--t);margin-bottom:6px}
+.calc-bill{font-family:'DM Serif Display',serif;font-size:clamp(44px,5.5vw,64px);color:var(--gold);line-height:1;margin:6px 0 4px}
+.calc-bill span{font-size:clamp(18px,2.2vw,24px);color:var(--tdd);font-family:'Outfit',sans-serif;font-weight:300}
+.calc-slider{width:100%;max-width:480px;margin:16px auto;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;background:var(--b);outline:none;cursor:pointer}
 .calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#1E2A1E;border:3px solid var(--gold);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .calc-slider::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#1E2A1E;border:3px solid var(--gold);cursor:pointer}
-.calc-range{display:flex;justify-content:space-between;max-width:500px;margin:0 auto;font-size:12px;color:var(--tdd);font-weight:500}
-.calc-results{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
-.calc-card{background:#fff;border:1px solid var(--b);border-radius:var(--r);padding:24px;text-align:center}
+.calc-range{display:flex;justify-content:space-between;max-width:480px;margin:0 auto;font-size:12px;color:var(--tdd);font-weight:500}
+.calc-results{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.calc-card{background:#fff;border:1px solid var(--b);border-radius:var(--r);padding:22px 16px;text-align:center}
 .calc-card.bad{border-color:rgba(232,124,108,.2)}
 .calc-card.good{border-color:rgba(110,207,128,.2)}
-.calc-card-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.calc-card-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
 .calc-card.bad .calc-card-label{color:var(--red)}
 .calc-card.good .calc-card-label{color:var(--green)}
-.calc-card-num{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,40px);line-height:1}
+.calc-card-num{font-family:'DM Serif Display',serif;font-size:clamp(26px,3.2vw,38px);line-height:1}
 .calc-card.bad .calc-card-num{color:var(--red)}
 .calc-card.good .calc-card-num{color:var(--green)}
-.calc-card-sub{font-size:12px;color:var(--tdd);margin-top:4px;font-weight:300}
-.calc-cta{margin-top:32px}
+.calc-card-sub{font-size:11px;color:var(--tdd);margin-top:4px;font-weight:300}
+.calc-inflate{font-size:12px;color:var(--tdd);margin-top:16px;font-weight:300;font-style:italic}
+.calc-cta{margin-top:24px}
+.btn{background:#1E2A1E;color:#fff;padding:14px 30px;border-radius:60px;font-family:inherit;font-size:14px;font-weight:700;border:none;cursor:pointer;transition:all .35s;display:inline-block}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,168,76,.2)}
 @media(max-width:480px){.calc-results{grid-template-columns:1fr}}
 
-/* ═══ QUIZ FUNNEL ═══ */
-.quiz-sec{background:#fff;border-bottom:1px solid var(--b)}
-.quiz-wrap{max-width:600px;margin:0 auto;text-align:center}
-.quiz-progress{display:flex;gap:8px;margin-bottom:32px;justify-content:center}
-.quiz-dot{width:40px;height:4px;border-radius:2px;background:var(--b);transition:all .3s}
-.quiz-dot.active{background:var(--gold);width:56px}
-.quiz-dot.done{background:var(--green)}
-.quiz-step{display:none}
-.quiz-step.active{display:block}
-.quiz-step h3{font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,30px);color:var(--t);margin-bottom:6px}
-.quiz-step>p{font-size:14px;color:var(--td);font-weight:300;margin-bottom:24px}
-
-/* Tile options */
-.quiz-tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.quiz-tile{background:var(--bg);border:2px solid var(--b);border-radius:var(--r);padding:20px 16px;cursor:pointer;transition:all .25s;text-align:center}
-.quiz-tile:hover{border-color:var(--bG);background:rgba(201,168,76,.03)}
-.quiz-tile.selected{border-color:var(--gold);background:rgba(201,168,76,.06);box-shadow:0 0 0 3px var(--glow)}
-.quiz-tile-icon{font-size:32px;margin-bottom:8px;display:block}
-.quiz-tile-label{font-size:14px;font-weight:700;color:var(--t);display:block}
-.quiz-tile-sub{font-size:11px;color:var(--tdd);font-weight:300;display:block;margin-top:2px}
-
-/* Multi-select tiles */
-.quiz-tiles-3{grid-template-columns:1fr 1fr 1fr}
-@media(max-width:480px){.quiz-tiles-3{grid-template-columns:1fr}}
-
-/* Form step */
-.quiz-form{display:grid;gap:12px;max-width:400px;margin:0 auto}
-.quiz-input{padding:18px 20px;border:1px solid rgba(30,42,30,0.1);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--t);width:100%;transition:border-color .2s}
-.quiz-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--glow)}
-.quiz-submit{width:100%;padding:18px;border-radius:60px;background:#1E2A1E;color:#fff;font-family:inherit;font-size:16px;font-weight:700;border:none;cursor:pointer;transition:all .3s;margin-top:4px}
-.quiz-submit:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(201,168,76,.3)}
-.quiz-submit:disabled{opacity:.6;cursor:not-allowed}
-.quiz-trust{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:16px;font-size:12px;color:var(--tdd);flex-wrap:wrap}
-.quiz-trust span{display:flex;align-items:center;gap:4px}
-
-/* Quiz success */
-.quiz-success{display:none;text-align:center;padding:24px 0}
-.quiz-success h3{font-family:'DM Serif Display',serif;font-size:28px;color:var(--t);margin-bottom:8px}
-.quiz-success h3 em{color:var(--gold)}
-.quiz-success p{font-size:15px;color:var(--td);line-height:1.6;font-weight:300;max-width:400px;margin:0 auto}
-.quiz-success .checkmark{width:64px;height:64px;background:rgba(110,207,128,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px}
-
-/* Quiz back button */
-.quiz-back{font-size:13px;color:var(--tdd);cursor:pointer;background:none;border:none;font-family:inherit;margin-top:16px;padding:8px;transition:color .2s}
-.quiz-back:hover{color:var(--t)}
-
-/* ═══ PROOF BAR ═══ */
-.proof-bar{background:#1E2A1E;padding:clamp(36px,5vw,56px) clamp(20px,5vw,80px)}
-.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1000px;margin:0 auto;text-align:center}
-.proof-num{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,48px);color:var(--gold);line-height:1}
-.proof-label{font-size:11px;color:rgba(255,255,255,.45);font-weight:700;margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
-@media(max-width:600px){.proof-grid{grid-template-columns:repeat(2,1fr);gap:24px 16px}}
-
-/* ═══ TESTIMONIALS ═══ */
-.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,48px);align-items:center}
-.testi-card{background:#fff;border:1px solid var(--b);border-radius:var(--r);padding:28px 24px;box-shadow:0 1px 4px rgba(0,0,0,.04);border-left:4px solid var(--gold)}
-.testi-saving{display:inline-block;background:rgba(110,207,128,.1);color:var(--green);font-weight:900;font-size:13px;padding:6px 14px;border-radius:8px;margin-bottom:14px}
-.testi-quote{font-family:'DM Serif Display',serif;font-size:clamp(16px,1.8vw,19px);font-style:italic;color:var(--t);line-height:1.6;margin-bottom:14px}
-.testi-name{font-size:14px;font-weight:700;color:var(--t)}
-.testi-loc{font-size:13px;color:var(--td);font-weight:300}
+/* ═══ TESTIMONIAL ═══ */
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:center}
+.testi-card{background:#fff;border:1px solid var(--b);border-radius:var(--r);padding:24px 20px;box-shadow:0 1px 4px rgba(0,0,0,.04);border-left:4px solid var(--gold)}
+.testi-saving{display:inline-block;background:rgba(110,207,128,.1);color:var(--green);font-weight:900;font-size:12px;padding:5px 12px;border-radius:8px;margin-bottom:12px}
+.testi-quote{font-family:'DM Serif Display',serif;font-size:clamp(15px,1.6vw,18px);font-style:italic;color:var(--t);line-height:1.6;margin-bottom:12px}
+.testi-name{font-size:13px;font-weight:700;color:var(--t)}
+.testi-loc{font-size:12px;color:var(--td);font-weight:300}
 .testi-img{border-radius:var(--r);overflow:hidden}
-.testi-img img{width:100%;height:100%;object-fit:cover;min-height:300px}
-@media(max-width:768px){.testi-grid{grid-template-columns:1fr}.testi-img{max-height:240px}.testi-img img{min-height:240px}}
+.testi-img img{width:100%;height:100%;object-fit:cover;min-height:280px}
+@media(max-width:768px){.testi-grid{grid-template-columns:1fr}.testi-img{max-height:220px}.testi-img img{min-height:220px}}
 
 /* ═══ HOW IT WORKS ═══ */
-.steps{display:flex;flex-direction:column;gap:24px;max-width:600px;margin:32px auto 0}
-.step{display:flex;align-items:flex-start;gap:16px}
-.step-num{flex-shrink:0;width:44px;height:44px;background:#1E2A1E;color:var(--gold);font-family:'DM Serif Display',serif;font-size:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.step h3{font-family:'DM Serif Display',serif;font-size:18px;color:var(--t);margin-bottom:4px}
-.step p{font-size:14px;color:var(--td);line-height:1.6;font-weight:300}
+.steps{display:flex;flex-direction:column;gap:20px;max-width:560px;margin:28px auto 0}
+.step{display:flex;align-items:flex-start;gap:14px}
+.step-num{flex-shrink:0;width:40px;height:40px;background:#1E2A1E;color:var(--gold);font-family:'DM Serif Display',serif;font-size:17px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.step h3{font-family:'DM Serif Display',serif;font-size:17px;color:var(--t);margin-bottom:3px}
+.step p{font-size:13px;color:var(--td);line-height:1.6;font-weight:300}
 
-/* ═══ WHY + CREW PHOTO ═══ */
-.why-grid-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,48px);align-items:start}
-.why-cards{display:flex;flex-direction:column;gap:14px}
-.why-card{background:rgba(240,232,216,.03);border:1px solid var(--b);border-radius:var(--r);padding:22px;transition:all .4s}
+/* ═══ WHY STELLAR ═══ */
+.why-grid-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:start}
+.why-cards{display:flex;flex-direction:column;gap:12px}
+.why-card{background:rgba(240,232,216,.03);border:1px solid var(--b);border-radius:var(--r);padding:20px;transition:all .4s}
 .why-card:hover{border-color:var(--bG);transform:translateY(-2px)}
-.why-card h3{font-family:'DM Serif Display',serif;font-size:17px;color:var(--gold);margin-bottom:4px}
-.why-card p{font-size:13px;color:var(--td);line-height:1.6;font-weight:300}
-.why-img{border-radius:var(--r);overflow:hidden;position:sticky;top:100px}
-.why-img img{width:100%;object-fit:cover;min-height:400px}
-@media(max-width:768px){.why-grid-wrap{grid-template-columns:1fr}.why-img{position:static;max-height:280px}.why-img img{min-height:280px}}
+.why-card h3{font-family:'DM Serif Display',serif;font-size:16px;color:var(--gold);margin-bottom:3px}
+.why-card p{font-size:12px;color:var(--td);line-height:1.6;font-weight:300}
+.why-img{border-radius:var(--r);overflow:hidden;position:sticky;top:90px}
+.why-img img{width:100%;object-fit:cover;min-height:380px}
+@media(max-width:768px){.why-grid-wrap{grid-template-columns:1fr}.why-img{position:static;max-height:260px}.why-img img{min-height:260px}}
 
 /* ═══ FOUNDERS ═══ */
-.founders{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:640px;margin:36px auto 0}
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:580px;margin:28px auto 0}
 .founder{background:#fff;border:1px solid var(--b);border-radius:var(--r);overflow:hidden;text-align:center;transition:all .4s}
 .founder:hover{border-color:var(--bG);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.06)}
-.founder img{width:100%;height:200px;object-fit:cover;object-position:top}
-.founder-info{padding:18px 16px}
-.founder-name{font-family:'DM Serif Display',serif;font-size:18px;color:var(--t);margin-bottom:2px}
-.founder-role{font-size:12px;color:var(--td);font-weight:500}
-.founder-desc{font-size:12px;color:var(--tdd);margin-top:8px;line-height:1.5;font-weight:300}
-@media(max-width:480px){.founders{grid-template-columns:1fr;max-width:320px}}
+.founder img{width:100%;height:180px;object-fit:cover;object-position:top}
+.founder-info{padding:16px 14px}
+.founder-name{font-family:'DM Serif Display',serif;font-size:17px;color:var(--t);margin-bottom:2px}
+.founder-role{font-size:11px;color:var(--td);font-weight:500}
+.founder-desc{font-size:11px;color:var(--tdd);margin-top:6px;line-height:1.5;font-weight:300}
+@media(max-width:480px){.founders{grid-template-columns:1fr;max-width:300px}}
 
-/* ═══ DARK CTA (second form) ═══ */
+/* ═══ DARK BOTTOM CTA ═══ */
 .cta-sec{background:#1E2A1E;color:#fff;text-align:center;position:relative;overflow:hidden}
-.cta-sec::before{content:'';position:absolute;top:50%;left:50%;width:600px;height:600px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06),transparent 55%);pointer-events:none}
-.cta-sec h2{color:#fff;margin-bottom:8px}
-.cta-sec>p,.cta-form-wrap>p{color:rgba(255,255,255,.65)}
-.cta-form-wrap{max-width:400px;margin:0 auto;position:relative;z-index:1}
-.cta-form{display:grid;gap:12px;margin-top:24px}
-.cta-form input{padding:18px 20px;border:1px solid rgba(255,255,255,.12);border-radius:12px;font-family:inherit;font-size:16px;background:rgba(255,255,255,.08);color:#fff;width:100%;transition:border-color .2s}
+.cta-sec::before{content:'';position:absolute;top:50%;left:50%;width:500px;height:500px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06),transparent 55%);pointer-events:none}
+.cta-sec h2{color:#fff;margin-bottom:6px}
+.cta-form-wrap{max-width:380px;margin:0 auto;position:relative;z-index:1}
+.cta-form{display:grid;gap:10px;margin-top:20px}
+.cta-form input{padding:16px 18px;border:1px solid rgba(255,255,255,.12);border-radius:12px;font-family:inherit;font-size:16px;background:rgba(255,255,255,.08);color:#fff;width:100%;transition:border-color .2s}
 .cta-form input::placeholder{color:rgba(255,255,255,.4)}
 .cta-form input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.15)}
-.cta-form button{width:100%;padding:18px;border-radius:60px;background:var(--goldD);color:#fff;font-family:inherit;font-size:16px;font-weight:700;border:none;cursor:pointer;transition:all .3s;margin-top:4px}
+.cta-form button{width:100%;padding:16px;border-radius:60px;background:var(--goldD);color:#fff;font-family:inherit;font-size:15px;font-weight:700;border:none;cursor:pointer;transition:all .3s;margin-top:4px}
 .cta-form button:hover{background:var(--gold);transform:translateY(-1px)}
 .cta-form button:disabled{opacity:.6;cursor:not-allowed}
-.cta-trust{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:16px;font-size:12px;color:rgba(255,255,255,.35);flex-wrap:wrap}
-.cta-fin{font-size:13px;color:rgba(255,255,255,.4);margin-top:14px}
+.cta-trust{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px;font-size:11px;color:rgba(255,255,255,.3);flex-wrap:wrap}
+.cta-fin{font-size:12px;color:rgba(255,255,255,.35);margin-top:12px}
 .cta-fin strong{color:var(--goldD)}
-.cta-success{display:none;text-align:center;padding:24px 0}
-.cta-success h4{font-size:22px;font-weight:700;color:var(--goldD);margin-bottom:8px}
-.cta-success p{font-size:15px;color:rgba(255,255,255,.65)}
+.cta-success{display:none;text-align:center;padding:20px 0}
+.cta-success h4{font-size:20px;font-weight:700;color:var(--goldD);margin-bottom:6px}
+.cta-success p{font-size:14px;color:rgba(255,255,255,.6)}
 
 /* ═══ FOOTER ═══ */
-footer{background:var(--bg2);color:var(--td);padding:clamp(32px,4vw,48px) clamp(20px,5vw,80px) 24px;border-top:1px solid var(--b);text-align:center}
-footer h3{font-family:'DM Serif Display',serif;font-size:18px;color:var(--t);margin-bottom:8px}
-footer p{font-size:13px;color:var(--td);line-height:1.7;margin-bottom:6px;font-weight:300}
+footer{background:var(--bg2);color:var(--td);padding:clamp(28px,3vw,40px) clamp(16px,5vw,80px) 20px;border-top:1px solid var(--b);text-align:center}
+footer h3{font-family:'DM Serif Display',serif;font-size:17px;color:var(--t);margin-bottom:6px}
+footer p{font-size:12px;color:var(--td);line-height:1.7;margin-bottom:4px;font-weight:300}
 footer a{color:var(--td);transition:color .2s}
 footer a:hover{color:var(--goldD)}
-.ft-bot{display:flex;justify-content:center;align-items:center;gap:18px;padding-top:20px;border-top:1px solid var(--b);margin-top:20px;font-size:12px;color:var(--tdd)}
+.ft-bot{display:flex;justify-content:center;align-items:center;gap:16px;padding-top:16px;border-top:1px solid var(--b);margin-top:16px;font-size:11px;color:var(--tdd)}
 
 /* ═══ MOBILE STICKY ═══ */
-.mob-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:rgba(250,250,248,.95);backdrop-filter:blur(12px);border-top:1px solid var(--b);padding:12px 16px;gap:10px}
-.mob-cta a,.mob-cta button{flex:1;text-align:center;padding:14px 8px;border-radius:60px;font-weight:700;font-size:14px;font-family:inherit;cursor:pointer}
+.mob-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:rgba(250,250,248,.95);backdrop-filter:blur(12px);border-top:1px solid var(--b);padding:10px 14px;gap:8px}
+.mob-cta a,.mob-cta button{flex:1;text-align:center;padding:13px 8px;border-radius:60px;font-weight:700;font-size:13px;font-family:inherit;cursor:pointer}
 .mob-cta-call{background:transparent;border:2px solid var(--gold);color:var(--gold);text-decoration:none;display:flex;align-items:center;justify-content:center}
 .mob-cta-quote{background:#1E2A1E;color:#fff;border:2px solid transparent}
-@media(max-width:768px){.mob-cta{display:flex}body{padding-bottom:72px}footer{padding-bottom:80px}}
+@media(max-width:768px){.mob-cta{display:flex}body{padding-bottom:68px}footer{padding-bottom:76px}}
 
 /* ═══ SCROLL REVEAL ═══ */
-.rv{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
 .rv.v{opacity:1;transform:translateY(0)}
 .rv-d1{transition-delay:.08s}
 .rv-d2{transition-delay:.16s}
@@ -233,56 +207,49 @@ footer a:hover{color:var(--goldD)}
 <nav>
 <div class="ni">
   <a href="https://stellarupgrades.ca" class="n-logo">
-    <img src="/images/Letterhead Logo.svg" alt="Stellar Upgrades" onerror="this.onerror=null;this.src='/images/logo-icon-white.png';this.style.height='40px'">
+    <img src="/images/Letterhead Logo.svg" alt="Stellar Upgrades" onerror="this.onerror=null;this.src='/images/logo-icon-white.png';this.style.height='36px'">
   </a>
   <div class="n-actions">
     <a href="tel:7802005265" class="n-phone">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
       (780) 200-5265
     </a>
-    <button class="n-cta" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">Get Free Assessment</button>
+    <button class="n-cta" onclick="scrollToForm()">Get Free Assessment</button>
   </div>
 </div>
 </nav>
 
-<!-- ═══ SCREEN 1: HERO ═══ -->
-<section class="sec hero">
+<!-- ═══ HERO + FORM ═══ -->
+<section class="sec hero" id="top">
 <div class="sec-i">
   <div class="hero-grid">
     <div class="hero-text">
       <div class="tag rv">Edmonton Master Electricians · Since 2018</div>
-      <h1 class="rv rv-d1">Your neighbours are paying $0 for <em>electricity.</em></h1>
-      <p class="hero-sub rv rv-d2">See how much you're giving away to the grid every year — and what solar could change for you.</p>
+      <h1 class="rv rv-d1">Find out if your home qualifies for <em>$0 electricity.</em></h1>
+      <p class="hero-sub rv rv-d2">We'll pull up your roof, run the numbers, and tell you exactly what solar would save — or if it doesn't make sense. Free. No pressure.</p>
     </div>
-    <div class="hero-img rv rv-d2">
-      <img src="/images/house-sunset.webp" alt="Solar panels on Edmonton home at sunset — Stellar Upgrades installation" loading="eager">
+    <div class="rv rv-d2" id="heroForm">
+      <div class="form-card">
+        <h3>Get Your Custom Savings</h3>
+        <p>We'll call within 24 hours with exact numbers for your home.</p>
+        <div class="form-fields" id="heroFields">
+          <input class="form-input" id="hName" placeholder="Your name" autocomplete="name">
+          <input class="form-input" id="hPhone" placeholder="Phone number" type="tel" autocomplete="tel">
+          <input class="form-input" id="hAddress" placeholder="Home address (for roof analysis)" autocomplete="street-address">
+          <button class="form-submit" id="hSubmit" onclick="submitHero()">Get My Free Assessment →</button>
+        </div>
+        <div class="form-success" id="heroSuccess">
+          <div class="checkmark">✓</div>
+          <h4>We're on <em>it.</em></h4>
+          <p>PJ will call you within 24 hours with your custom savings proposal. If solar doesn't make sense for your home, we'll tell you straight.</p>
+        </div>
+        <div class="form-trust">
+          <span>🔒 No spam</span>
+          <span>📞 24hr callback</span>
+          <span>❌ No obligation</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</section>
-
-<!-- ═══ SAVINGS CALCULATOR ═══ -->
-<section class="sec calc-sec rv" id="calc">
-<div class="calc-wrap">
-  <div class="tag tag-c">What Are You Paying The Grid?</div>
-  <div class="calc-label">Your Monthly Electricity Bill</div>
-  <div class="calc-bill" id="calcBill">$200<span>/mo</span></div>
-  <input type="range" class="calc-slider" id="calcSlider" min="80" max="800" value="200" step="10">
-  <div class="calc-range"><span>$80</span><span>$600+</span></div>
-  <div class="calc-results">
-    <div class="calc-card bad">
-      <div class="calc-card-label">Cost Without Solar (25yr)</div>
-      <div class="calc-card-num" id="calcCost">$60,000</div>
-      <div class="calc-card-sub">paid to the grid, gone forever</div>
-    </div>
-    <div class="calc-card good">
-      <div class="calc-card-label">Estimated Net Savings</div>
-      <div class="calc-card-num" id="calcSave">$38,000</div>
-      <div class="calc-card-sub">after system cost · $0 down available</div>
-    </div>
-  </div>
-  <div class="calc-cta">
-    <button class="btn" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">Get My Exact Numbers →</button>
   </div>
 </div>
 </section>
@@ -297,7 +264,35 @@ footer a:hover{color:var(--goldD)}
 </div>
 </div>
 
-<!-- ═══ TESTIMONIAL + PHOTO ═══ -->
+<!-- ═══ SAVINGS CALCULATOR (with 4% inflation) ═══ -->
+<section class="sec calc-sec rv" id="calc">
+<div class="calc-wrap">
+  <div class="tag tag-c">The Real Cost of Doing Nothing</div>
+  <h2 style="margin-bottom:20px">Electricity bills don't stay <em>flat.</em></h2>
+  <div class="calc-label">Your Current Monthly Bill</div>
+  <div class="calc-bill" id="calcBill">$200<span>/mo</span></div>
+  <input type="range" class="calc-slider" id="calcSlider" min="80" max="800" value="200" step="10">
+  <div class="calc-range"><span>$80</span><span>$600+</span></div>
+  <div class="calc-results">
+    <div class="calc-card bad">
+      <div class="calc-card-label">You'll Pay The Grid (25yr)</div>
+      <div class="calc-card-num" id="calcCost">$82,295</div>
+      <div class="calc-card-sub">with 4% annual rate increases</div>
+    </div>
+    <div class="calc-card good">
+      <div class="calc-card-label">Estimated Net Savings</div>
+      <div class="calc-card-num" id="calcSave">$60,295</div>
+      <div class="calc-card-sub">after system cost · $0 down available</div>
+    </div>
+  </div>
+  <p class="calc-inflate">Alberta electricity rates have averaged 4–6% annual increases over the past decade. Your actual cost of inaction is higher than a flat projection.</p>
+  <div class="calc-cta">
+    <button class="btn" onclick="scrollToForm()">Get My Exact Numbers →</button>
+  </div>
+</div>
+</section>
+
+<!-- ═══ TESTIMONIAL ═══ -->
 <section class="sec rv">
 <div class="sec-i">
   <div class="testi-grid">
@@ -313,95 +308,8 @@ footer a:hover{color:var(--goldD)}
 </div>
 </section>
 
-<!-- ═══ INTERACTIVE QUIZ FUNNEL ═══ -->
-<section class="sec quiz-sec rv" id="quiz">
-<div class="quiz-wrap">
-
-  <!-- Progress dots -->
-  <div class="quiz-progress">
-    <div class="quiz-dot active" id="dot1"></div>
-    <div class="quiz-dot" id="dot2"></div>
-    <div class="quiz-dot" id="dot3"></div>
-  </div>
-
-  <!-- STEP 1: Home type -->
-  <div class="quiz-step active" id="step1">
-    <h3>What type of home do you have?</h3>
-    <p>This helps us estimate your roof space and system size.</p>
-    <div class="quiz-tiles">
-      <div class="quiz-tile" onclick="selectTile(this,'homeType','Detached House')">
-        <span class="quiz-tile-icon">🏡</span>
-        <span class="quiz-tile-label">Detached House</span>
-      </div>
-      <div class="quiz-tile" onclick="selectTile(this,'homeType','Semi-Detached')">
-        <span class="quiz-tile-icon">🏘️</span>
-        <span class="quiz-tile-label">Semi-Detached</span>
-      </div>
-      <div class="quiz-tile" onclick="selectTile(this,'homeType','Townhouse')">
-        <span class="quiz-tile-icon">🏠</span>
-        <span class="quiz-tile-label">Townhouse</span>
-      </div>
-      <div class="quiz-tile" onclick="selectTile(this,'homeType','Acreage / Rural')">
-        <span class="quiz-tile-icon">🌾</span>
-        <span class="quiz-tile-label">Acreage / Rural</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- STEP 2: Interests (multi-select) -->
-  <div class="quiz-step" id="step2">
-    <h3>What are you interested in?</h3>
-    <p>Select all that apply.</p>
-    <div class="quiz-tiles quiz-tiles-3">
-      <div class="quiz-tile" onclick="toggleTile(this,'interests','Solar Panels')">
-        <span class="quiz-tile-icon">☀️</span>
-        <span class="quiz-tile-label">Solar Panels</span>
-        <span class="quiz-tile-sub">Roof or ground</span>
-      </div>
-      <div class="quiz-tile" onclick="toggleTile(this,'interests','Battery Backup')">
-        <span class="quiz-tile-icon">🔋</span>
-        <span class="quiz-tile-label">Battery</span>
-        <span class="quiz-tile-sub">Backup power</span>
-      </div>
-      <div class="quiz-tile" onclick="toggleTile(this,'interests','EV Charger')">
-        <span class="quiz-tile-icon">⚡</span>
-        <span class="quiz-tile-label">EV Charger</span>
-        <span class="quiz-tile-sub">Level 2 home</span>
-      </div>
-    </div>
-    <button class="btn" style="margin-top:24px" onclick="goStep(3)" id="step2Next" disabled>Next →</button>
-    <br><button class="quiz-back" onclick="goStep(1)">← Back</button>
-  </div>
-
-  <!-- STEP 3: Contact -->
-  <div class="quiz-step" id="step3">
-    <h3>Almost done — how can we <em>reach you?</em></h3>
-    <p>We'll call within 24 hours with your custom numbers.</p>
-    <div class="quiz-form" id="quizForm">
-      <input class="quiz-input" id="qzName" placeholder="Your name" autocomplete="name">
-      <input class="quiz-input" id="qzPhone" placeholder="Phone number" type="tel" autocomplete="tel">
-      <button class="quiz-submit" id="qzSubmit" onclick="submitQuiz()">Get My Custom Proposal →</button>
-    </div>
-    <div class="quiz-trust">
-      <span>🔒 No spam</span>
-      <span>📞 24hr response</span>
-      <span>❌ No obligation</span>
-    </div>
-    <button class="quiz-back" onclick="goStep(2)">← Back</button>
-  </div>
-
-  <!-- SUCCESS -->
-  <div class="quiz-success" id="quizSuccess">
-    <div class="checkmark">✓</div>
-    <h3>We're on <em>it.</em></h3>
-    <p>PJ will call you within 24 hours with your custom savings proposal. If solar doesn't make sense for your home, we'll tell you straight — no pressure.</p>
-  </div>
-
-</div>
-</section>
-
 <!-- ═══ HOW IT WORKS ═══ -->
-<section class="sec rv">
+<section class="sec rv" style="background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b)">
 <div class="sec-i" style="text-align:center">
   <div class="tag tag-c">How It Works</div>
   <h2>Three steps to <em>zero.</em></h2>
@@ -410,7 +318,7 @@ footer a:hover{color:var(--goldD)}
       <div class="step-num">1</div>
       <div>
         <h3>Free home assessment</h3>
-        <p>PJ visits your home, reviews your roof, shading, and electricity bills. You get a transparent proposal with 30-year projections — not inflated promises.</p>
+        <p>PJ visits your home, reviews your roof, shading, and electricity bills. You get a transparent proposal with 25-year projections — not inflated promises.</p>
       </div>
     </div>
     <div class="step rv rv-d1">
@@ -432,10 +340,10 @@ footer a:hover{color:var(--goldD)}
 </section>
 
 <!-- ═══ WHY STELLAR + CREW PHOTO ═══ -->
-<section class="sec rv" style="background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b)">
+<section class="sec rv">
 <div class="sec-i">
   <div class="tag rv">Why Stellar Upgrades</div>
-  <h2 class="rv rv-d1" style="margin-bottom:28px">The difference is who <em>shows up.</em></h2>
+  <h2 class="rv rv-d1" style="margin-bottom:24px">The difference is who <em>shows up.</em></h2>
   <div class="why-grid-wrap">
     <div class="why-cards">
       <div class="why-card rv"><h3>10-Year Workmanship Warranty</h3><p>Full warranty on every install. Plus lifetime roof penetration warranty — if we drill it, we guarantee it for life.</p></div>
@@ -451,7 +359,7 @@ footer a:hover{color:var(--goldD)}
 </section>
 
 <!-- ═══ FOUNDERS ═══ -->
-<section class="sec rv" style="text-align:center">
+<section class="sec rv" style="text-align:center;background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b)">
 <div class="sec-i">
   <div class="tag tag-c rv">Who You'll Work With</div>
   <h2 class="rv rv-d1">You'll talk to PJ. Jordan will be on <em>your roof.</em></h2>
@@ -468,32 +376,17 @@ footer a:hover{color:var(--goldD)}
 </div>
 </section>
 
-<!-- ═══ HONESTY TESTIMONIAL + WINTER PHOTO ═══ -->
-<section class="sec rv" style="background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b)">
-<div class="sec-i">
-  <div class="testi-grid">
-    <div class="testi-img">
-      <img src="/images/house-winter.webp" alt="Solar-powered home in Edmonton winter" loading="lazy">
-    </div>
-    <div class="testi-card" style="border-left-color:var(--green)">
-      <p class="testi-quote">"Stellar Upgrades told us our roof wasn't ideal for solar yet and recommended waiting until we re-shingled. They could have sold us a system anyway — but they didn't. That honesty earned our trust."</p>
-      <span class="testi-name">Sarah K.</span> <span class="testi-loc">— Edmonton</span>
-      <p style="font-size:13px;color:var(--tdd);margin-top:12px;font-weight:300;font-style:normal">Yes, solar works in Alberta winters. Edmonton gets 2,300+ hours of sunshine per year — more than Toronto.</p>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ═══ SECOND FORM (dark CTA — catches scrollers) ═══ -->
-<section class="sec cta-sec rv">
+<!-- ═══ DARK BOTTOM CTA ═══ -->
+<section class="sec cta-sec rv" id="bottomCta">
 <div class="sec-i">
   <div class="cta-form-wrap">
     <div class="tag tag-c" style="color:var(--goldD)">Free Assessment</div>
     <h2>Ready to pay $0 for <em>electricity?</em></h2>
-    <p style="color:rgba(255,255,255,.65);margin-bottom:4px">Join 500+ Edmonton homeowners who made the switch.</p>
+    <p style="color:rgba(255,255,255,.6);margin-bottom:4px;font-size:14px">Join 500+ Edmonton homeowners who made the switch.</p>
     <div class="cta-form" id="ctaForm">
       <input id="c2Name" placeholder="Your name" autocomplete="name">
       <input id="c2Phone" placeholder="Phone number" type="tel" autocomplete="tel">
+      <input id="c2Address" placeholder="Home address" autocomplete="street-address">
       <button id="c2Submit" onclick="submitCta()">Get My Custom Savings →</button>
     </div>
     <div class="cta-success" id="c2Success">
@@ -523,10 +416,18 @@ footer a:hover{color:var(--goldD)}
 <!-- ═══ MOBILE STICKY ═══ -->
 <div class="mob-cta">
   <a href="tel:7802005265" class="mob-cta-call">Call Now</a>
-  <button class="mob-cta-quote" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">Get Free Assessment</button>
+  <button class="mob-cta-quote" onclick="scrollToForm()">Get Free Assessment</button>
 </div>
 
 <script>
+// ═══ SCROLL TO FORM (smart — goes to hero form if visible, otherwise bottom) ═══
+function scrollToForm(){
+  var heroForm=document.getElementById('heroForm');
+  var rect=heroForm.getBoundingClientRect();
+  var target=(rect.top>-200)?'top':'bottomCta';
+  document.getElementById(target).scrollIntoView({behavior:'smooth',block:'start'});
+}
+
 // ═══ SCROLL PROGRESS ═══
 window.addEventListener('scroll',function(){document.getElementById('sb').style.width=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100)+'%'});
 
@@ -534,72 +435,56 @@ window.addEventListener('scroll',function(){document.getElementById('sb').style.
 var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){ro.observe(el)});
 
-// ═══ CALCULATOR ═══
+// ═══ CALCULATOR (4% annual inflation) ═══
 var slider=document.getElementById('calcSlider');
 function updateCalc(){
   var bill=parseInt(slider.value);
   var pct=(bill-80)/(800-80)*100;
   slider.style.background='linear-gradient(90deg,var(--gold) '+pct+'%,rgba(30,42,30,0.07) '+pct+'%)';
   document.getElementById('calcBill').innerHTML='$'+bill+'<span>/mo</span>';
-  var cost25=bill*12*25;
-  document.getElementById('calcCost').textContent='$'+cost25.toLocaleString();
+
+  // 25-year cost with 4% annual inflation
+  var annualBill=bill*12;
+  var totalCost=0;
+  for(var y=0;y<25;y++){
+    totalCost+=annualBill*Math.pow(1.04,y);
+  }
+  totalCost=Math.round(totalCost);
+  document.getElementById('calcCost').textContent='$'+totalCost.toLocaleString();
+
+  // System cost estimate (rough tiers)
   var sysCost=bill<150?14000:bill<250?18000:bill<400?24000:32000;
-  var savings=Math.round(cost25*0.85-sysCost);
+  var savings=Math.round(totalCost*0.85-sysCost);
   document.getElementById('calcSave').textContent='$'+(savings>0?savings:0).toLocaleString();
 }
 slider.addEventListener('input',updateCalc);
 updateCalc();
 
-// ═══ QUIZ FUNNEL ═══
-var quizData={homeType:'',interests:[],bill:''};
-
-function selectTile(el,field,value){
-  el.parentElement.querySelectorAll('.quiz-tile').forEach(function(t){t.classList.remove('selected')});
-  el.classList.add('selected');
-  quizData[field]=value;
-  if(typeof gtag==='function')gtag('event','quiz_step_1',{event_category:'door_hanger_quiz',event_label:value});
-  setTimeout(function(){goStep(2)},300);
-}
-
-function toggleTile(el,field,value){
-  el.classList.toggle('selected');
-  var idx=quizData[field].indexOf(value);
-  if(idx>-1)quizData[field].splice(idx,1);else quizData[field].push(value);
-  document.getElementById('step2Next').disabled=quizData[field].length===0;
-}
-
-function goStep(n){
-  if(n===3&&quizData.interests.length===0)return;
-  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active')});
-  document.getElementById('step'+n).classList.add('active');
-  for(var i=1;i<=3;i++){
-    var dot=document.getElementById('dot'+i);
-    dot.classList.remove('active','done');
-    if(i<n)dot.classList.add('done');
-    if(i===n)dot.classList.add('active');
-  }
-  if(typeof gtag==='function')gtag('event','quiz_step_'+n,{event_category:'door_hanger_quiz'});
-  document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function submitQuiz(){
-  var nm=document.getElementById('qzName').value.trim();
-  var ph=document.getElementById('qzPhone').value.trim();
+// ═══ HERO FORM SUBMIT ═══
+function submitHero(){
+  var nm=document.getElementById('hName').value.trim();
+  var ph=document.getElementById('hPhone').value.trim();
+  var addr=document.getElementById('hAddress').value.trim();
   var phClean=ph.replace(/\D/g,'');
-  if(!nm){document.getElementById('qzName').style.borderColor='#e87c6c';return}
-  if(!ph||phClean.length<10){document.getElementById('qzPhone').style.borderColor='#e87c6c';document.getElementById('qzPhone').focus();return}
-  document.getElementById('qzName').style.borderColor='';document.getElementById('qzPhone').style.borderColor='';
-  var btn=document.getElementById('qzSubmit');
+
+  // Reset borders
+  ['hName','hPhone','hAddress'].forEach(function(id){document.getElementById(id).style.borderColor=''});
+
+  if(!nm){document.getElementById('hName').style.borderColor='#e87c6c';document.getElementById('hName').focus();return}
+  if(!ph||phClean.length<10){document.getElementById('hPhone').style.borderColor='#e87c6c';document.getElementById('hPhone').focus();return}
+
+  var btn=document.getElementById('hSubmit');
   btn.disabled=true;btn.textContent='Submitting...';btn.style.opacity='.6';
 
   var billVal=document.getElementById('calcSlider').value;
-  var comments='Door Hanger Quiz | Home: '+quizData.homeType+' | Interests: '+quizData.interests.join(', ')+' | Calculator bill: $'+billVal+'/mo';
+  var comments='Door Hanger Landing | Bill: ~$'+billVal+'/mo'+(addr?' | Address: '+addr:'');
 
   var params=new URLSearchParams({
     schema_name:'stellarupgrades',
     first_name:nm.split(' ')[0]||nm,
     last_name:nm.split(' ').slice(1).join(' ')||'(Door Hanger)',
     phone:ph,
+    address1:addr,
     customField37:'~$'+billVal+'/mo',
     apptcomments:comments,
     salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',
@@ -610,11 +495,10 @@ function submitQuiz(){
   img.onload=img.onerror=function(){
     if(typeof gtag==='function'){
       gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});
-      gtag('event','generate_lead',{event_category:'door_hanger_quiz'});
+      gtag('event','generate_lead',{event_category:'door_hanger_hero'});
     }
-    document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active')});
-    document.querySelector('.quiz-progress').style.display='none';
-    document.getElementById('quizSuccess').style.display='block';
+    document.getElementById('heroFields').style.display='none';
+    document.getElementById('heroSuccess').style.display='block';
   };
   img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString();
 }
@@ -623,21 +507,28 @@ function submitQuiz(){
 function submitCta(){
   var nm=document.getElementById('c2Name').value.trim();
   var ph=document.getElementById('c2Phone').value.trim();
+  var addr=document.getElementById('c2Address').value.trim();
   var phClean=ph.replace(/\D/g,'');
-  if(!nm){document.getElementById('c2Name').style.borderColor='#e87c6c';return}
+
+  ['c2Name','c2Phone','c2Address'].forEach(function(id){document.getElementById(id).style.borderColor=''});
+
+  if(!nm){document.getElementById('c2Name').style.borderColor='#e87c6c';document.getElementById('c2Name').focus();return}
   if(!ph||phClean.length<10){document.getElementById('c2Phone').style.borderColor='#e87c6c';document.getElementById('c2Phone').focus();return}
-  document.getElementById('c2Name').style.borderColor='';document.getElementById('c2Phone').style.borderColor='';
+
   var btn=document.getElementById('c2Submit');
   btn.disabled=true;btn.textContent='Submitting...';btn.style.opacity='.6';
 
   var billVal=document.getElementById('calcSlider').value;
+  var comments='Door Hanger Bottom CTA | Bill: ~$'+billVal+'/mo'+(addr?' | Address: '+addr:'');
+
   var params=new URLSearchParams({
     schema_name:'stellarupgrades',
     first_name:nm.split(' ')[0]||nm,
     last_name:nm.split(' ').slice(1).join(' ')||'(Door Hanger)',
     phone:ph,
+    address1:addr,
     customField37:'~$'+billVal+'/mo',
-    apptcomments:'Door Hanger Bottom CTA | Calculator bill: $'+billVal+'/mo',
+    apptcomments:comments,
     salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',
     lead_source:'Door Hanger'
   });
