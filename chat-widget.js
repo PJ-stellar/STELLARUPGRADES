@@ -358,12 +358,12 @@
     saveSession();
   }
 
-  // Auto-show peek after 4 seconds (desktop only, first visit)
-  if (messages.length === 0) {
-    setTimeout(function() {
+  // Auto-show peek after 4 seconds on every page load
+  setTimeout(function() {
+    if (!chatOpen && !peekDismissed) {
       showPeek();
-    }, 4000);
-  }
+    }
+  }, 4000);
 
   // Peek close button
   peekCloseBtn.addEventListener('click', function() {
