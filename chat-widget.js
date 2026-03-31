@@ -202,9 +202,51 @@
       {label: 'Financing options', q: 'What financing options do you offer?'},
       {label: 'How long does install take?', q: 'How long does a solar installation take?'}
     ];
+  } else if (path.indexOf('/contact') !== -1) {
+    peekGreeting = "Hey! Want to get in touch? I can answer most questions right here, or connect you with PJ directly.";
+    peekQuickButtons = [
+      {label: 'Get a quote', q: 'I want a quote for solar on my home'},
+      {label: 'Call PJ', q: 'I want to talk to PJ directly'},
+      {label: 'Existing customer', q: 'I am an existing customer and need help'}
+    ];
+  } else if (path.indexOf('/financing') !== -1 || path.indexOf('/finance') !== -1) {
+    peekGreeting = "Hey! Looking at financing options? I can walk you through $0-down, CEIP, and cash discount options.";
+    peekQuickButtons = [
+      {label: '$0 down financing', q: 'Tell me about $0 down financing for solar'},
+      {label: 'CEIP property tax', q: 'How does CEIP property tax financing work?'},
+      {label: 'Cash discount', q: 'What discount do I get if I pay cash?'}
+    ];
+  } else if (path.indexOf('/blog') !== -1) {
+    peekGreeting = "Hey! Doing your research? Smart. I can answer specific questions about solar in Alberta if you want.";
+    peekQuickButtons = [
+      {label: 'Solar cost in Alberta', q: 'How much does solar cost in Alberta?'},
+      {label: 'Winter performance', q: 'How well does solar work in Alberta winters?'},
+      {label: 'Get a quote', q: 'I want a quote for solar on my home'}
+    ];
+  } else if (path.indexOf('/about') !== -1) {
+    peekGreeting = "Hey! Want to know more about our team? Ask me anything about Stellar Upgrades.";
+    peekQuickButtons = [
+      {label: 'How many installs?', q: 'How many installs has Stellar Upgrades done?'},
+      {label: 'Who does the work?', q: 'Who actually installs the solar panels?'},
+      {label: 'Get a quote', q: 'I want a quote for solar on my home'}
+    ];
+  } else if (path.indexOf('/careers') !== -1) {
+    peekGreeting = "Hey! Interested in joining the team? I can tell you about open positions.";
+    peekQuickButtons = [
+      {label: 'Open positions', q: 'What positions are you hiring for?'},
+      {label: 'D2D sales', q: 'Tell me about the door to door sales role'},
+      {label: 'How to apply', q: 'How do I apply?'}
+    ];
+  } else if (path.indexOf('/solar') !== -1 && path.indexOf('/areas/') === -1) {
+    peekGreeting = "Hey! Thinking about solar? Tell me your monthly electricity bill and I'll show you the real numbers.";
+    peekQuickButtons = [
+      {label: 'My bill is ~$200/mo', q: 'My electricity bill is about $200 per month, what would solar cost?'},
+      {label: 'My bill is ~$300/mo', q: 'My electricity bill is about $300 per month, what would solar cost?'},
+      {label: 'How it works', q: 'How does solar work with net metering in Alberta?'}
+    ];
   }
 
-  var cityPageMatch = path.match(/\/([\w-]+)-solar/);
+  var cityPageMatch = path.match(/\/areas\/([\w-]+)/);
   if (cityPageMatch) {
     var cityDisplay = cityPageMatch[1].replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
     peekGreeting = "Hey! Looking at solar in " + cityDisplay + "? We've done installs all across " + cityDisplay + " and area. What's your monthly electricity bill?";

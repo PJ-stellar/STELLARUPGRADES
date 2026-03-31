@@ -306,9 +306,14 @@ export default async function handler(req, res) {
     else if (currentPage.indexOf('/battery') !== -1) pageContext += ' They are looking at battery backup. Lead with EP Cube tiers and backup power benefits.';
     else if (currentPage.indexOf('/neighbour') !== -1) pageContext += ' They scanned a door hanger QR code. They are cold traffic — be especially warm and lead with their bill estimate.';
     else if (currentPage.indexOf('/welcome') !== -1) pageContext += ' They already booked an assessment and are preparing. Answer pre-visit questions, reinforce their decision.';
+    if (currentPage.indexOf('/contact') !== -1) pageContext += ' They are on the contact page — they want to reach out. Be helpful and try to answer their question directly or capture their info.';
+    if (currentPage.indexOf('/financ') !== -1) pageContext += ' They are researching financing options. Lead with $0-down Financeit, CEIP property tax, and cash discount details.';
+    if (currentPage.indexOf('/blog') !== -1) pageContext += ' They are reading the blog — they are in research mode. Be educational, not salesy. Build trust with knowledge.';
+    if (currentPage.indexOf('/about') !== -1) pageContext += ' They are on the about page learning about the company. Emphasize the team, experience, and trust factors.';
+    if (currentPage.indexOf('/careers') !== -1) pageContext += ' They are looking at careers. Direct them to stellarupgrades.ca/careers or email info@stellarupgrades.ca.';
 
     // City/area pages
-    var cityMatch = (currentPage || '').match(/\/([\w-]+)-solar/);
+    var cityMatch = (currentPage || '').match(/\/areas\/([\w-]+)/);
     if (cityMatch) {
       var cityName = cityMatch[1].replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
       pageContext += ' The visitor is on the ' + cityName + ' solar page. Reference ' + cityName + ' specifically — mention it by name, reference local details if known. Make them feel this is their local installer, not a generic company.';
