@@ -306,6 +306,31 @@ export default async function handler(req, res) {
     else if (currentPage.indexOf('/battery') !== -1) pageContext += ' They are looking at battery backup. Lead with EP Cube tiers and backup power benefits.';
     else if (currentPage.indexOf('/neighbour') !== -1) pageContext += ' They scanned a door hanger QR code. They are cold traffic — be especially warm and lead with their bill estimate.';
     else if (currentPage.indexOf('/welcome') !== -1) pageContext += ' They already booked an assessment and are preparing. Answer pre-visit questions, reinforce their decision.';
+
+    // City/area pages
+    var cityMatch = (currentPage || '').match(/\/([\w-]+)-solar/);
+    if (cityMatch) {
+      var cityName = cityMatch[1].replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+      pageContext += ' The visitor is on the ' + cityName + ' solar page. Reference ' + cityName + ' specifically — mention it by name, reference local details if known. Make them feel this is their local installer, not a generic company.';
+    }
+
+    var cityDetails = {
+      'red-deer': 'Red Deer is about 1.5 hours south of Edmonton. We serve Red Deer and surrounding area. Mention that our crew travels from Edmonton for installs.',
+      'st-albert': 'St. Albert is right next to Edmonton — one of our most active service areas. Many St. Albert homeowners have gone solar with us.',
+      'sherwood-park': 'Sherwood Park is in Strathcona County, right beside Edmonton. Very active area for us with lots of completed installs.',
+      'spruce-grove': 'Spruce Grove is just west of Edmonton. We serve Spruce Grove, Stony Plain, and Parkland County.',
+      'leduc': 'Leduc is south of Edmonton. CEIP property tax financing is available in Leduc.',
+      'beaumont': 'Beaumont is a growing community south of Edmonton. We serve Beaumont and surrounding area.',
+      'fort-saskatchewan': 'Fort Saskatchewan is northeast of Edmonton. We serve Fort Sask and Sturgeon County.',
+      'camrose': 'Camrose is about an hour southeast of Edmonton. We travel there for installs.',
+      'morinville': 'Morinville is just north of Edmonton in Sturgeon County.'
+    };
+
+    var citySlug = cityMatch ? cityMatch[1] : '';
+    if (cityDetails[citySlug]) {
+      pageContext += ' ' + cityDetails[citySlug];
+    }
+
     if (referrer) pageContext += ' Referrer: ' + referrer;
   }
 

@@ -204,6 +204,17 @@
     ];
   }
 
+  var cityPageMatch = path.match(/\/([\w-]+)-solar/);
+  if (cityPageMatch) {
+    var cityDisplay = cityPageMatch[1].replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+    peekGreeting = "Hey! Looking at solar in " + cityDisplay + "? We've done installs all across " + cityDisplay + " and area. What's your monthly electricity bill?";
+    peekQuickButtons = [
+      {label: 'My bill is ~$200/mo', q: 'My electricity bill is about $200 per month. I live in ' + cityDisplay + ', what would solar cost?'},
+      {label: 'My bill is ~$300/mo', q: 'My electricity bill is about $300 per month. I live in ' + cityDisplay + ', what would solar cost?'},
+      {label: 'Do you serve ' + cityDisplay + '?', q: 'Do you guys serve ' + cityDisplay + '?'}
+    ];
+  }
+
   if (isAfterHours) {
     peekGreeting += " (PJ's offline right now, but I can still help and set up a callback.)";
   }
