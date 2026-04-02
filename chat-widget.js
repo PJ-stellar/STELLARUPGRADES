@@ -339,7 +339,7 @@
       waBtn.href = waUrl;
       waBtn.target = '_blank';
       waBtn.rel = 'noopener noreferrer';
-      waBtn.textContent = 'WhatsApp PJ';
+      waBtn.textContent = 'WhatsApp Us';
       waBtn.style.cssText = 'flex:1;text-align:center;padding:14px 8px;border-radius:60px;font-weight:700;font-size:16px;font-family:inherit;background:transparent;color:#25D366;border:2px solid #25D366;text-decoration:none;cursor:pointer';
       callBtn.replaceWith(waBtn);
     }
