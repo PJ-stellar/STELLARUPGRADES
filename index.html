@@ -65,8 +65,16 @@ nav.scrolled{background:rgba(250,250,248,.92);backdrop-filter:blur(20px);-webkit
 .hero-btns{display:flex;gap:16px;align-items:center;flex-wrap:wrap;opacity:0;animation:fu .7s .7s forwards}
 .hero-visual{position:relative;opacity:0;animation:fu .7s .6s forwards}
 .hero-visual img{border-radius:var(--r);width:100%;aspect-ratio:4/3;object-fit:cover;animation:heroZoom 1.5s cubic-bezier(.16,1,.3,1) forwards}
-@keyframes heroZoom{from{transform:scale(1.03)}to{transform:scale(1)}}
-@media(max-width:768px){.hero{min-height:auto;padding:68px 0 0}.hero-grid{grid-template-columns:1fr;gap:0}.hero-visual{order:-1}.hero-visual img{width:100%;height:auto;max-height:none;border-radius:0;aspect-ratio:auto}.hero-grid>div:first-child{padding:0 20px 32px;position:relative;z-index:2;margin-top:-70px;background:linear-gradient(to bottom,transparent 0%,rgba(30,42,30,.85) 30px,var(--bg) 80px)}.hero .tag{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.4);margin-bottom:10px;padding-top:8px}.hero .tag::before{background:#fff}.hero h1{font-size:clamp(26px,7vw,34px);position:relative;margin-top:0;text-shadow:0 2px 16px rgba(0,0,0,.3);color:#fff;-webkit-text-fill-color:#fff}.hero h1 em{-webkit-text-fill-color:transparent}.hero-sub{color:var(--td);text-shadow:none}.hero-btns{display:flex!important}}
+@keyframes heroZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero-bg{position:absolute;inset:0;z-index:0}.hero-bg img{width:100%;height:100%;object-fit:cover;animation:heroZoom 20s ease-out forwards}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(30,42,30,.85) 0%,rgba(30,42,30,.6) 50%,rgba(30,42,30,.2) 100%)}
+.hero-grid{z-index:2}
+.hero .tag{color:rgba(255,255,255,.8)}.hero .tag::before{background:var(--goldL)}
+.hero h1{color:#fff;-webkit-text-fill-color:#fff}.hero h1 em{-webkit-text-fill-color:transparent}
+.hero-sub{color:rgba(255,255,255,.7)}
+.hero-btns .btn{background:var(--gold);color:#1E2A1E}.hero-btns .btn:hover{box-shadow:0 8px 28px rgba(201,168,76,.4)}
+.hero-btns .btn-g{color:rgba(255,255,255,.6)}.hero-btns .btn-g:hover{color:#fff}
+@media(max-width:768px){.hero-overlay{background:linear-gradient(to bottom,rgba(30,42,30,.3) 0%,rgba(30,42,30,.75) 100%)}.hero{min-height:auto;padding:68px 0 0}.hero-grid{grid-template-columns:1fr;gap:0}.hero-grid{grid-template-columns:1fr;gap:24px;padding:0 20px}.hero-visual{display:none}.hero h1{font-size:clamp(28px,7vw,36px)}.hero-sub{color:rgba(255,255,255,.65)}.hero-btns{display:flex!important}}
 
 /* TRUST */
 .trust{background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:18px clamp(24px,5vw,80px);overflow:hidden}
@@ -254,6 +262,41 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 .calc-success{display:none;text-align:center}
 .calc-success h4{font-size:18px;font-weight:700;color:var(--gold);margin-bottom:6px}
 @media(max-width:768px){.calc-savings{flex-direction:column;gap:10px}.calc-arrow{transform:rotate(90deg)}.calc-form{flex-direction:column}}
+
+/* SAVINGS TEASER */
+.sav-teaser{background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b);position:relative;overflow:hidden}
+.sav-teaser::before{content:'';position:absolute;top:50%;left:50%;width:600px;height:600px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.04),transparent 55%);pointer-events:none}
+.sav-inner{max-width:720px;margin:0 auto;position:relative;z-index:2}
+.sav-bill{text-align:center;margin-bottom:16px}
+.sav-bill-val{font-weight:900;font-size:clamp(44px,6vw,64px);color:var(--t);line-height:1;display:flex;align-items:baseline;justify-content:center;gap:4px}
+.sav-bill-val span{font-size:clamp(16px,2vw,20px);font-weight:300;color:var(--td)}
+.sav-slider-w{max-width:560px;margin:0 auto 6px;padding:0 8px}
+.sav-slider{-webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:var(--b);outline:none;cursor:pointer}
+.sav-slider::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:var(--gold);cursor:grab;box-shadow:0 0 0 5px rgba(201,168,76,.15),0 4px 20px rgba(201,168,76,.35)}
+.sav-slider::-moz-range-thumb{width:30px;height:30px;border-radius:50%;border:none;background:var(--gold);cursor:grab;box-shadow:0 0 0 5px rgba(201,168,76,.15),0 4px 20px rgba(201,168,76,.35)}
+.sav-labels{display:flex;justify-content:space-between;max-width:560px;margin:0 auto;padding:0 8px;font-size:11px;color:var(--tdd)}
+.sav-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0 20px}
+.sav-card{border-radius:var(--r);padding:24px;text-align:center;border:1px solid var(--b)}
+.sav-card.red{background:rgba(232,124,108,.04);border-color:rgba(232,124,108,.15)}
+.sav-card.green{background:rgba(110,207,128,.04);border-color:rgba(110,207,128,.15)}
+.sav-card-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.sav-card.red .sav-card-label{color:var(--red)}.sav-card.green .sav-card-label{color:var(--green)}
+.sav-card-val{font-weight:900;font-size:clamp(26px,3.5vw,36px);line-height:1;margin-bottom:4px}
+.sav-card.red .sav-card-val{color:var(--red)}.sav-card.green .sav-card-val{color:var(--gold)}
+.sav-card-note{font-size:11px;color:var(--tdd);font-weight:300}
+.sav-bottom{text-align:center;font-size:13px;color:var(--td);font-weight:300;line-height:1.6;margin-bottom:24px}
+.sav-bottom strong{color:var(--red);font-weight:700}
+@media(max-width:768px){.sav-cards{grid-template-columns:1fr}}
+
+/* SERVICE EXPAND */
+.svc-expand{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .4s;opacity:0}
+.svc.expanded .svc-expand{max-height:300px;opacity:1}
+.svc-expand-inner{padding:0 24px 24px;border-top:1px solid var(--b)}
+.svc-expand-inner ul{list-style:none;margin:14px 0}
+.svc-expand-inner li{font-size:12px;color:var(--td);padding:5px 0;display:flex;align-items:center;gap:8px;font-weight:300}
+.svc-expand-inner li::before{content:'✓';color:var(--gold);font-weight:700;font-size:11px}
+.svc-expand-cta{display:inline-block;padding:12px 28px;border-radius:60px;background:#1E2A1E;color:#fff;font-size:13px;font-weight:700;transition:all .3s}
+.svc-expand-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--glow)}
 </style>
 </head>
 <body>
@@ -273,15 +316,14 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <meta itemprop="name" content="Stellar Upgrades">
 <meta itemprop="telephone" content="+17802005265">
 <meta itemprop="address" content="Unit 10, 6005 103A St NW, Edmonton, AB T6H 2J7">
+<div class="hero-bg"><img src="/images/roof-aerial-reveal.jpg" alt="Aerial view of completed solar installation on Edmonton home" fetchpriority="high"></div>
+<div class="hero-overlay"></div>
 <div class="hero-grid">
 <div>
 <div class="tag" style="opacity:0;animation:fu .7s .2s forwards">Edmonton Master Electricians &middot; Since 2018</div>
 <h1>Your electricity bill<br>should be <em>zero.</em></h1>
 <p class="hero-sub">Solar panels, battery backup, and EV chargers &mdash; installed by master electricians. 500+ homes across Alberta.</p>
 <div class="hero-btns"><a href="#" class="btn" onclick="openQuoteForm(event)">Get Free Assessment &rarr;</a><a href="tel:7802005265" class="btn-g">(780) 200-5265</a></div>
-</div>
-<div class="hero-visual">
-<img src="/images/roof-aerial-reveal.jpg" alt="Aerial drone view of completed solar panel installation on Edmonton home by Stellar Upgrades" loading="eager">
 </div>
 </div>
 </section>
@@ -316,6 +358,22 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div></div>
 </section>
 
+
+<!-- SAVINGS TEASER -->
+<section class="sec sav-teaser"><div class="sec-i sav-inner">
+<div class="tag tag-c rv">Savings Calculator</div>
+<h2 class="stitle stitle-c rv">See what doing nothing is actually <em>costing you.</em></h2>
+<div class="sav-bill rv"><div style="font-size:12px;color:var(--tdd);font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Your Monthly Electricity Bill</div><div class="sav-bill-val">$<span id="savBillD">200</span><span>/mo</span></div></div>
+<div class="sav-slider-w rv"><input type="range" class="sav-slider" id="savSlider" min="80" max="600" value="200" step="10"></div>
+<div class="sav-labels rv"><span>$80</span><span>$600+</span></div>
+<div class="sav-cards rv">
+<div class="sav-card red"><div class="sav-card-label">Without Solar</div><div class="sav-card-val" id="savWithout">$200/mo</div><div class="sav-card-note">and rising every year</div></div>
+<div class="sav-card green"><div class="sav-card-label">With Solar</div><div class="sav-card-val" id="savWith">$182/mo</div><div class="sav-card-note">fixed &mdash; then $0 after payoff</div></div>
+</div>
+<div class="sav-bottom rv"><span id="savWait">Every month you wait costs you ~$200 in electricity you could offset.</span><br><strong>Alberta rates have risen ~38% in 3 years.</strong></div>
+<div class="rv" style="text-align:center"><a href="/solar#engine" class="btn">Calculate My Exact Savings &rarr;</a></div>
+</div></section>
+
 <!-- SERVICES -->
 <section class="sec svc-dark"><div class="sec-i">
 <div class="tag tag-c rv">What We Install</div>
@@ -330,6 +388,10 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="svc-specs"><div class="svc-spec"><strong>500W</strong><span>Per Panel</span></div><div class="svc-spec"><strong>30yr</strong><span>Warranty</span></div><div class="svc-spec"><strong>25yr</strong><span>Inverter</span></div><div class="svc-spec"><strong>$2.80</strong><span>/Watt</span></div></div>
 <a href="/solar" class="svc-cta">Solar details + calculator &rarr;</a>
 </div>
+<div class="svc-expand"><div class="svc-expand-inner">
+<ul><li>LONGi 500W + APsystems DS3 &mdash; 30-year warranty</li><li>From $2.80/W installed &mdash; $0 down financing</li><li>500+ installs, 5.0 Google rating</li></ul>
+<a href="/solar#engine" class="svc-expand-cta">See My Solar Savings &rarr;</a>
+</div></div>
 </div>
 <div class="svc rv rv-d1">
 <div class="svc-img"><img src="/images/ep-cube.jpg" alt="EP Cube battery backup system installed by Stellar Upgrades Edmonton" loading="lazy"></div>
@@ -340,6 +402,10 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="svc-specs"><div class="svc-spec"><strong>&lt;20ms</strong><span>Switchover</span></div><div class="svc-spec"><strong>Whole</strong><span>Home</span></div></div>
 <a href="/battery" class="svc-cta">Battery details &rarr;</a>
 </div>
+<div class="svc-expand"><div class="svc-expand-inner">
+<ul><li>EP Cube whole-home backup &mdash; auto-switchover &lt;20ms</li><li>Never lose power during Alberta storms</li><li>Expandable 9.9 &ndash; 19.9 kWh</li></ul>
+<a href="/battery" class="svc-expand-cta">Learn About Battery &rarr;</a>
+</div></div>
 </div>
 <div class="svc rv rv-d2">
 <div class="svc-img"><img src="/images/Image%201.jpg" alt="Wallbox Pulsar Plus EV charger installed by Stellar Upgrades Edmonton" loading="lazy"></div>
@@ -350,6 +416,10 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="svc-specs"><div class="svc-spec"><strong>$3,499</strong><span>40A</span></div><div class="svc-spec"><strong>$3,999</strong><span>48A</span></div></div>
 <a href="/ev-chargers" class="svc-cta">EV charger details &rarr;</a>
 </div>
+<div class="svc-expand"><div class="svc-expand-inner">
+<ul><li>Wallbox Pulsar Plus &mdash; smart Level 2</li><li>40A $3,499 | 48A $3,999 installed</li><li>Rated to &minus;30&deg;C &mdash; app-controlled</li></ul>
+<a href="/ev-chargers" class="svc-expand-cta">Get EV Charger Quote &rarr;</a>
+</div></div>
 </div>
 </div></div></section>
 
@@ -369,10 +439,14 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div>
 <div>
 <div class="bill-proof-img"><img src="/images/enmax-bill-credit-2.jpg" alt="Real ENMAX electricity bill showing $247.82 credit after solar installation by Stellar Upgrades" loading="lazy"></div>
-<p class="bill-proof-cap">Real bill. Real credit. <strong>$247.82 back from ENMAX.</strong> Not a projection.</p>
+<p class="bill-proof-cap" style="font-size:15px;margin-top:14px">Real bill. Real credit. <strong>$247.82 back from ENMAX.</strong><br>Not a projection &mdash; an actual utility statement.</p>
 </div>
 </div>
 </div></section>
+
+<div class="rv" style="text-align:center;padding:clamp(20px,3vw,32px) clamp(24px,5vw,80px)">
+<a href="#" class="btn" onclick="openQuoteForm(event)">Get Free Assessment &rarr;</a>
+</div>
 
 <!-- CALCULATOR -->
 <section class="sec calc" id="calc"><div class="calc-inner">
@@ -403,10 +477,10 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 
 <!-- STATS -->
 <div class="stats-bar"><div class="stats-grid">
-<div class="rv"><div class="stat-num">500+</div><div class="stat-label">Installs Since 2018</div></div>
-<div class="rv rv-d1"><div class="stat-num">5.0&starf;</div><div class="stat-label">Google Rating</div></div>
-<div class="rv rv-d2"><div class="stat-num">8</div><div class="stat-label">In-House Electricians</div></div>
-<div class="rv rv-d3"><div class="stat-num">0</div><div class="stat-label">Subcontractors. Ever.</div></div>
+<div class="rv"><div class="stat-num" data-count="500" data-suffix="+" data-decimals="0">0</div><div class="stat-label">Installs Since 2018</div></div>
+<div class="rv rv-d1"><div class="stat-num" data-count="5.0" data-suffix="&#9733;" data-decimals="1">0</div><div class="stat-label">Google Rating</div></div>
+<div class="rv rv-d2"><div class="stat-num" data-count="8" data-suffix="" data-decimals="0">0</div><div class="stat-label">In-House Electricians</div></div>
+<div class="rv rv-d3"><div class="stat-num" data-count="0" data-suffix="" data-decimals="0">0</div><div class="stat-label">Subcontractors. Ever.</div></div>
 </div></div>
 
 <!-- WHY -->
@@ -444,6 +518,10 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </a>
 </div>
 </div></section>
+
+<div class="rv" style="text-align:center;padding:0 clamp(24px,5vw,80px) clamp(20px,3vw,32px)">
+<a href="#" class="btn-o" onclick="openQuoteForm(event)">Talk to PJ About Your Home &rarr;</a>
+</div>
 
 <!-- GALLERY -->
 <section class="sec" style="background:var(--bg2)"><div class="sec-i">
@@ -611,5 +689,67 @@ img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+para
 </script>
 
 
+<script>
+// Savings teaser slider
+(function(){
+var sl=document.getElementById('savSlider');
+if(!sl)return;
+var bd=document.getElementById('savBillD'),wo=document.getElementById('savWithout'),wi=document.getElementById('savWith'),wt=document.getElementById('savWait');
+function upSav(){
+  var b=parseInt(sl.value);
+  bd.textContent=b;
+  var pct=((b-sl.min)/(sl.max-sl.min))*100;
+  sl.style.background='linear-gradient(90deg,rgba(201,168,76,0.4) '+pct+'%,rgba(240,232,216,0.06) '+pct+'%)';
+  var sp=Math.round(b*0.91);
+  wo.textContent='$'+b+'/mo';
+  wi.textContent='$'+sp+'/mo';
+  wt.textContent='Every month you wait costs you ~$'+b+' in electricity you could offset.';
+}
+sl.addEventListener('input',upSav);
+upSav();
+})();
+
+// Service card expand
+(function(){
+document.querySelectorAll('.svc').forEach(function(card){
+  card.addEventListener('click',function(e){
+    if(e.target.closest('a'))return;
+    var wasExpanded=card.classList.contains('expanded');
+    document.querySelectorAll('.svc.expanded').forEach(function(c){c.classList.remove('expanded')});
+    if(!wasExpanded)card.classList.add('expanded');
+  });
+});
+})();
+
+// Animated stat counters
+(function(){
+function countUp(el,target,suffix,decimals,duration){
+  duration=duration||1500;suffix=suffix||'';decimals=decimals||0;
+  var start=null;
+  function step(ts){
+    if(!start)start=ts;
+    var p=Math.min((ts-start)/duration,1);
+    var eased=1-Math.pow(1-p,3);
+    var val=(eased*target).toFixed(decimals);
+    el.textContent=val+suffix;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+var counted=new Set();
+var statObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting&&!counted.has(e.target)){
+      counted.add(e.target);
+      var t=parseFloat(e.target.getAttribute('data-count'));
+      var s=e.target.getAttribute('data-suffix')||'';
+      var d=parseInt(e.target.getAttribute('data-decimals'))||0;
+      countUp(e.target,t,s,d,1500);
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.stat-num[data-count]').forEach(function(el){statObs.observe(el)});
+})();
+</script>
 <script src="/chat-widget.js" defer></script>
 </body></html>
