@@ -656,8 +656,9 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(l){l.addEventListe
 </div>
 </div>
 <script>
-function openQuoteForm(e){if(e)e.preventDefault();var ov=document.getElementById('quoteOverlay');if(!ov)return;ov.style.display='flex';requestAnimationFrame(function(){requestAnimationFrame(function(){ov.style.opacity='1';document.getElementById('quotePopupInner').style.transform='scale(1) translateY(0)'})});if(typeof gtag==='function')gtag('event','quote_popup_opened',{event_category:'engagement',event_label:window.location.pathname})}
-function closeQuoteForm(){var ov=document.getElementById('quoteOverlay');if(!ov)return;ov.style.opacity='0';document.getElementById('quotePopupInner').style.transform='scale(.95) translateY(12px)';setTimeout(function(){ov.style.display='none'},300)}
+// Quote form — global scope so onclick attributes can access
+window.openQuoteForm=function(e){if(e)e.preventDefault();var ov=document.getElementById('quoteOverlay');if(!ov)return;ov.style.display='flex';requestAnimationFrame(function(){requestAnimationFrame(function(){ov.style.opacity='1';document.getElementById('quotePopupInner').style.transform='scale(1) translateY(0)'})});if(typeof gtag==='function')gtag('event','quote_popup_opened',{event_category:'engagement',event_label:window.location.pathname})};
+window.closeQuoteForm=function(){var ov=document.getElementById('quoteOverlay');if(!ov)return;ov.style.opacity='0';document.getElementById('quotePopupInner').style.transform='scale(.95) translateY(12px)';setTimeout(function(){ov.style.display='none'},300)};
 document.getElementById('quoteClose').addEventListener('click',closeQuoteForm);
 document.getElementById('quoteOverlay').addEventListener('click',function(e){if(e.target===this)closeQuoteForm()});
 document.getElementById('quoteSubmit').addEventListener('click',function(){
@@ -671,7 +672,7 @@ var params=new URLSearchParams({schema_name:'stellarupgrades',first_name:nm,last
 if(em)params.set('email',em);
 var img=new Image();
 img.onload=img.onerror=function(){if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','generate_lead',{event_category:'quote_popup'})}document.getElementById('quoteForm').style.display='none';document.getElementById('quoteSuccess').style.display='block'};
-img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString()});})();
+img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString()});
 </script>
 
 
