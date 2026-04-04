@@ -76,7 +76,8 @@ nav.scrolled .n-logo svg path{fill:#1E2A1E}nav.scrolled .n-toggle span{backgroun
 .hero-sub{color:rgba(255,255,255,.7)}
 .hero-btns .btn{background:var(--gold);color:#1E2A1E}.hero-btns .btn:hover{box-shadow:0 8px 28px rgba(201,168,76,.4)}
 .hero-btns .btn-g{color:rgba(255,255,255,.6)}.hero-btns .btn-g:hover{color:#fff}
-@media(max-width:768px){.hero-overlay{background:linear-gradient(to bottom,rgba(30,42,30,.35) 0%,rgba(30,42,30,.8) 100%)}.hero{min-height:100svh;padding:0}.hero-grid{grid-template-columns:1fr;padding:0 24px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:32px;min-height:100svh}.hero-visual{display:none}.hero h1{font-size:clamp(30px,8vw,40px)}.hero-sub{color:rgba(255,255,255,.7);font-size:15px}.hero-btns{display:flex!important}.hero-btns .btn-g{display:none}}
+.hero-proof{margin-top:16px;padding:10px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:10px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+@media(max-width:768px){.hero-overlay{background:linear-gradient(to bottom,rgba(30,42,30,.35) 0%,rgba(30,42,30,.8) 100%)}.hero{min-height:100svh;padding:0}.hero-grid{grid-template-columns:1fr;padding:0 24px;display:flex;flex-direction:column;justify-content:center;min-height:100svh}.hero-visual{display:none}.hero h1{font-size:clamp(30px,8vw,40px)}.hero-sub{color:rgba(255,255,255,.7);font-size:15px}.hero-btns{display:flex!important}.hero-btns .btn-g{display:none}}
 
 /* TRUST */
 .trust{background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:18px clamp(24px,5vw,80px);overflow:hidden}
@@ -325,13 +326,30 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="tag" style="opacity:0;animation:fu .7s .2s forwards">Edmonton Master Electricians &middot; Since 2018</div>
 <h1>Your electricity bill<br>should be <em>zero.</em></h1>
 <p class="hero-sub">Solar panels, battery backup, and EV chargers &mdash; installed by master electricians. 500+ homes across Alberta.</p>
-<div class="hero-btns"><a href="#" class="btn" onclick="openQuoteForm(event)">Get Free Assessment &rarr;</a><a href="tel:7802005265" class="btn-g">(780) 200-5265</a></div>
+<div class="hero-btns"><a href="#" class="btn" onclick="openQuoteForm(event)">See What You'd Save &rarr;</a><a href="tel:7802005265" class="btn-g">(780) 200-5265</a></div>
+<div class="hero-proof" style="opacity:0;animation:fu .7s .9s forwards"><span style="font-size:13px;color:rgba(255,255,255,.5);font-weight:300">&#9733; Patt Gunn went from <strong style="color:var(--gold);font-weight:700">$800/mo to $0/mo</strong> after switching to solar</span></div>
 </div>
 </div>
 </section>
 
 <!-- TRUST -->
 <div class="trust"><div class="trust-inner"><div class="trust-item"><span class="trust-stars">&starf;&starf;&starf;&starf;&starf;</span> 5.0 on Google</div><div class="trust-sep"></div><div class="trust-item">500+ Installs</div><div class="trust-sep"></div><div class="trust-item">Master Electrician Certified</div><div class="trust-sep"></div><div class="trust-item">Licensed &amp; Insured</div></div></div>
+
+<!-- SAVINGS TEASER -->
+<section class="sec sav-teaser"><div class="sec-i sav-inner">
+<div class="tag tag-c rv">Savings Calculator</div>
+<p class="rv" style="text-align:center;font-size:13px;color:var(--red);font-weight:600;margin-bottom:8px">Alberta electricity rates up 38% since 2022. Every month without solar costs you.</p>
+<h2 class="stitle stitle-c rv">See what doing nothing is actually <em>costing you.</em></h2>
+<div class="sav-bill rv"><div style="font-size:12px;color:var(--tdd);font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Your Monthly Electricity Bill</div><div class="sav-bill-val">$<span id="savBillD">200</span><span>/mo</span></div></div>
+<div class="sav-slider-w rv"><input type="range" class="sav-slider" id="savSlider" min="80" max="600" value="200" step="10"></div>
+<div class="sav-labels rv"><span>$80</span><span>$600+</span></div>
+<div class="sav-cards rv">
+<div class="sav-card red"><div class="sav-card-label">Without Solar</div><div class="sav-card-val" id="savWithout">$200/mo</div><div class="sav-card-note">and rising every year</div></div>
+<div class="sav-card green"><div class="sav-card-label">With Solar</div><div class="sav-card-val" id="savWith">$182/mo</div><div class="sav-card-note">fixed &mdash; then $0 after payoff</div></div>
+</div>
+<div class="sav-bottom rv"><span id="savWait">Every month you wait costs you ~$200 in electricity you could offset.</span><br><strong>Alberta rates have risen ~38% in 3 years.</strong></div>
+<div class="rv" style="text-align:center"><a href="/solar#engine" class="btn">Calculate My Exact Savings &rarr;</a></div>
+</div></section>
 
 <!-- REVIEWS -->
 <section class="grev-sec">
@@ -360,21 +378,6 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div></div>
 </section>
 
-
-<!-- SAVINGS TEASER -->
-<section class="sec sav-teaser"><div class="sec-i sav-inner">
-<div class="tag tag-c rv">Savings Calculator</div>
-<h2 class="stitle stitle-c rv">See what doing nothing is actually <em>costing you.</em></h2>
-<div class="sav-bill rv"><div style="font-size:12px;color:var(--tdd);font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Your Monthly Electricity Bill</div><div class="sav-bill-val">$<span id="savBillD">200</span><span>/mo</span></div></div>
-<div class="sav-slider-w rv"><input type="range" class="sav-slider" id="savSlider" min="80" max="600" value="200" step="10"></div>
-<div class="sav-labels rv"><span>$80</span><span>$600+</span></div>
-<div class="sav-cards rv">
-<div class="sav-card red"><div class="sav-card-label">Without Solar</div><div class="sav-card-val" id="savWithout">$200/mo</div><div class="sav-card-note">and rising every year</div></div>
-<div class="sav-card green"><div class="sav-card-label">With Solar</div><div class="sav-card-val" id="savWith">$182/mo</div><div class="sav-card-note">fixed &mdash; then $0 after payoff</div></div>
-</div>
-<div class="sav-bottom rv"><span id="savWait">Every month you wait costs you ~$200 in electricity you could offset.</span><br><strong>Alberta rates have risen ~38% in 3 years.</strong></div>
-<div class="rv" style="text-align:center"><a href="/solar#engine" class="btn">Calculate My Exact Savings &rarr;</a></div>
-</div></section>
 
 <!-- SERVICES -->
 <section class="sec svc-dark"><div class="sec-i">
@@ -446,37 +449,6 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div>
 </div></section>
 
-<div class="rv" style="text-align:center;padding:clamp(20px,3vw,32px) clamp(24px,5vw,80px)">
-<a href="#" class="btn" onclick="openQuoteForm(event)">Get Free Assessment &rarr;</a>
-</div>
-
-<!-- CALCULATOR -->
-<section class="sec calc" id="calc"><div class="calc-inner">
-<div class="tag tag-c rv">What Are You Paying the Grid?</div>
-<div class="calc-bill rv"><div class="calc-bill-label">Your Monthly Electricity Bill</div><div class="calc-bill-amt">$<span id="billD">200</span><span>/mo</span></div></div>
-<div class="calc-slider-w rv"><input type="range" class="calc-slider" id="billS" min="80" max="600" value="200" step="10"></div>
-<div class="calc-labels rv"><span>$80</span><span>$600+</span></div>
-<div class="calc-result" id="calcResult">
-<div class="calc-savings">
-<div class="calc-sav-item"><div class="calc-sav-label">Cost Without Solar (25yr)</div><div class="calc-sav-val red" id="crNo">$96,000</div><div class="calc-sav-note">paid to the grid, gone forever</div></div>
-<div class="calc-arrow">&rarr;</div>
-<div class="calc-sav-item"><div class="calc-sav-label">Net Savings With Solar</div><div class="calc-sav-val green" id="crYes">$0</div><div class="calc-sav-note">after system cost &middot; includes referral savings</div></div>
-</div>
-<div class="calc-capture" id="calcCapture">
-<h3>Want the exact numbers for your home?</h3>
-<p>Free 15-minute assessment. If it doesn't make sense, we'll tell you.</p>
-<div class="calc-form" id="calcForm">
-<input class="calc-input" id="cName" placeholder="First name">
-<input class="calc-input" id="cPhone" placeholder="Phone" type="tel">
-<input class="calc-input" id="cEmail" placeholder="Email (optional)" type="email" style="flex-basis:100%">
-<button class="calc-submit" id="cSubmit">Get My Custom Proposal &rarr;</button>
-</div>
-<p class="calc-dis">No spam. A Stellar team member calls within 24 hours.</p>
-<div class="calc-success" id="calcSuccess"><h4>&check; We're on it.</h4><p>We'll call within 24 hours with your custom numbers.</p></div>
-</div>
-</div>
-</div></section>
-
 <!-- STATS -->
 <div class="stats-bar"><div class="stats-grid">
 <div class="rv"><div class="stat-num" data-count="500" data-suffix="+" data-decimals="0">0</div><div class="stat-label">Installs Since 2018</div></div>
@@ -544,7 +516,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <section class="cta-sec">
 <h2 class="rv">Your last electricity bill starts<br>the day we <em>install.</em></h2>
 <p class="rv">15 minutes. Free. If the math doesn't work, we'll tell you.</p>
-<div class="cta-btns rv"><a href="#" class="btn" onclick="openQuoteForm(event)">Get My Free Assessment &rarr;</a><a href="tel:7802005265" class="btn-g">(780) 200-5265 &rarr;</a></div>
+<div class="cta-btns rv"><a href="#" class="btn" onclick="openQuoteForm(event)">See What You'd Save &rarr;</a><a href="tel:7802005265" class="btn-g">(780) 200-5265 &rarr;</a></div>
 </section>
 
 <!-- AREAS -->
