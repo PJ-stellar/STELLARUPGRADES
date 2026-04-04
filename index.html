@@ -290,6 +290,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 .sav-bottom{text-align:center;font-size:13px;color:var(--td);font-weight:300;line-height:1.6;margin-bottom:24px}
 .sav-bottom strong{color:var(--red);font-weight:700}
 @media(max-width:768px){.sav-cards{grid-template-columns:1fr}}
+@media(max-width:768px){.hiw-grid-3{grid-template-columns:1fr!important}}
 
 /* SERVICE EXPAND */
 .svc-expand{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .4s;opacity:0}
@@ -325,7 +326,7 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div>
 <div class="tag" style="opacity:0;animation:fu .7s .2s forwards">Edmonton Master Electricians &middot; Since 2018</div>
 <h1>Your electricity bill<br>should be <em>zero.</em></h1>
-<p class="hero-sub">Solar panels, battery backup, and EV chargers &mdash; installed by master electricians. 500+ homes across Alberta.</p>
+<p class="hero-sub">Solar panels, battery backup, and EV chargers &mdash; installed by master electricians. $0 down. From $89/mo. 500+ homes across Alberta.</p>
 <div class="hero-btns"><a href="#" class="btn" onclick="openQuoteForm(event)">See What You'd Save &rarr;</a><a href="tel:7802005265" class="btn-g">(780) 200-5265</a></div>
 <div class="hero-proof" style="opacity:0;animation:fu .7s .9s forwards"><span style="font-size:13px;color:rgba(255,255,255,.5);font-weight:300">&#9733; Patt Gunn went from <strong style="color:var(--gold);font-weight:700">$800/mo to $0/mo</strong> after switching to solar</span></div>
 </div>
@@ -333,22 +334,34 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </section>
 
 <!-- TRUST -->
-<div class="trust"><div class="trust-inner"><div class="trust-item"><span class="trust-stars">&starf;&starf;&starf;&starf;&starf;</span> 5.0 on Google</div><div class="trust-sep"></div><div class="trust-item">500+ Installs</div><div class="trust-sep"></div><div class="trust-item">Master Electrician Certified</div><div class="trust-sep"></div><div class="trust-item">Licensed &amp; Insured</div></div></div>
+<div class="trust"><div class="trust-inner"><div class="trust-item"><span class="trust-stars">&starf;&starf;&starf;&starf;&starf;</span> 5.0 (55+ Reviews)</div><div class="trust-sep"></div><div class="trust-item">500+ Installs</div><div class="trust-sep"></div><div class="trust-item">Master Electrician Certified</div><div class="trust-sep"></div><div class="trust-item">Licensed &amp; Insured</div></div></div>
 
-<!-- SAVINGS TEASER -->
+
+<!-- EQUIPMENT LOGOS -->
+<div style="padding:16px clamp(24px,5vw,80px);text-align:center;border-bottom:1px solid var(--b)">
+<div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--tdd);margin-bottom:12px">Installed With</div>
+<div style="display:flex;align-items:center;justify-content:center;gap:clamp(24px,4vw,48px);flex-wrap:wrap;max-width:800px;margin:0 auto;opacity:.6">
+<img src="/images/longi-panel.png" alt="LONGi Solar" style="height:28px;width:auto;object-fit:contain;filter:grayscale(1)" loading="lazy">
+<img src="/images/apsystems-ds3.png" alt="APsystems" style="height:28px;width:auto;object-fit:contain;filter:grayscale(1)" loading="lazy">
+<span style="font-size:13px;font-weight:700;color:var(--tdd);letter-spacing:.02em">EP Cube</span>
+<span style="font-size:13px;font-weight:700;color:var(--tdd);letter-spacing:.02em">Wallbox</span>
+</div>
+</div>
+
+<!-- SAVINGS CALCULATOR -->
 <section class="sec sav-teaser"><div class="sec-i sav-inner">
 <div class="tag tag-c rv">Savings Calculator</div>
-<p class="rv" style="text-align:center;font-size:13px;color:var(--red);font-weight:600;margin-bottom:8px">Alberta electricity rates up 38% since 2022. Every month without solar costs you.</p>
 <h2 class="stitle stitle-c rv">See what doing nothing is actually <em>costing you.</em></h2>
+<p class="rv" style="text-align:center;font-size:13px;color:var(--red);font-weight:600;margin-bottom:20px">Alberta electricity rates up 38% since 2022.</p>
 <div class="sav-bill rv"><div style="font-size:12px;color:var(--tdd);font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Your Monthly Electricity Bill</div><div class="sav-bill-val">$<span id="savBillD">200</span><span>/mo</span></div></div>
 <div class="sav-slider-w rv"><input type="range" class="sav-slider" id="savSlider" min="80" max="600" value="200" step="10"></div>
 <div class="sav-labels rv"><span>$80</span><span>$600+</span></div>
 <div class="sav-cards rv">
-<div class="sav-card red"><div class="sav-card-label">Without Solar</div><div class="sav-card-val" id="savWithout">$200/mo</div><div class="sav-card-note">and rising every year</div></div>
-<div class="sav-card green"><div class="sav-card-label">With Solar</div><div class="sav-card-val" id="savWith">$182/mo</div><div class="sav-card-note">fixed &mdash; then $0 after payoff</div></div>
+<div class="sav-card red"><div class="sav-card-label">25-Year Cost Without Solar</div><div class="sav-card-val" id="savWithout">$96,000</div><div class="sav-card-note">paid to the grid &mdash; gone forever</div></div>
+<div class="sav-card green"><div class="sav-card-label">25-Year Net Savings With Solar</div><div class="sav-card-val" id="savWith">$58,000</div><div class="sav-card-note">money back in your pocket</div></div>
 </div>
-<div class="sav-bottom rv"><span id="savWait">Every month you wait costs you ~$200 in electricity you could offset.</span><br><strong>Alberta rates have risen ~38% in 3 years.</strong></div>
-<div class="rv" style="text-align:center"><a href="#" class="btn" onclick="openQuoteForm(event)">Get My Custom Savings Report &rarr;</a></div>
+<div class="sav-bottom rv" id="savDetails" style="font-size:13px;color:var(--td);font-weight:300;line-height:1.7;text-align:center">$0 down &middot; From <strong style="color:var(--gold)" id="savMonthly">$89</strong>/mo financed &middot; Pays for itself, then <strong style="color:var(--green)">$0 electricity for 15+ years</strong></div>
+<div class="rv" style="text-align:center;margin-top:20px"><a href="#" class="btn" onclick="openQuoteForm(event)">Get My Custom Savings Report &rarr;</a></div>
 </div></section>
 
 <!-- REVIEWS -->
@@ -378,6 +391,30 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div></div>
 </section>
 
+
+
+<!-- HOW IT WORKS -->
+<section class="sec" style="background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b)"><div class="sec-i" style="text-align:center">
+<div class="tag tag-c rv">How It Works</div>
+<h2 class="stitle stitle-c rv">Three steps. We handle <em>everything.</em></h2>
+<div class="rv hiw-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:28px auto 0">
+<div style="text-align:center;padding:20px 16px">
+<div style="width:52px;height:52px;border-radius:50%;background:rgba(201,168,76,.08);border:2px solid var(--bG);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:'DM Serif Display',serif;font-size:20px;color:var(--gold)">1</div>
+<h4 style="font-size:15px;font-weight:700;margin-bottom:6px">Free Assessment</h4>
+<p style="font-size:13px;color:var(--td);line-height:1.6;font-weight:300">15-minute call with PJ. We review your bill, check your roof, and show you the real numbers. No pressure, no obligation.</p>
+</div>
+<div style="text-align:center;padding:20px 16px">
+<div style="width:52px;height:52px;border-radius:50%;background:rgba(201,168,76,.08);border:2px solid var(--bG);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:'DM Serif Display',serif;font-size:20px;color:var(--gold)">2</div>
+<h4 style="font-size:15px;font-weight:700;margin-bottom:6px">We Handle Permits &amp; Engineering</h4>
+<p style="font-size:13px;color:var(--td);line-height:1.6;font-weight:300">Custom system design, electrical &amp; structural engineering, city permits, utility interconnection. You do nothing.</p>
+</div>
+<div style="text-align:center;padding:20px 16px">
+<div style="width:52px;height:52px;border-radius:50%;background:rgba(201,168,76,.08);border:2px solid var(--bG);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:'DM Serif Display',serif;font-size:20px;color:var(--gold)">3</div>
+<h4 style="font-size:15px;font-weight:700;margin-bottom:6px">Installation &amp; Power On</h4>
+<p style="font-size:13px;color:var(--td);line-height:1.6;font-weight:300">Our master electricians install in 1&ndash;3 days. City inspection, meter swap, and you start producing your own electricity.</p>
+</div>
+</div>
+</div></section>
 
 <!-- SERVICES -->
 <section class="sec svc-dark"><div class="sec-i">
@@ -449,12 +486,29 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div>
 </div></section>
 
+
+<!-- WINTER PROOF -->
+<section class="sec"><div class="sec-i">
+<div class="why-grid rv">
+<div class="why-photo"><img src="/images/roof-winter.webp" alt="Solar panels producing electricity through Edmonton winter snow" loading="lazy"></div>
+<div>
+<div class="tag">Solar In Winter</div>
+<h2 class="stitle">Edmonton gets more sunshine than <em>Toronto.</em></h2>
+<div style="display:grid;gap:16px;margin-top:16px">
+<div style="display:flex;gap:12px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:8px;background:rgba(201,168,76,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">&#9728;</div><div><strong style="font-size:14px">2,300+ hours of sunshine per year</strong><p style="font-size:12px;color:var(--td);font-weight:300;margin-top:2px">More than Toronto, Montreal, or Vancouver. Alberta is one of the sunniest provinces.</p></div></div>
+<div style="display:flex;gap:12px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:8px;background:rgba(201,168,76,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">&#10052;</div><div><strong style="font-size:14px">Cold improves panel efficiency</strong><p style="font-size:12px;color:var(--td);font-weight:300;margin-top:2px">Solar panels produce more power in cold temperatures. Alberta winters are actually an advantage.</p></div></div>
+<div style="display:flex;gap:12px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:8px;background:rgba(201,168,76,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">&#128200;</div><div><strong style="font-size:14px">Net metering banks your summer surplus</strong><p style="font-size:12px;color:var(--td);font-weight:300;margin-top:2px">Produce extra in summer, use credits in winter. Most systems hit $0 annual electricity cost.</p></div></div>
+</div>
+</div>
+</div>
+</div></section>
+
 <!-- STATS -->
 <div class="stats-bar"><div class="stats-grid">
 <div class="rv"><div class="stat-num" data-count="500" data-suffix="+" data-decimals="0">0</div><div class="stat-label">Installs Since 2018</div></div>
 <div class="rv rv-d1"><div class="stat-num" data-count="5.0" data-suffix="&#9733;" data-decimals="1">0</div><div class="stat-label">Google Rating</div></div>
 <div class="rv rv-d2"><div class="stat-num" data-count="8" data-suffix="" data-decimals="0">0</div><div class="stat-label">In-House Electricians</div></div>
-<div class="rv rv-d3"><div class="stat-num" data-count="0" data-suffix="" data-decimals="0">0</div><div class="stat-label">Subcontractors. Ever.</div></div>
+<div class="rv rv-d3"><div class="stat-num" style="color:var(--gold)">0</div><div class="stat-label">Subcontractors. Ever.</div></div>
 </div></div>
 
 <!-- WHY -->
@@ -493,21 +547,17 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 </div>
 </div></section>
 
-<div class="rv" style="text-align:center;padding:0 clamp(24px,5vw,80px) clamp(20px,3vw,32px)">
-<a href="#" class="btn-o" onclick="openQuoteForm(event)">Talk to PJ About Your Home &rarr;</a>
-</div>
-
 <!-- GALLERY -->
 <section class="sec" style="background:var(--bg2)"><div class="sec-i">
 <div class="tag rv">Our Work</div>
 <h2 class="stitle rv">Real installs across <em>Alberta.</em></h2>
 <div class="gallery-grid rv">
 <div class="gallery-item" data-loc="Edmonton, AB"><img src="/images/roof-aerial-reveal.jpg" alt="Aerial view of solar panel installation in Edmonton" loading="lazy"></div>
-<div class="gallery-item" data-loc="Rural Alberta"><img src="/images/house-sunset.jpg" alt="Solar home at golden hour in rural Alberta" loading="lazy"></div>
-<div class="gallery-item" data-loc="Rural Alberta"><img src="/images/ground-fall.webp" alt="Ground mount solar system in fall in rural Alberta" loading="lazy"></div>
-<div class="gallery-item" data-loc="St. Albert, AB"><img src="/images/roof-winter.webp" alt="Solar panels shedding snow in St. Albert winter" loading="lazy"></div>
-<div class="gallery-item" data-loc="Spruce Grove, AB"><img src="/images/roof-suburb.webp" alt="Suburban solar installation in Spruce Grove" loading="lazy"></div>
-<div class="gallery-item" data-loc="Edmonton, AB"><img src="/images/20260315_131242.jpeg" alt="Stellar Upgrades crew working on winter solar installation" loading="lazy"></div>
+<div class="gallery-item" data-loc="Rural Alberta"><img src="/images/roof-rural.webp" alt="Solar panels on rural Alberta property" loading="lazy"></div>
+<div class="gallery-item" data-loc="Rural Alberta"><img src="/images/ground-winter.webp" alt="Ground mount solar system in Alberta winter" loading="lazy"></div>
+<div class="gallery-item" data-loc="Edmonton, AB"><img src="/images/roof-deck.webp" alt="Solar panels installed on Edmonton home rooftop" loading="lazy"></div>
+<div class="gallery-item" data-loc="Spruce Grove, AB"><img src="/images/roof-neighborhood.webp" alt="Solar panels installed on Spruce Grove home" loading="lazy"></div>
+<div class="gallery-item" data-loc="Edmonton, AB"><img src="/images/jw-install.webp" alt="Jordan Walsh installing solar panels on Edmonton rooftop" loading="lazy"></div>
 </div>
 <div style="text-align:center;margin-top:28px"><a href="/projects" class="btn-o rv">See All Projects &rarr;</a></div>
 </div></section>
@@ -515,20 +565,10 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <!-- CTA -->
 <section class="cta-sec">
 <h2 class="rv">Your last electricity bill starts<br>the day we <em>install.</em></h2>
-<p class="rv">15 minutes. Free. If the math doesn't work, we'll tell you.</p>
+<p class="rv">Free 15-minute assessment. No obligation. If solar doesn't make sense for your home, we'll tell you &mdash; guaranteed.</p>
 <div class="cta-btns rv"><a href="#" class="btn" onclick="openQuoteForm(event)">See What You'd Save &rarr;</a><a href="tel:7802005265" class="btn-g">(780) 200-5265 &rarr;</a></div>
+<p class="rv" style="font-size:11px;color:rgba(255,255,255,.35);margin-top:16px;position:relative">We decline ~10% of assessments when the math doesn't work. Your trust matters more than a sale.</p>
 </section>
-
-<!-- AREAS -->
-<section class="sec" style="background:var(--bg2)"><div class="sec-i">
-<div class="tag rv">Service Areas</div>
-<h2 class="stitle rv">Edmonton and 40+ surrounding <em>communities.</em></h2>
-<p style="font-size:14px;color:var(--td);font-weight:300;margin-bottom:20px;max-width:600px">If you're within an hour of Edmonton, we'll come to you. Rooftop and ground-mount systems.</p>
-<div class="area-grid rv">
-<a class="area-tag" href="/areas/edmonton">Edmonton</a><a class="area-tag" href="/areas/st-albert">St. Albert</a><a class="area-tag" href="/areas/sherwood-park">Sherwood Park</a><a class="area-tag" href="/areas/spruce-grove">Spruce Grove</a><a class="area-tag" href="/areas/leduc">Leduc</a><a class="area-tag" href="/areas/beaumont">Beaumont</a><a class="area-tag" href="/areas/fort-saskatchewan">Fort Saskatchewan</a><a class="area-tag" href="/areas/stony-plain">Stony Plain</a><a class="area-tag" href="/areas/devon">Devon</a><a class="area-tag" href="/areas/morinville">Morinville</a><a class="area-tag" href="/areas/gibbons">Gibbons</a><a class="area-tag" href="/areas/bon-accord">Bon Accord</a><a class="area-tag" href="/areas/legal">Legal</a><a class="area-tag" href="/areas/calmar">Calmar</a><a class="area-tag" href="/areas/nisku">Nisku</a>
-<a class="area-tag" href="/areas/camrose">Camrose</a><a class="area-tag" href="/areas/wetaskiwin">Wetaskiwin</a><a class="area-tag" href="/areas/drayton-valley">Drayton Valley</a><a class="area-tag" href="/areas/barrhead">Barrhead</a><a class="area-tag" href="/areas/westlock">Westlock</a><a class="area-tag" href="/areas/vegreville">Vegreville</a><a class="area-tag" href="/areas/tofield">Tofield</a><a class="area-tag" href="/areas/lamont">Lamont</a><a class="area-tag" href="/areas/redwater">Redwater</a><a class="area-tag" href="/areas/thorsby">Thorsby</a><a class="area-tag" href="/areas/millet">Millet</a><a class="area-tag" href="/areas/mundare">Mundare</a><a class="area-tag" href="/areas/bruderheim">Bruderheim</a><a class="area-tag" href="/areas/warburg">Warburg</a>
-<a class="area-tag" href="/areas/red-deer">Red Deer</a><a class="area-tag" href="/areas/lacombe">Lacombe</a><a class="area-tag" href="/areas/ponoka">Ponoka</a><a class="area-tag" href="/areas/rimbey">Rimbey</a><a class="area-tag" href="/areas/stettler">Stettler</a><a class="area-tag" href="/areas/innisfail">Innisfail</a><a class="area-tag" href="/areas/olds">Olds</a><a class="area-tag" href="/areas/didsbury">Didsbury</a><a class="area-tag" href="/areas/sylvan-lake">Sylvan Lake</a><a class="area-tag" href="/areas/rocky-mountain-house">Rocky Mountain House</a><a class="area-tag" href="/areas/athabasca">Athabasca</a><a class="area-tag" href="/areas/whitecourt">Whitecourt</a><a class="area-tag" href="/areas/edson">Edson</a><a class="area-tag" href="/areas/hinton">Hinton</a><a class="area-tag" href="/areas/smoky-lake">Smoky Lake</a><a class="area-tag" href="/areas/st-paul">St. Paul</a><a class="area-tag" href="/areas/bonnyville">Bonnyville</a><a class="area-tag" href="/areas/vermilion">Vermilion</a><a class="area-tag" href="/areas/wainwright">Wainwright</a><a class="area-tag" href="/areas/killam">Killam</a><a class="area-tag" href="/areas/sedgewick">Sedgewick</a><a class="area-tag" href="/areas/mayerthorpe">Mayerthorpe</a><a class="area-tag" href="/areas/slave-lake">Slave Lake</a><a class="area-tag" href="/areas/cold-lake">Cold Lake</a><a class="area-tag" href="/areas/lloydminster">Lloydminster</a><a class="area-tag" href="/areas">Rural Alberta</a><a class="area-tag" href="/areas" style="background:rgba(201,168,76,.08);border-color:var(--bG);color:var(--gold);font-weight:700">View All Service Areas &rarr;</a>
-</div></div></section>
 
 <!-- FAQ -->
 <section class="sec"><div class="sec-i">
@@ -540,7 +580,13 @@ footer{background:var(--bg2);color:var(--td);padding:clamp(40px,5vw,64px) clamp(
 <div class="faq-i rv"><button class="faq-q">Does solar work in Alberta winters?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-a-in">Yes &mdash; Edmonton gets 2,300+ hours of sunshine per year, more than Toronto. Cold actually improves panel efficiency. Summer surplus credits offset winter usage through Alberta's net metering program. Most properly sized systems achieve $0 annual electricity cost. <a href="/solar">More on how it works &rarr;</a></div></div></div>
 <div class="faq-i rv"><button class="faq-q">What areas do you serve?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-a-in">We serve a 200-kilometre radius from Edmonton &mdash; from Red Deer and Innisfail in the south to Athabasca and Slave Lake in the north, Edson and Hinton to the west, and Lloydminster, Cold Lake, and Bonnyville to the east. This includes Edmonton, St. Albert, Sherwood Park, Spruce Grove, Leduc, Beaumont, Fort Saskatchewan, Camrose, Wetaskiwin, and dozens of smaller communities and rural properties. Both rooftop and ground-mount systems.</div></div></div>
 <div class="faq-i rv"><button class="faq-q">How is Stellar Upgrades different from other solar companies?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-a-in">8 in-house electricians (zero subcontractors), both co-founders on every project, 500+ installs with a 5.0-star Google rating and zero negative reviews, and we decline ~10% of assessments when the math doesn't work. We encourage homeowners to get quotes from SkyFire, Kuby, and us &mdash; then compare. <a href="/about">More about us &rarr;</a></div></div></div>
-</div></div></section>
+<div class="rv" style="margin-top:32px;padding-top:24px;border-top:1px solid var(--b)">
+<h4 style="font-size:12px;font-weight:700;color:var(--tdd);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Serving Edmonton &amp; 40+ Communities</h4>
+<div style="display:flex;flex-wrap:wrap;gap:6px">
+<a href="/areas/edmonton" class="area-tag">Edmonton</a><a href="/areas/st-albert" class="area-tag">St. Albert</a><a href="/areas/sherwood-park" class="area-tag">Sherwood Park</a><a href="/areas/spruce-grove" class="area-tag">Spruce Grove</a><a href="/areas/leduc" class="area-tag">Leduc</a><a href="/areas/beaumont" class="area-tag">Beaumont</a><a href="/areas/fort-saskatchewan" class="area-tag">Fort Saskatchewan</a><a href="/areas/stony-plain" class="area-tag">Stony Plain</a><a href="/areas/devon" class="area-tag">Devon</a><a href="/areas/morinville" class="area-tag">Morinville</a><a href="/areas/red-deer" class="area-tag">Red Deer</a><a href="/areas/camrose" class="area-tag">Camrose</a><a href="/areas" class="area-tag" style="background:rgba(201,168,76,.08);border-color:var(--bG);color:var(--gold);font-weight:700">All Service Areas &rarr;</a>
+</div>
+</div>
+</div></section>
 
 <!-- FOOTER -->
 </main>
@@ -566,44 +612,7 @@ document.querySelectorAll('.rv').forEach(function(el){ro.observe(el)});
 // FAQ
 document.querySelectorAll('.faq-q').forEach(function(b){b.addEventListener('click',function(){var i=b.parentElement,o=i.classList.contains('open');document.querySelectorAll('.faq-i').forEach(function(x){x.classList.remove('open')});if(!o)i.classList.add('open')})});
 
-// CALCULATOR
-var sliderMoved=false;
-function updateCalc(){
-  var bill=parseInt(document.getElementById('billS').value);
-  document.getElementById('billD').textContent=bill;
-  var sl=document.getElementById('billS'),pct=((bill-sl.min)/(sl.max-sl.min))*100;
-  sl.style.background='linear-gradient(90deg,rgba(201,168,76,0.4) '+pct+'%,rgba(240,232,216,0.06) '+pct+'%)';
-  var ann=bill*12,cum=0,yr=ann;for(var i=0;i<25;i++){cum+=yr;yr*=1.05}
-  var costNo=Math.round(cum);
-  var kwh=ann/0.25,kw=Math.max(3,Math.round(kwh/1150*10)/10);
-  var sysCost=Math.round(14000+(kw-3)*(36000/27));
-  var rebate=2000;
-  var financed=sysCost-rebate;
-  var mr=0.0699/12,np=240,mp=financed*(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1);
-  var totalFinanced=Math.round(mp*240);
-  var savings=costNo-totalFinanced;
-  document.getElementById('crNo').textContent='$'+costNo.toLocaleString();
-  document.getElementById('crYes').textContent='$'+Math.max(0,savings).toLocaleString();
-}
-document.getElementById('billS').addEventListener('input',function(){
-  if(!sliderMoved){sliderMoved=true;document.getElementById('calcResult').classList.add('show');if(typeof gtag==='function')gtag('event','calculator_started',{event_category:'engagement'})}
-  updateCalc();
-});
-updateCalc();
 
-// Calc form submit
-document.getElementById('cSubmit').addEventListener('click',function(){
-  var nm=document.getElementById('cName').value.trim(),ph=document.getElementById('cPhone').value.trim(),em=document.getElementById('cEmail').value.trim(),btn=this,bill=document.getElementById('billS').value;
-  var phClean=ph.replace(/\D/g,'');
-  if(!nm||!ph){return}
-  if(phClean.length<10){document.getElementById('cPhone').style.borderColor='var(--red)';document.getElementById('cPhone').focus();return}
-  document.getElementById('cPhone').style.borderColor='';
-  btn.disabled=true;btn.textContent='Submitting...';btn.style.opacity='.6';
-  var params=new URLSearchParams({schema_name:'stellarupgrades',first_name:nm,last_name:'(Homepage Calculator)',phone:ph,customField37:bill,apptcomments:'Homepage Calculator Lead | Bill: $'+bill+'/mo | 25yr grid cost: '+document.getElementById('crNo').textContent+(em?' | Email: '+em:''),salesRep:'f51909f89cb8465ab31ace5ebf26f4c8',lead_source:'Website - Homepage Calculator'});
-  if(em)params.set('email',em);
-  var img=new Image();img.onload=img.onerror=function(){if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','generate_lead',{event_category:'calculator',event_label:'homepage'})}document.getElementById('calcForm').style.display='none';document.getElementById('calcSuccess').style.display='block'};
-  img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+params.toString();
-});
 
 // Exit popup
 var exitShown=false;document.addEventListener('mouseout',function(e){if(exitShown||e.clientY>10||window.innerWidth<768)return;exitShown=true;var ov=document.getElementById('exitOverlay');ov.style.display='flex';requestAnimationFrame(function(){requestAnimationFrame(function(){ov.classList.add('show')})});if(typeof gtag==='function')gtag('event','exit_popup_shown',{event_category:'engagement'})});
@@ -613,12 +622,12 @@ document.getElementById('exitSubmit').addEventListener('click',function(){var nm
 // Phone
 document.querySelectorAll('a[href^="tel:"]').forEach(function(l){l.addEventListener('click',function(){if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-385606008/2VjbCMSd3_8bEPmVz_tC',value:1,currency:'CAD'});gtag('event','phone_call',{event_category:'contact'})}})});
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Stellar Upgrades","legalName":"Stellar Upgrades Ltd.","url":"https://stellarupgrades.ca","description":"Stellar Upgrades is an Edmonton-based solar panel, battery backup, and EV charger installation company founded in 2018. 8 in-house electricians supervised by a Master Electrician. 500+ installations across Edmonton and Alberta. LONGi Hi-MO 7 500W panels, APsystems DS3 microinverters, EP Cube battery, Wallbox Pulsar Plus EV chargers. 5.0-star Google rating.","telephone":"+17802005265","email":"info@stellarupgrades.ca","address":{"@type":"PostalAddress","streetAddress":"6005 103A St NW","addressLocality":"Edmonton","addressRegion":"AB","postalCode":"T6H 2J7","addressCountry":"CA"},"geo":{"@type":"GeoCoordinates","latitude":53.5461,"longitude":-113.4938},"foundingDate":"2018","numberOfEmployees":{"@type":"QuantitativeValue","value":8},"founder":[{"@type":"Person","name":"PJ Singh","jobTitle":"Co-Founder, Director of Sales & Marketing"},{"@type":"Person","name":"Jordan Walsh","jobTitle":"Co-Founder, Master Electrician"}],"areaServed":[{"@type":"City","name":"Edmonton"},{"@type":"City","name":"St. Albert"},{"@type":"City","name":"Sherwood Park"},{"@type":"City","name":"Spruce Grove"},{"@type":"City","name":"Leduc"},{"@type":"City","name":"Beaumont"},{"@type":"City","name":"Red Deer"},{"@type":"City","name":"Camrose"},{"@type":"City","name":"Wetaskiwin"},{"@type":"City","name":"Fort Saskatchewan"},{"@type":"City","name":"Lloydminster"},{"@type":"City","name":"Cold Lake"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"18"},"sameAs":["https://www.instagram.com/stellarupgrades_ca","https://www.facebook.com/profile.php?id=61585966448071","https://www.google.com/maps/place/Stellar+Upgrades"],"knowsAbout":["Solar panel installation","Battery backup systems","EV charger installation","Net metering Alberta","LONGi solar panels","APsystems microinverters"]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://stellarupgrades.ca/#business","name":"Stellar Upgrades","url":"https://stellarupgrades.ca","telephone":"+17802005265","priceRange":"$$","image":"https://stellarupgrades.ca/images/house-sunset.webp","address":{"@type":"PostalAddress","streetAddress":"6005 103A St NW","addressLocality":"Edmonton","addressRegion":"AB","postalCode":"T6H 2J7","addressCountry":"CA"},"geo":{"@type":"GeoCoordinates","latitude":53.5461,"longitude":-113.4938},"hasMap":"https://www.google.com/maps/place/Stellar+Upgrades","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","bestRating":"5","worstRating":"1","reviewCount":"18"},"review":[{"@type":"Review","author":{"@type":"Person","name":"Patt Gunn"},"datePublished":"2026-02","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"So thrilled with this company! Our system was installed over a year ago and it was the best decision we ever made. We used to pay $600-$800 in bills, but now we pay nothing to the utility company!"},{"@type":"Review","author":{"@type":"Person","name":"James"},"datePublished":"2026-03","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"We installed our solar system almost two years ago, and it is performing exactly the same as day one. The company actually called us after two years just to check if everything was still working properly."},{"@type":"Review","author":{"@type":"Person","name":"Emma"},"datePublished":"2026-03","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"What I appreciated most was their transparent pricing and honest advice. They provided a personalized design based on my actual utility bills. Five stars for their integrity and knowledge."},{"@type":"Review","author":{"@type":"Person","name":"David"},"datePublished":"2026-03","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"Jordan and his team are professionals, paying very detailed attention to our system. We needed a panel upgraded and they did it at no additional cost."},{"@type":"Review","author":{"@type":"Person","name":"Kelsey Bilyk"},"datePublished":"2026-02","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"Professional, honest and local. Would highly recommend Jordan and his team to anyone looking for solar panels or energy upgrades."},{"@type":"Review","author":{"@type":"Person","name":"J W"},"datePublished":"2026-02","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"We were very happy with our decision to choose Stellar Upgrades for our solar installation. Everything went the way they said it would."}],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Solar Panel Installation","description":"LONGi Hi-MO 7 500W panels with APsystems DS3 microinverters, from $2.80/W installed"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Battery Backup Installation","description":"EP Cube whole-home battery with under 20ms automatic switchover"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"EV Charger Installation","description":"Wallbox Pulsar Plus 40A $3,999 or 48A $4,499 fully installed"}}],"speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".hero-sub",".s-h"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Stellar Upgrades","legalName":"Stellar Upgrades Ltd.","url":"https://stellarupgrades.ca","description":"Stellar Upgrades is an Edmonton-based solar panel, battery backup, and EV charger installation company founded in 2018. 8 in-house electricians supervised by a Master Electrician. 500+ installations across Edmonton and Alberta. LONGi Hi-MO 7 500W panels, APsystems DS3 microinverters, EP Cube battery, Wallbox Pulsar Plus EV chargers. 5.0-star Google rating.","telephone":"+17802005265","email":"info@stellarupgrades.ca","address":{"@type":"PostalAddress","streetAddress":"6005 103A St NW","addressLocality":"Edmonton","addressRegion":"AB","postalCode":"T6H 2J7","addressCountry":"CA"},"geo":{"@type":"GeoCoordinates","latitude":53.5461,"longitude":-113.4938},"foundingDate":"2018","numberOfEmployees":{"@type":"QuantitativeValue","value":8},"founder":[{"@type":"Person","name":"PJ Singh","jobTitle":"Co-Founder, Director of Sales & Marketing"},{"@type":"Person","name":"Jordan Walsh","jobTitle":"Co-Founder, Master Electrician"}],"areaServed":[{"@type":"City","name":"Edmonton"},{"@type":"City","name":"St. Albert"},{"@type":"City","name":"Sherwood Park"},{"@type":"City","name":"Spruce Grove"},{"@type":"City","name":"Leduc"},{"@type":"City","name":"Beaumont"},{"@type":"City","name":"Red Deer"},{"@type":"City","name":"Camrose"},{"@type":"City","name":"Wetaskiwin"},{"@type":"City","name":"Fort Saskatchewan"},{"@type":"City","name":"Lloydminster"},{"@type":"City","name":"Cold Lake"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"55"},"sameAs":["https://www.instagram.com/stellarupgrades_ca","https://www.facebook.com/profile.php?id=61585966448071","https://www.google.com/maps/place/Stellar+Upgrades"],"knowsAbout":["Solar panel installation","Battery backup systems","EV charger installation","Net metering Alberta","LONGi solar panels","APsystems microinverters"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://stellarupgrades.ca/#business","name":"Stellar Upgrades","url":"https://stellarupgrades.ca","telephone":"+17802005265","priceRange":"$$","image":"https://stellarupgrades.ca/images/house-sunset.webp","address":{"@type":"PostalAddress","streetAddress":"6005 103A St NW","addressLocality":"Edmonton","addressRegion":"AB","postalCode":"T6H 2J7","addressCountry":"CA"},"geo":{"@type":"GeoCoordinates","latitude":53.5461,"longitude":-113.4938},"hasMap":"https://www.google.com/maps/place/Stellar+Upgrades","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","bestRating":"5","worstRating":"1","reviewCount":"55"},"review":[{"@type":"Review","author":{"@type":"Person","name":"Patt Gunn"},"datePublished":"2026-02","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"So thrilled with this company! Our system was installed over a year ago and it was the best decision we ever made. We used to pay $600-$800 in bills, but now we pay nothing to the utility company!"},{"@type":"Review","author":{"@type":"Person","name":"James"},"datePublished":"2026-03","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"We installed our solar system almost two years ago, and it is performing exactly the same as day one. The company actually called us after two years just to check if everything was still working properly."},{"@type":"Review","author":{"@type":"Person","name":"Emma"},"datePublished":"2026-03","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"What I appreciated most was their transparent pricing and honest advice. They provided a personalized design based on my actual utility bills. Five stars for their integrity and knowledge."},{"@type":"Review","author":{"@type":"Person","name":"David"},"datePublished":"2026-03","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"Jordan and his team are professionals, paying very detailed attention to our system. We needed a panel upgraded and they did it at no additional cost."},{"@type":"Review","author":{"@type":"Person","name":"Kelsey Bilyk"},"datePublished":"2026-02","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"Professional, honest and local. Would highly recommend Jordan and his team to anyone looking for solar panels or energy upgrades."},{"@type":"Review","author":{"@type":"Person","name":"J W"},"datePublished":"2026-02","reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"We were very happy with our decision to choose Stellar Upgrades for our solar installation. Everything went the way they said it would."}],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Solar Panel Installation","description":"LONGi Hi-MO 7 500W panels with APsystems DS3 microinverters, from $2.80/W installed"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Battery Backup Installation","description":"EP Cube whole-home battery with under 20ms automatic switchover"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"EV Charger Installation","description":"Wallbox Pulsar Plus 40A $3,999 or 48A $4,499 fully installed"}}],"speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".hero-sub",".s-h"]}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Stellar Upgrades","url":"https://stellarupgrades.ca","potentialAction":{"@type":"SearchAction","target":"https://stellarupgrades.ca/areas/{search_term_string}","query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stellarupgrades.ca"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does Stellar Upgrades install?","acceptedAnswer":{"@type":"Answer","text":"Solar panels (LONGi 500W + APsystems DS3 microinverters from $2.80/W), battery backup (EP Cube with <20ms switchover), and EV chargers (Wallbox Pulsar Plus 40A $3,999 or 48A $4,499 installed). All installed by 8 in-house electricians supervised by a Master Electrician."}},{"@type":"Question","name":"How much does solar cost in Edmonton?","acceptedAnswer":{"@type":"Answer","text":"$14,000-$50,000 depending on size. Most homes need 6-12 kW at $2.80-$3.10/W installed. $0-down financing at 6.99% over 20 years. Cash buyers get 10% off. CEIP allows property tax financing with no credit check."}},{"@type":"Question","name":"Does solar work in Alberta winters?","acceptedAnswer":{"@type":"Answer","text":"Yes. Edmonton gets 2,300+ hours of sunshine per year. Cold improves efficiency. Net metering credits from summer offset winter. Most systems achieve $0 annual cost."}},{"@type":"Question","name":"What areas does Stellar Upgrades serve?","acceptedAnswer":{"@type":"Answer","text":"Stellar Upgrades serves a 200-kilometre radius from Edmonton including St. Albert, Sherwood Park, Spruce Grove, Leduc, Beaumont, Fort Saskatchewan, Red Deer, Camrose, Wetaskiwin, Lloydminster, Cold Lake, and 40+ additional communities. Both rooftop and ground-mount systems."}},{"@type":"Question","name":"How is Stellar Upgrades different?","acceptedAnswer":{"@type":"Answer","text":"8 in-house electricians, zero subcontractors. Both co-founders on every project. 500+ installs, 5.0-star Google rating, zero negative reviews. Declines 10% of assessments when solar doesn't make financial sense."}},{"@type":"Question","name":"How much do solar panels cost in Edmonton?","acceptedAnswer":{"@type":"Answer","text":"A typical residential solar system in the Edmonton area costs $14,000 to $37,000, depending on size. Most homes need 6-12 kW at $2.80-$3.10 per watt installed. $0-down financing is available at 6.99% through Financeit, and CEIP property-tax financing is available in Edmonton, St. Albert, and Leduc."}},{"@type":"Question","name":"Does solar work in Alberta winters?","acceptedAnswer":{"@type":"Answer","text":"Yes. Edmonton gets 2,345 hours of sunshine per year — more than Toronto, Vancouver, or Montreal. Cold temperatures actually improve panel efficiency. Net metering lets you bank summer surplus credits to offset winter usage. Most properly sized systems achieve $0 annual electricity cost."}},{"@type":"Question","name":"What solar equipment does Stellar Upgrades install?","acceptedAnswer":{"@type":"Answer","text":"LONGi Hi-MO 7 500W monocrystalline panels (30-year warranty), APsystems DS3 microinverters (25-year warranty), RT Mini 2 racking with critter guards standard, EP Cube battery backup, and Wallbox Pulsar Plus EV chargers. All installations done by in-house master electricians — no subcontractors."}},{"@type":"Question","name":"How long does solar installation take?","acceptedAnswer":{"@type":"Answer","text":"Most residential rooftop installations are completed in one day. Ground-mount systems take 2-3 days. The full process from signed contract to system producing electricity is typically 4-6 weeks, including permitting and utility interconnection."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Stellar Upgrades","description":"Solar panel, battery backup, and EV charger installation by master electricians in Edmonton and across Alberta. 500+ installs since 2018.","url":"https://stellarupgrades.ca","telephone":"+17802005265","email":"info@stellarupgrades.ca","address":{"@type":"PostalAddress","streetAddress":"Unit 10, 6005 103A St NW","addressLocality":"Edmonton","addressRegion":"AB","postalCode":"T6H 2J7","addressCountry":"CA"},"geo":{"@type":"GeoCoordinates","latitude":"53.4684","longitude":"-113.4938"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"18:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"18"},"areaServed":[{"@type":"City","name":"Edmonton"},{"@type":"City","name":"Sherwood Park"},{"@type":"City","name":"St. Albert"},{"@type":"City","name":"Leduc"},{"@type":"City","name":"Beaumont"},{"@type":"City","name":"Spruce Grove"},{"@type":"City","name":"Fort Saskatchewan"},{"@type":"City","name":"Stony Plain"},{"@type":"City","name":"Camrose"},{"@type":"City","name":"Red Deer"},{"@type":"City","name":"Wetaskiwin"},{"@type":"City","name":"Lloydminster"}],"priceRange":"$$","hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Solar Panel Installation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Battery Backup Installation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"EV Charger Installation"}}]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Stellar Upgrades","description":"Solar panel, battery backup, and EV charger installation by master electricians in Edmonton and across Alberta. 500+ installs since 2018.","url":"https://stellarupgrades.ca","telephone":"+17802005265","email":"info@stellarupgrades.ca","address":{"@type":"PostalAddress","streetAddress":"Unit 10, 6005 103A St NW","addressLocality":"Edmonton","addressRegion":"AB","postalCode":"T6H 2J7","addressCountry":"CA"},"geo":{"@type":"GeoCoordinates","latitude":"53.4684","longitude":"-113.4938"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"18:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"55"},"areaServed":[{"@type":"City","name":"Edmonton"},{"@type":"City","name":"Sherwood Park"},{"@type":"City","name":"St. Albert"},{"@type":"City","name":"Leduc"},{"@type":"City","name":"Beaumont"},{"@type":"City","name":"Spruce Grove"},{"@type":"City","name":"Fort Saskatchewan"},{"@type":"City","name":"Stony Plain"},{"@type":"City","name":"Camrose"},{"@type":"City","name":"Red Deer"},{"@type":"City","name":"Wetaskiwin"},{"@type":"City","name":"Lloydminster"}],"priceRange":"$$","hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Solar Panel Installation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Battery Backup Installation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"EV Charger Installation"}}]}}</script>
 <!-- Quote Form Popup + Exit Intent -->
 <div id="quoteOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(10,10,8,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .3s">
 <div id="quotePopupInner" style="background:#fff;border-radius:20px;max-width:440px;width:100%;overflow:hidden;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.15);transform:scale(.95) translateY(12px);transition:transform .4s cubic-bezier(.34,1.56,.64,1)">
@@ -664,22 +673,36 @@ img.src='https://server4.sunbasedata.com/sunbase/portal/api/lead_post.jsp?'+para
 
 
 <script>
-// Savings teaser slider
+// Savings teaser slider — 25-year comparison
 (function(){
 var sl=document.getElementById('savSlider');
 if(!sl)return;
-var bd=document.getElementById('savBillD'),wo=document.getElementById('savWithout'),wi=document.getElementById('savWith'),wt=document.getElementById('savWait');
+var bd=document.getElementById('savBillD'),wo=document.getElementById('savWithout'),wi=document.getElementById('savWith'),mo=document.getElementById('savMonthly');
 function upSav(){
   var b=parseInt(sl.value);
   bd.textContent=b;
   var pct=((b-sl.min)/(sl.max-sl.min))*100;
   sl.style.background='linear-gradient(90deg,rgba(201,168,76,0.4) '+pct+'%,rgba(240,232,216,0.06) '+pct+'%)';
-  var sp=Math.round(b*0.91);
-  wo.textContent='$'+b+'/mo';
-  wi.textContent='$'+sp+'/mo';
-  wt.textContent='Every month you wait costs you ~$'+b+' in electricity you could offset.';
+  // 25-year grid cost with 5% annual increase
+  var ann=b*12,cum=0,yr=ann;for(var i=0;i<25;i++){cum+=yr;yr*=1.05}
+  var costNo=Math.round(cum);
+  // System sizing and cost
+  var kwh=ann/0.25,kw=Math.max(3,Math.round(kwh/1150*10)/10);
+  var sysCost=Math.round(14000+(kw-3)*(36000/27));
+  var rebate=2000;
+  var financed=sysCost-rebate;
+  // Monthly financing payment (6.99%, 20yr)
+  var mr=0.0699/12,np=240,mp=financed*(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1);
+  var totalFinanced=Math.round(mp*240);
+  var savings=Math.max(0,costNo-totalFinanced);
+  wo.textContent='$'+costNo.toLocaleString();
+  wi.textContent='$'+savings.toLocaleString();
+  mo.textContent='$'+Math.round(mp);
 }
-sl.addEventListener('input',upSav);
+sl.addEventListener('input',function(){
+  upSav();
+  if(typeof gtag==='function')gtag('event','calculator_interaction',{event_category:'engagement',event_label:'homepage_slider'});
+});
 upSav();
 })();
 
