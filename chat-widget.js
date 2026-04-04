@@ -349,7 +349,7 @@
       var chatBtn = document.createElement('button');
       chatBtn.className = 'mob-cta-quote';
       chatBtn.textContent = 'Chat With Us';
-      chatBtn.style.cssText = 'flex:1;text-align:center;padding:14px 8px;border-radius:60px;font-weight:700;font-size:16px;font-family:inherit;background:#1E2A1E;color:#fff;border:2px solid transparent;cursor:pointer';
+      chatBtn.style.cssText = 'flex:1;text-align:center;padding:14px 8px;border-radius:60px;font-weight:700;font-size:16px;font-family:inherit;background:#fff;color:#1E2A1E;border:2px solid #fff;cursor:pointer';
       chatBtn.addEventListener('click', function(e) {
         e.preventDefault();
         openChat();
